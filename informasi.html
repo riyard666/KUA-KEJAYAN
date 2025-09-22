@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KUA Kejayan – Informasi</title>
+  <meta name="description" content="Jadwal Sholat berbasis lokasi pengunjung dan QR formulir rekomendasi nikah KUA Kejayan." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>html,body{scroll-behavior:smooth}.container{max-width:72rem}</style>
+</head>
+<body class="min-h-screen bg-white text-gray-900">
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur">
+    <div class="mx-auto container flex items-center justify-between px-4 py-3">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-xl bg-emerald-600"></div>
+        <div>
+          <div class="text-lg font-bold">KUA Kejayan</div>
+          <div class="text-xs text-gray-500">Kantor Urusan Agama Kejayan</div>
+        </div>
+      </a>
+      <nav class="hidden gap-4 md:flex text-sm">
+        <a href="index.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Beranda</a>
+        <a href="layanan.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Layanan</a>
+        <a href="informasi.html" class="px-3 py-2 rounded-xl hover:bg-gray-100 font-semibold">Informasi</a>
+        <a href="data-catin.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Data Catin</a>
+        <a href="media.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Media</a>
+        <a href="kontak.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Kontak</a>
+        <a href="login.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- JADWAL SHOLAT (Geolocation + Fallback) -->
+  <section class="bg-white py-12">
+    <div class="mx-auto container px-4">
+      <h2 class="text-2xl font-bold">Jadwal Sholat</h2>
+      <p class="mt-1 text-gray-600">
+        Metode 20 (Kemenag). Zona (GMT +7).
+      </p>
+      <p id="tanggalInfo" class="mt-1 text-gray-600">Memuat dari Aladhan API…</p>
+      <div class="mt-6 overflow-hidden rounded-3xl border">
+        <table class="min-w-full divide-y divide-gray-200 text-sm">
+          <thead class="bg-gray-50">
+            <tr><th class="px-4 py-3 text-left font-semibold">Waktu</th><th class="px-4 py-3 text-left font-semibold">Jam</th></tr>
+          </thead>
+          <tbody id="shalatBody" class="divide-y divide-gray-100 bg-white"></tbody>
+        </table>
+      </div>
+      <div id="shalatErr" class="hidden mt-4 rounded-xl bg-red-50 p-3 text-sm text-red-700"></div>
+    </div>
+  </section>
+
+  <!-- QR REKOM -->
+  <section class="bg-emerald-50 py-12">
+    <div class="mx-auto container px-4">
+      <h2 class="text-2xl font-bold">QR Rekomendasi Nikah</h2>
+      <div class="mt-6 grid grid-cols-1 items-center gap-6 md:grid-cols-2">
+        <div class="rounded-3xl border bg-white p-6 flex justify-center">
+          <!-- Letakkan file di root yang sama: qr-rekom-kuakejayan.png -->
+          <a href="https://s.id/daftar_surat_rekomendasi_nikah" target="_blank" rel="noopener">
+            <img src="qr-rekom-kuakejayan.jpeg" alt="QR Rekom Nikah" class="h-auto w-64 md:w-72" />
+          </a>
+        </div>
+        <div class="rounded-3xl border bg-white p-6">
+          <div class="text-lg font-semibold">Formulir Online</div>
+          <p class="mt-2 text-sm text-gray-700">Scan atau klik tombol untuk membuka formulir.</p>
+          <a href="https://s.id/daftar_surat_rekomendasi_nikah" target="_blank" rel="noopener"
+             class="mt-4 inline-flex items-center rounded-2xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700">Buka Formulir</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t bg-white">
+    <div class="mx-auto container flex items-center justify-between px-4 py-6 text-sm">
+      <div>© <span id="year"></span> KUA Kejayan</div>
+      <div class="flex gap-4">
+        <a href="https://instagram.com/kuakejayan" target="_blank" class="hover:underline">Instagram</a>
+        <a href="https://youtube.com/@kuakejayan" target="_blank" class="hover:underline">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // =========================
+    // Jadwal Sholat (Geolocation)
+    // =========================
+    const FALLBACK = { lat: -7.70139, lon: 112.87694, label: "Kejayan (fallback)" };
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Jakarta';
+
+    function renderTimings(data, note) {
+      const t = data?.timings || {};
+      const rows = [
+        ['Subuh',   t.Fajr],
+        ['Terbit',  t.Sunrise],
+        ['Zuhur',   t.Dhuhr],
+        ['Asar',    t.Asr],
+        ['Maghrib', t.Maghrib],
+        ['Isya',    t.Isha],
+      ];
+      document.getElementById('shalatBody').innerHTML =
+        rows.map(r => `<tr><td class="px-4 py-3">${r[0]}</td><td class="px-4 py-3">${r[1]||'—'}</td></tr>`).join('');
+
+      const d = data?.date;
+      const info = d ? `${d.readable} / Hijriah ${d.hijri?.date}` : '';
+      document.getElementById('tanggalInfo').textContent =
+        `Sumber: Aladhan API (${info}, ${tz})${note ? ' • ' + note : ''}`;
+    }
+
+    function fail(msg) {
+      const el = document.getElementById('shalatErr');
+      el.textContent = msg || 'Gagal memuat jadwal.';
+      el.classList.remove('hidden');
+    }
+
+    async function fetchTimings(lat, lon, note) {
+      const url = `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=20&timezonestring=${encodeURIComponent(tz)}`;
+      const res = await fetch(url);
+      const j = await res.json();
+      if (!j || !j.data) throw new Error('no-data');
+      renderTimings(j.data, note);
+    }
+
+    function loadByGeo() {
+      if (!('geolocation' in navigator)) {
+        // device tidak dukung geolokasi → fallback
+        fetchTimings(FALLBACK.lat, FALLBACK.lon, FALLBACK.label).catch(()=>fail());
+        return;
+      }
+      const opt = { enableHighAccuracy: false, timeout: 8000, maximumAge: 300000 };
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const { latitude: lat, longitude: lon } = pos.coords || {};
+          fetchTimings(lat, lon, `Lokasi Anda (${lat.toFixed(4)}, ${lon.toFixed(4)})`).catch(()=>{
+            // API gagal → fallback
+            fetchTimings(FALLBACK.lat, FALLBACK.lon, FALLBACK.label).catch(()=>fail());
+          });
+        },
+        () => {
+          // ditolak / timeout → fallback
+          fetchTimings(FALLBACK.lat, FALLBACK.lon, FALLBACK.label).catch(()=>fail());
+        },
+        opt
+      );
+    }
+
+    loadByGeo();
+  </script>
+</body>
+</html>

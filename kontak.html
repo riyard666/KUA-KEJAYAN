@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KUA Kejayan – Kontak</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>html,body{scroll-behavior:smooth}.container{max-width:72rem}</style>
+  <!-- EmailJS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+<body class="min-h-screen bg-white text-gray-900">
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur">
+    <div class="mx-auto container flex items-center justify-between px-4 py-3">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-xl bg-emerald-600"></div>
+        <div><div class="text-lg font-bold">KUA Kejayan</div><div class="text-xs text-gray-500">Kantor Urusan Agama Kejayan</div></div>
+      </a>
+      <nav class="hidden gap-4 md:flex text-sm">
+        <a href="index.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Beranda</a>
+        <a href="layanan.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Layanan</a>
+        <a href="informasi.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Informasi</a>
+        <a href="data-catin.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Data Catin</a>
+        <a href="media.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Media</a>
+        <a href="kontak.html" class="px-3 py-2 rounded-xl hover:bg-gray-100 font-semibold">Kontak</a>
+        <a href="login.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="py-12">
+    <div class="mx-auto container px-4">
+      <h2 class="text-2xl font-bold">Kontak & Buku Tamu</h2>
+      <p class="mt-1 text-gray-600">Form ini mengirim langsung ke email <strong>kejayankua@gmail.com</strong>.</p>
+
+      <form id="formKritik" class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <input name="nama" required placeholder="Nama" class="rounded-2xl border px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-600"/>
+        <input name="email" required type="email" placeholder="Email" class="rounded-2xl border px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-600"/>
+        <input name="subjek" placeholder="Subjek" class="md:col-span-2 rounded-2xl border px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-600"/>
+        <textarea name="pesan" required placeholder="Pesan" rows="6" class="md:col-span-2 rounded-2xl border px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-600"></textarea>
+        <div class="md:col-span-2 flex items-center gap-3">
+          <button class="rounded-2xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white hover:bg-emerald-700">Kirim</button>
+          <span id="ok"  class="text-sm text-emerald-700 hidden">Terkirim. Terima kasih.</span>
+          <span id="err" class="text-sm text-red-700 hidden">Gagal mengirim, mencoba mailto…</span>
+        </div>
+      </form>
+
+      <div class="mt-10 rounded-3xl border p-6">
+        <div class="text-sm text-gray-600">Alamat</div>
+        <div class="font-semibold">KUA Kejayan, Kec. Kejayan, Kab. Pasuruan, Jawa Timur</div>
+        <div class="mt-2 text-sm">Telp/WA: <strong>+62 822-2839-8564</strong> • Email: <strong>kejayankua@gmail.com</strong></div>
+        <a class="mt-3 inline-block text-emerald-700 underline" href="https://maps.app.goo.gl/gG5xZGF3oWi6qYxg8?g_st=ipc" target="_blank">Lihat di Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t bg-white">
+    <div class="mx-auto container flex items-center justify-between px-4 py-6 text-sm">
+      <div>© <span id="year"></span> KUA Kejayan</div>
+      <div class="flex gap-4">
+        <a href="https://instagram.com/kuakejayan" target="_blank" class="hover:underline">Instagram</a>
+        <a href="https://youtube.com/@kuakejayan" target="_blank" class="hover:underline">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent=new Date().getFullYear();
+
+    // === KONFIG EmailJS ———
+    // 1) Buka https://www.emailjs.com/
+    // 2) Buat account → Service (Gmail) → Template
+    // 3) Isi ketiga variabel di bawah:
+    const EMAILJS_PUBLIC_KEY = "";     // misal: "B6x...abcd"
+    const EMAILJS_SERVICE_ID = "";     // misal: "service_12345"
+    const EMAILJS_TEMPLATE_ID = "";    // misal: "template_abcde"
+    // Template fields minimal: user_name, user_email, subject, message
+
+    if (EMAILJS_PUBLIC_KEY) { emailjs.init(EMAILJS_PUBLIC_KEY); }
+
+    const form = document.getElementById('formKritik');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const data = {
+        user_name : fd.get('nama'),
+        user_email: fd.get('email'),
+        subject   : fd.get('subjek') || 'Pesan Baru',
+        message   : fd.get('pesan')
+      };
+
+      async function fallbackMailto(){
+        const mailto = `mailto:kejayankua@gmail.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`Nama: ${data.user_name}\nEmail: ${data.user_email}\n\n${data.message}`)}`;
+        window.location.href = mailto;
+        document.getElementById('err').classList.remove('hidden');
+      }
+
+      try{
+        if(EMAILJS_PUBLIC_KEY && EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID){
+          const res = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, data);
+          if(res.status === 200){
+            document.getElementById('ok').classList.remove('hidden');
+            form.reset();
+            return;
+          }
+        }
+        // kalau belum dikonfigurasi → fallback ke mailto
+        await fallbackMailto();
+      }catch{
+        await fallbackMailto();
+      }
+    });
+  </script>
+</body>
+</html>

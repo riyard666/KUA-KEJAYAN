@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <title>KUA KEJAYAN</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KUA Kejayan – Beranda</title>
+  <meta name="description" content="Layanan Digital KUA Kejayan." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%2310b981%22/><text x=%2250%22 y=%2258%22 font-size=%2258%22 text-anchor=%22middle%22 fill=%22white%22>K</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>html,body{scroll-behavior:smooth}.container{max-width:72rem}</style>
+</head>
+<body class="min-h-screen bg-white text-gray-900">
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur">
+    <div class="mx-auto container flex items-center justify-between px-4 py-3">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-xl bg-emerald-600"></div>
+        <div>
+          <div class="text-lg font-bold">KUA Kejayan</div>
+          <div class="text-xs text-gray-500">Kantor Urusan Agama Kejayan</div>
+        </div>
+      </a>
+      <nav class="hidden gap-4 md:flex text-sm">
+        <a href="index.html" class="px-3 py-2 rounded-xl hover:bg-gray-100 font-semibold">Beranda</a>
+        <a href="layanan.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Layanan</a>
+        <a href="informasi.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Informasi</a>
+        <a href="data-catin.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Data Catin</a>
+        <a href="media.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Media</a>
+        <a href="kontak.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Kontak</a>
+        <a href="login.html" class="px-3 py-2 rounded-xl hover:bg-gray-100">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="bg-gradient-to-b from-emerald-50 to-white">
+    <div class="mx-auto container grid grid-cols-1 items-center gap-8 px-4 py-16 md:grid-cols-2">
+      <div>
+        <h1 class="text-3xl font-bold leading-tight md:text-5xl">
+          Layanan Digital <span class="text-emerald-700">KUA Kejayan</span>
+        </h1>
+        <p class="mt-4 text-gray-600">Mudah • Transparan • Akuntabel</p>
+        <div class="mt-6 flex flex-wrap gap-3 text-sm">
+          <a href="https://simkah4.kemenag.go.id/" class="rounded-2xl border border-emerald-600 px-4 py-2 font-semibold text-emerald-700 hover:bg-emerald-50">Daftar Nikah (SIMKAH)</a>
+          <a href="https://s.id/daftar_surat_rekomendasi_nikah" class="rounded-2xl bg-emerald-600 px-4 py-2 font-semibold text-white hover:bg-emerald-700">Rekomendasi Nikah</a>
+        </div>
+      </div>
+      <div class="aspect-[4/3] w-full rounded-3xl bg-white shadow-xl ring-1 ring-gray-100" />
+    </div>
+  </section>
+
+  <!-- CTA KUNCI -->
+  <section class="py-12">
+    <div class="mx-auto container px-4">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <a href="informasi.html" class="rounded-3xl border bg-white p-6 hover:shadow-md transition">
+          <div class="text-lg font-semibold">Jadwal Sholat</div>
+          <p class="text-sm text-gray-600 mt-1">GMT (+7), Asia/Jakarta</p>
+        </a>
+        <a href="data-catin.html" class="rounded-3xl border bg-white p-6 hover:shadow-md transition">
+          <div class="text-lg font-semibold">Statistik Catin 2025</div>
+          <p class="text-sm text-gray-600 mt-1">Ringkasan dari Google Sheets</p>
+        </a>
+        <a href="kontak.html" class="rounded-3xl border bg-white p-6 hover:shadow-md transition">
+          <div class="text-lg font-semibold">Kritik & Saran</div>
+          <p class="text-sm text-gray-600 mt-1">Email KUA Kejayan</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t bg-white">
+    <div class="mx-auto container flex flex-col items-center justify-between gap-3 px-4 py-6 md:flex-row">
+      <div class="text-sm text-gray-600">© <span id="year"></span> KUA Kejayan</div>
+      <div class="flex gap-4 text-sm">
+        <a href="https://instagram.com/kuakejayan" target="_blank" class="hover:underline">Instagram</a>
+        <a href="https://youtube.com/@kuakejayan" target="_blank" class="hover:underline">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
