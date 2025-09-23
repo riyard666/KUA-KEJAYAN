@@ -23,7 +23,7 @@
       </a>
       <nav class="hidden gap-4 md:flex text-sm">
         <a href="index.html" class="px-3 py-2 rounded-xl hover:bg-gray-100 font-semibold">Beranda</a>
-        <div class="dropdown">
+       <div class="dropdown">
           <button class="nav-link dropdown-trigger">Profil</button>
           <div class="dropdown-menu">
             <a href="profil.html" class="dropdown-item">Profil KUA</a>
@@ -64,6 +64,54 @@
         <a href="kontak.html" class="nav-link">Kontak</a>
         <a href="login.html" class="nav-link">Login</a>
       </nav>
+
+      <!-- Mobile: hamburger -->
+      <button id="hamburger" class="md:hidden inline-flex items-center rounded-xl border px-3 py-2 text-sm">
+        Menu
+      </button>
+    </div>
+
+    <!-- Mobile menu panel -->
+    <div id="mobileMenu" class="md:hidden hidden border-t py-2 text-sm">
+      <a href="index.html" class="mobile-item">Beranda</a>
+      <details class="mobile-details">
+        <summary>Profil</summary>
+        <div class="mobile-sub">
+          <a href="profil.html" class="mobile-sub-item">Profil KUA</a>
+          <a href="visi-misi.html" class="mobile-sub-item">Visi • Misi • Motto</a>
+          <a href="struktur.html" class="mobile-sub-item">Struktur Organisasi</a>
+          <a href="pegawai.html" class="mobile-sub-item">Data Pegawai</a>
+        </div>
+      </details>
+      <details class="mobile-details">
+        <summary>Layanan</summary>
+        <div class="mobile-sub">
+          <a href="https://simkah4.kemenag.go.id/" target="_blank" rel="noopener" class="mobile-sub-item">Daftar Nikah (SIMKAH)</a>
+          <a href="https://s.id/daftar_surat_rekomendasi_nikah" target="_blank" rel="noopener" class="mobile-sub-item">Rekomendasi Nikah</a>
+          <a href="layanan.html" class="mobile-sub-item">Semua Layanan</a>
+        </div>
+      </details>
+      <details class="mobile-details">
+        <summary>Informasi</summary>
+        <div class="mobile-sub">
+          <a href="informasi.html" class="mobile-sub-item">Jadwal Sholat</a>
+          <a href="data-masjid.html" class="mobile-sub-item">Data Masjid</a>
+          <a href="tanah-wakaf.html" class="mobile-sub-item">Tanah Wakaf</a>
+          <a href="data-catin.html" class="mobile-sub-item">Data Catin</a>
+        </div>
+      </details>
+      <details class="mobile-details">
+        <summary>Media</summary>
+        <div class="mobile-sub">
+          <a href="media.html" class="mobile-sub-item">Media Sosial</a>
+          <a href="galeri.html" class="mobile-sub-item">Galeri Foto</a>
+          <a href="dokumen.html" class="mobile-sub-item">Dokumen</a>
+        </div>
+      </details>
+      <a href="kontak.html" class="mobile-item">Kontak</a>
+      <a href="login.html" class="mobile-item">Login</a>
+    </div>
+  </div>
   </header>
 
   <!-- HERO -->
