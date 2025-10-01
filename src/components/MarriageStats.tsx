@@ -41,7 +41,7 @@ export default function MarriageStats() {
         });
     }, []);
 
-    const { monthlyTotals, desaCount } = useMemo(() => {
+    const { monthlyTotals } = useMemo(() => {
         const monthlyTotals: Record<string, number> = {};
         MONTHS_ID.forEach((m) => (monthlyTotals[m] = 0));
         const totalByDesa: { desa: string; total: number }[] = [];
