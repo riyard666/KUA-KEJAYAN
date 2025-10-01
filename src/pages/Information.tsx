@@ -3,6 +3,7 @@ import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import axios from "axios";
 
 const mosqueData = [
     { name: 'Masjid Al-Ikhlas', village: 'Kejayan', address: 'Desa Kejayan' },
@@ -34,7 +35,7 @@ export default function Information() {
     const [mosqueSearch, setMosqueSearch] = useState('');
     const [wakafSearch, setWakafSearch] = useState('');
     const [tabValue, setTabValue] = useState("mosques");
-    // const [data, setData] = useState<any[]>([]);
+    const [data, setData] = useState<never[]>([]);
 
     const filteredMosques = mosqueData.filter(mosque =>
         mosque.name.toLowerCase().includes(mosqueSearch.toLowerCase()) ||
@@ -48,12 +49,14 @@ export default function Information() {
 
     const fetchDataMasjid = useCallback(async () => {
         try {
-            await fetch("https://script.google.com/macros/s/AKfycbwkp-FaTa9uwPC27jt96JJfb8YjTcRVTn9kFPIPcD33iUEDvNzJCcQ3quoFEBCYLeWF/exec")
-                .then(res => res.text()) // bukan res.json()
-                .then(text => {
-                    const data = JSON.parse(text);
-                    console.log(data);
-                });
+            await axios
+                .get("https://script.google.com/macros/s/AKfycbwkp-FaTa9uwPC27jt96JJfxxx/exec")
+                .then((res: { data: string; }) => {
+                    // Karena pakai HtmlService, data datang sebagai text, bukan JSON
+                    const parsed = JSON.parse(res.data);
+                    setData(parsed);
+                })
+                .catch((err) => console.error("Error:", err));
 
         }catch(err) {
             console.error(err);
@@ -64,7 +67,7 @@ export default function Information() {
         fetchDataMasjid().catch(console.error);
     }, [fetchDataMasjid]);
 
-    // console.log(data)
+    console.log(data)
 
     useEffect(() => {
         const handleHashChange = () => {
