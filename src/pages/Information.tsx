@@ -50,7 +50,7 @@ export default function Information() {
     const fetchDataMasjid = useCallback(async () => {
         try {
             await axios
-                .get("https://script.google.com/macros/s/AKfycbwkp-FaTa9uwPC27jt96JJfxxx/exec")
+                .get("https://script.google.com/macros/s/AKfycbwkp-FaTa9uwPC27jt96JJfb8YjTcRVTn9kFPIPcD33iUEDvNzJCcQ3quoFEBCYLeWF/exec")
                 .then((res: { data: string; }) => {
                     // Karena pakai HtmlService, data datang sebagai text, bukan JSON
                     const parsed = JSON.parse(res.data);
