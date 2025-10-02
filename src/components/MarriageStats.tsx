@@ -1,38 +1,39 @@
-"use client"
+import { useEffect, useMemo, useState, useCallback } from 'react';
+import axios from 'axios';
+import { Card } from '@/components/ui/card';
 
-import { useCallback, useEffect, useState } from "react";
-import { Card } from "@/components/ui/card";
-import {
-    Table, TableHeader, TableBody, TableRow, TableHead, TableCell
-} from "@/components/ui/table";
-import type { PernikahanModel } from "@/model/pernikahan.model.tsx";
-import axios from "axios";
+type PernikahanModel = Record<string, string | number | null | undefined>;
 
 const MONTHS_ID = [
-    "Januari","Februari","Maret","April","Mei","Juni",
-    "Juli","Agustus","September","Oktober","November","Desember",
+    'jan','feb','mar','apr','mei','jun','jul','agu','sep','okt','nov','des'
 ];
 
 export default function MarriageStats() {
-    const currentYear = new Date().getFullYear();
-    const [error, setError] = useState<string | null>(null);
-    const [loading, setLoading] = useState(true);
     const [data, setData] = useState<PernikahanModel[]>([]);
-    const [filteredData, setFilteredData] = useState<PernikahanModel[]>([]);
-    const [tahun, setTahun] = useState<number>(currentYear);
-    const [desa, setDesa] = useState<string>("all");
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    const [selectedYear, setSelectedYear] = useState<number | null>(null);
+    const [selectedDesa, setSelectedDesa] = useState<string>('Semua');
 
     const fetchDataPernikahan = useCallback(async () => {
+        setLoading(true);
         try {
-            setLoading(true);
             const res = await axios.get(
-                "https://script.google.com/macros/s/AKfycbyAhtiMGqBL11tpXDs3X4tbvE6ddp4ur_0NGu6lCqENiDhaY3qolNpRMxQICWR0wubE/exec"
+                'https://script.google.com/macros/s/AKfycbxRA0XzkA7sVKOPABWM-HPhx3CVGEZeS5gU10c7zEp6jQhS51VcHD_siAdfNoBLhJ5c/exec'
             );
-            setData(res.data);
-            setLoading(false);
+            const normalizedData = (res.data as unknown[]).map(normalizeRow);
+            setData(normalizedData);
+
+            // set default tahun terbaru
+            const years = normalizedData.map(r => Number(r.tahun)).filter(Boolean);
+            const maxYear = Math.max(...years);
+            setSelectedYear(maxYear);
+
         } catch (err) {
-            console.error("Error fetch:", err);
-            setError("Gagal mengambil data");
+            console.error('Error fetch:', err);
+            setError('Gagal memuat data pernikahan');
+        } finally {
             setLoading(false);
         }
     }, []);
@@ -41,49 +42,51 @@ export default function MarriageStats() {
         fetchDataPernikahan().catch(console.error);
     }, [fetchDataPernikahan]);
 
-    useEffect(() => {
-        let temp = data;
-        if (desa !== "all") temp = temp.filter(d => d.desa === desa);
-        temp = temp.filter(d => d.tahun === tahun.toString());
-        setFilteredData(temp);
-    }, [data, desa, tahun]);
+    const filteredData = useMemo(() => {
+        return data.filter(r =>
+            (selectedYear ? Number(r.tahun) === selectedYear : true) &&
+            (selectedDesa === 'Semua' ? true : r.desa === selectedDesa)
+        );
+    }, [data, selectedYear, selectedDesa]);
 
-    const desaList = Array.from(new Set(data.map(d => d.desa)));
+    const { monthlyTotals } = useMemo(() => {
+        const totals: Record<string, number> = {};
+        MONTHS_ID.forEach(m => totals[m] = 0);
+
+        for (const r of filteredData) {
+            MONTHS_ID.forEach(m => totals[m] += toNum(r[m]));
+        }
+        return { monthlyTotals: totals };
+    }, [filteredData]);
+
+    const allYears = Array.from(new Set(data.map(r => Number(r.tahun)))).sort((a,b)=>a-b);
+    const allDesa = ['Semua', ...Array.from(new Set(data.map(r => r.desa?.toString() || ''))).sort()];
 
     return (
         <div className="space-y-6">
-            <div className="flex items-end justify-between flex-wrap gap-4">
+            <div className="flex items-end justify-between space-x-4">
                 <div>
-                    <h2 className="text-2xl font-semibold text-emerald-700">
-                        Statistik Pernikahan {currentYear}
-                    </h2>
-                    <p className="text-gray-600">
-                        Akumulasi per bulan dan per desa (target: 25 desa, Januari–Desember) berdasarkan data yang Anda unggah.
-                    </p>
+                    <h2 className="text-2xl font-semibold text-emerald-700">Statistik Pernikahan</h2>
+                    <p className="text-gray-600">Filter data berdasarkan tahun dan desa.</p>
                 </div>
-
-                {/* Filter Tahun & Desa */}
-                <div className="flex gap-2 items-center">
-                    <label className="text-gray-700">Tahun:</label>
+                <div className="flex space-x-2">
                     <select
-                        value={tahun}
-                        onChange={(e) => setTahun(parseInt(e.target.value))}
-                        className="border rounded px-2 py-1"
+                        value={selectedYear ?? ''}
+                        onChange={e => setSelectedYear(Number(e.target.value))}
+                        className="border rounded p-1"
                     >
-                        {Array.from({ length: 5 }).map((_, i) => {
-                            const y = currentYear - i;
-                            return <option key={y} value={y}>{y}</option>;
-                        })}
+                        {allYears.map(y => (
+                            <option key={y} value={y}>{y}</option>
+                        ))}
                     </select>
-
-                    <label className="text-gray-700">Desa:</label>
                     <select
-                        value={desa}
-                        onChange={(e) => setDesa(e.target.value)}
-                        className="border rounded px-2 py-1"
+                        value={selectedDesa}
+                        onChange={e => setSelectedDesa(e.target.value)}
+                        className="border rounded p-1"
                     >
-                        <option value="all">Semua Desa</option>
-                        {desaList.map((d) => <option key={d} value={d}>{d}</option>)}
+                        {allDesa.map(d => (
+                            <option key={d} value={d}>{d}</option>
+                        ))}
                     </select>
                 </div>
             </div>
@@ -92,45 +95,35 @@ export default function MarriageStats() {
             {error && <p className="text-red-600">Error: {error}</p>}
 
             {!loading && !error && (
-                <Card className="p-4 overflow-x-auto">
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>Desa</TableHead>
-                                {MONTHS_ID.map((m) => <TableHead key={m}>{m}</TableHead>)}
-                                <TableHead>Tahun</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {filteredData.length === 0 && (
-                                <TableRow>
-                                    <TableCell colSpan={14} className="text-center py-4">
-                                        Tidak ada data
-                                    </TableCell>
-                                </TableRow>
-                            )}
-                            {filteredData.map((row, idx) => (
-                                <TableRow key={idx}>
-                                    <TableCell>{row.desa}</TableCell>
-                                    <TableCell>{row.jan}</TableCell>
-                                    <TableCell>{row.feb}</TableCell>
-                                    <TableCell>{row.mar}</TableCell>
-                                    <TableCell>{row.apr}</TableCell>
-                                    <TableCell>{row.mei}</TableCell>
-                                    <TableCell>{row.jun}</TableCell>
-                                    <TableCell>{row.jul}</TableCell>
-                                    <TableCell>{row.agu}</TableCell>
-                                    <TableCell>{row.sep}</TableCell>
-                                    <TableCell>{row.okt}</TableCell>
-                                    <TableCell>{row.nov}</TableCell>
-                                    <TableCell>{row.des}</TableCell>
-                                    <TableCell>{row.tahun}</TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
+                <Card className="p-4">
+                    <h3 className="font-semibold mb-3">Ringkasan Bulanan</h3>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                        {MONTHS_ID.map(m => (
+                            <div key={m} className="rounded-lg border p-3 bg-white">
+                                <div className="text-xs text-gray-500">{m}</div>
+                                <div className="text-xl font-bold text-emerald-700">{monthlyTotals[m] ?? 0}</div>
+                            </div>
+                        ))}
+                    </div>
                 </Card>
             )}
         </div>
     );
+}
+
+function toNum(val: string | number | null | undefined) {
+    if (val == null) return 0;
+    const num = Number(String(val).replace(/[^\d.-]/g, ''));
+    return Number.isNaN(num) ? 0 : num;
+}
+
+function normalizeRow(r: unknown): PernikahanModel {
+    const out: PernikahanModel = {};
+    if (typeof r === 'object' && r && !Array.isArray(r)) {
+        Object.entries(r as Record<string, unknown>).forEach(([k, v]) => {
+            const kk = k.trim();
+            out[kk] = typeof v === 'string' ? v.trim() : (v as number | null | undefined);
+        });
+    }
+    return out;
 }
