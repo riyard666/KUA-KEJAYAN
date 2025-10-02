@@ -15,6 +15,8 @@ import MasjidPage from "@/pages/MasjidPage";
 import WakafPage from "@/pages/WakafPage.tsx";
 import LayananInformasi from "@/pages/LayananInformasi.tsx";
 import StatistikPernikahan from "@/pages/StatistikPernikahan.tsx";
+import Pegawai from "@/pages/Pegawai.tsx";
+import CalendarMarriage from "@/pages/CalendarMarriage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +34,8 @@ const App = () => (
                     <Route path="/statistik-pernikahan" element={<StatistikPernikahan />} />
                     <Route path="/data-masjid" element={<MasjidPage />} />
                     <Route path="/data-wakaf" element={<WakafPage />} />
+                    <Route path="/kalender-jadwal-nikah" element={<CalendarMarriage />} />
+                    <Route path="/pegawai" element={<Pegawai />} />
                     <Route path="/news-upload" element={<NewsUpload />} />
                     <Route path="/news" element={<NewsList />} />
                     <Route path="/feedback" element={<Feedback />} />

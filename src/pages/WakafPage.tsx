@@ -126,7 +126,7 @@ export default function WakafPage() {
                   <TableCell>{item.alamat}</TableCell>
                   <TableCell>{item.wakif}</TableCell>
                   <TableCell>{item.nazhir}</TableCell>
-                  <TableCell>{item.luas_M2}</TableCell>
+                  <TableCell>{item.luas_m2}</TableCell>
                   <TableCell>{item.penggunaan}</TableCell>
                   <TableCell>{item.nomor_aiw}</TableCell>
                   <TableCell>{FormatDateNoTime(item.tanggal_aiw)}</TableCell>

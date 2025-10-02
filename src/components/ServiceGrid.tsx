@@ -42,7 +42,7 @@ const services = [
         description: 'Pantau slot jadwal tersedia & rencanakan tanggal terbaik.',
         icon: '📅',
         links: [
-            { text: 'Lihat Jadwal', url: '#' }
+            { text: 'Lihat Jadwal', url: '/kalender-jadwal-nikah' }
         ]
     },
     {

@@ -1,6 +1,6 @@
 export interface WakafModel{
     kelurahan: string,
-    luas_M2: string,
+    luas_m2: string,
     penggunaan: string,
     wakif: string,
     nazhir: string,
