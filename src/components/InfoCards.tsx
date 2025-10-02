@@ -348,7 +348,7 @@ export default function InfoCards() {
     };
     return (
         <section className="py-12 bg-white">
-            <div className="container mx-auto px-4">
+            <div className="container px-4">
                 <h2 className="text-2xl font-bold text-center mb-8">
                     Prosedur Layanan dan Panduan Informasi KUA Kejayan
                 </h2>

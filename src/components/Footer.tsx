@@ -2,7 +2,7 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-gray-900 text-white py-12">
+        <footer className="bg-emerald-900 text-white py-12">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Contact Info */}
@@ -28,9 +28,9 @@ export default function Footer() {
                     <div>
                         <h4 className="font-semibold mb-4">PROFIL</h4>
                         <div className="space-y-2 text-sm">
-                            <a href="#" className="block hover:text-emerald-400">Home</a>
-                            <a href="#" className="block hover:text-emerald-400">Visi & Misi</a>
-                            <a href="#" className="block hover:text-emerald-400">Data Pegawai</a>
+                            <a href="/" className="block hover:text-emerald-400">Home</a>
+                            <a href="/profile" className="block hover:text-emerald-400">Visi & Misi</a>
+                            <a href="/pegawai" className="block hover:text-emerald-400">Data Pegawai</a>
                         </div>
                     </div>
 

@@ -1,5 +1,6 @@
 import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import Footer from "@/components/Footer.tsx";
 
 export default function Profile() {
     return (
@@ -95,6 +96,8 @@ export default function Profile() {
                     </div>
                 </Card>
             </div>
+
+            <Footer />
         </div>
     );
 }

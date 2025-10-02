@@ -133,8 +133,8 @@ const Navbar = () => {
             <div className="container mx-auto flex items-center justify-between px-4 py-3">
                 {/* Logo */}
                 <Link to="/" className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-bold">
-                        K
+                    <div className="h-10 w-10 rounded-xl flex items-center justify-center ">
+                        <img src="/logo-kemenag.png" alt=""/>
                     </div>
                     <div>
                         <div className="text-lg font-bold">KUA Kejayan</div>

@@ -3,6 +3,7 @@ import {IdCardLanyard, ListCheck, Medal} from "lucide-react";
 import type {PegawaiModel} from "@/model/pegawai.model.tsx";
 import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
+import Footer from "@/components/Footer.tsx";
 
 export default function Pegawai() {
     const [data, setData] = useState<PegawaiModel[]>([])
@@ -150,6 +151,8 @@ export default function Pegawai() {
                     ))}
                 </div>
             </div>
+
+            <Footer />
         </div>
     )
 }
