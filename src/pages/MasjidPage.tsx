@@ -77,7 +77,7 @@ export default function MasjidPage() {
 
     return (
         <>
-            <div className="min-h-screen mx-50 mt-3">
+            <div className="min-h-screen mx-10 lg:mx-50 mt-3">
                 <h1 className="text-4xl font-bold">Data Masjid di Kecamatan Kejayan</h1>
                 <p>
                     Temukan informasi lengkap dan akurat mengenai daftar masjid di seluruh
