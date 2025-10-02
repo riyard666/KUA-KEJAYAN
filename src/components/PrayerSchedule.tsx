@@ -88,7 +88,7 @@ export default function PrayerSchedule() {
                                 {prayerData.date.readable} / Hijriah {prayerData.date.hijri?.date}
                             </p>
                             <p className="text-sm text-gray-500 mb-6">
-                                Sumber: Aladhan • TZ: {Intl.DateTimeFormat().resolvedOptions().timeZone} • {locationNote}
+                                Sumber: Aladhan • {locationNote}
                             </p>
 
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
