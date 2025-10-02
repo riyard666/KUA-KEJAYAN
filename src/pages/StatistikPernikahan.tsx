@@ -1,18 +1,16 @@
-import ServiceGrid from "@/components/ServiceGrid.tsx";
 import Footer from "@/components/Footer.tsx";
+import MarriageStats from "@/components/MarriageStats.tsx";
 
-export default function Services() {
-
+export default function StatistikPernikahan() {
     return (
-
         <>
             <div className="min-h-screen bg-white">
                 <div className="container mx-auto px-4">
 
-                    <div className="grid gap-4 max-w-4xl mx-auto">
+                    <div className="grid gap-4 my-10">
                         <section>
-                            <div className="mx-auto max-w-6xl px-4 ">
-                                <ServiceGrid />
+                            <div className=" ">
+                                <MarriageStats />
                             </div>
                         </section>
                     </div>
@@ -22,5 +20,5 @@ export default function Services() {
             <Footer/>
 
         </>
-    );
+    )
 }

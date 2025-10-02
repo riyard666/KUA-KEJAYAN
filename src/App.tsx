@@ -13,6 +13,8 @@ import NewsList from '@/pages/NewsList';
 import Feedback from '@/pages/Feedback';
 import MasjidPage from "@/pages/MasjidPage";
 import WakafPage from "@/pages/WakafPage.tsx";
+import LayananInformasi from "@/pages/LayananInformasi.tsx";
+import StatistikPernikahan from "@/pages/StatistikPernikahan.tsx";
 
 const queryClient = new QueryClient();
 
@@ -25,7 +27,9 @@ const App = () => (
                 <Routes>
                     <Route path="/" element={<Index />} />
                     <Route path="/profile" element={<Profile />} />
-                    <Route path="/services" element={<Services />} />
+                    <Route path="/layanan" element={<Services />} />
+                    <Route path="/layanan-informasi" element={<LayananInformasi />} />
+                    <Route path="/statistik-pernikahan" element={<StatistikPernikahan />} />
                     <Route path="/data-masjid" element={<MasjidPage />} />
                     <Route path="/data-wakaf" element={<WakafPage />} />
                     <Route path="/news-upload" element={<NewsUpload />} />

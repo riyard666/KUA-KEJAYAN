@@ -1,22 +1,25 @@
-import { Card } from '@/components/ui/card';
+"use client";
+
+import { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const services = [
     {
-        title: 'Nikah',
-        description: 'Daftar online atau ajukan rekomendasi nikah.',
-        icon: '💒',
+        title: "Nikah",
+        description: "Daftar online atau ajukan rekomendasi nikah.",
+        icon: "💒",
         links: [
-            { text: 'Daftar Nikah (SIMKAH)', url: 'https://simkah4.kemenag.go.id/' },
-            { text: 'Rekomendasi Nikah', url: 'https://s.id/daftar_surat_rekomendasi_nikah' }
-        ]
+            { text: "Daftar Nikah (SIMKAH)", url: "https://simkah4.kemenag.go.id/" },
+            { text: "Rekomendasi Nikah", url: "https://s.id/daftar_surat_rekomendasi_nikah" },
+        ],
     },
     {
-        title: 'Kalkulator Zakat',
-        description: 'Hitung kewajiban zakat untuk berbagai jenis harta.',
-        icon: '💰',
-        links: [
-            { text: 'Kalkulator Zakat (BAZNAS)', url: 'https://baznas.go.id/kalkulatorzakat' }
-        ]
+        title: "Kalkulator Zakat",
+        description: "Hitung kewajiban zakat untuk berbagai jenis harta.",
+        icon: "💰",
+        links: [{ text: "Kalkulator Zakat (BAZNAS)", url: "https://baznas.go.id/kalkulatorzakat" }],
     },
     {
         title: 'Masjid Terdekat',
@@ -77,8 +80,20 @@ const services = [
 ];
 
 export default function ServiceGrid() {
+    const [openDialog, setOpenDialog] = useState(false);
+    const [currentLinks, setCurrentLinks] = useState<{ text: string; url: string }[]>([]);
+
+    const handleCardClick = (links: { text: string; url: string }[]) => {
+        if (links.length === 1) {
+            window.open(links[0].url, "_blank");
+        } else {
+            setCurrentLinks(links);
+            setOpenDialog(true);
+        }
+    };
+
     return (
-        <section className="py-12 bg-gray-50">
+        <section className="py-12">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold mb-2">Layanan Digital KUA</h2>
@@ -87,27 +102,43 @@ export default function ServiceGrid() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {services.map((service, index) => (
-                        <Card key={index} className="p-6 hover:shadow-lg transition-shadow duration-300">
+                        <Card
+                            key={index}
+                            className="p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+                            onClick={() => handleCardClick(service.links)}
+                        >
                             <div className="text-4xl mb-4">{service.icon}</div>
                             <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
-                            <p className="text-gray-600 text-sm mb-4">{service.description}</p>
-                            <div className="space-y-2">
-                                {service.links.map((link, linkIndex) => (
-                                    <a
-                                        key={linkIndex}
-                                        href={link.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="block text-emerald-700 hover:text-emerald-800 text-sm font-medium hover:underline"
-                                    >
-                                       {link.text}
-                                    </a>
-                                ))}
-                            </div>
+                            <p className="text-gray-600 text-sm">{service.description}</p>
                         </Card>
                     ))}
                 </div>
             </div>
+
+            {/* Dialog */}
+            <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Pilih Layanan</DialogTitle>
+                    </DialogHeader>
+                    <div className="flex flex-col gap-3 mt-4">
+                        {currentLinks.map((link, idx) => (
+                            <Button
+                                key={idx}
+                                variant="outline"
+                                onClick={() => window.open(link.url, "_blank")}
+                            >
+                                {link.text}
+                            </Button>
+                        ))}
+                    </div>
+                    <DialogFooter>
+                        <Button variant="ghost" onClick={() => setOpenDialog(false)}>
+                            Batal
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
         </section>
     );
 }
