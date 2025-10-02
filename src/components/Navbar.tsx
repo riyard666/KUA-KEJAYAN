@@ -52,7 +52,7 @@ const menuItems: MenuItem[] = [
             { label: "Layanan dan Panduan Informasi", href: "*" },
             { label: "Statistik Nikah", href: "*" },
             { label: "Data Masjid", href: "/data-masjid" },
-            { label: "Daftar Wakaf", href: "/data-wakaf" },
+            { label: "Data Tanah Wakaf", href: "/data-wakaf" },
         ],
     },
     { label: "Berita", href: "*" },
