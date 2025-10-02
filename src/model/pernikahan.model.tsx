@@ -1,0 +1,16 @@
+export interface PernikahanModel {
+    desa: string,
+    jan: number,
+    feb: number,
+    mar: number,
+    apr: number,
+    mei: number,
+    jun: number,
+    jul: number,
+    agu: number,
+    sep: number,
+    okt: number,
+    nov: number,
+    des: number,
+    tahun: string,
+}

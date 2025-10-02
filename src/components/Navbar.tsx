@@ -43,6 +43,7 @@ const menuItems: MenuItem[] = [
             },
             { label: "Kalkulator Zakat", href: "https://baznas.go.id/kalkulatorzakat" },
             { label: "Kalibrasi Arah Kiblat", href: "https://qiblafinder.withgoogle.com/intl/id/desktop/find" },
+            { label: "Semua Layanan", href: "*" },
         ],
     },
     {
@@ -53,6 +54,7 @@ const menuItems: MenuItem[] = [
             { label: "Statistik Nikah", href: "*" },
             { label: "Data Masjid", href: "/data-masjid" },
             { label: "Data Tanah Wakaf", href: "/data-wakaf" },
+            { label: "Dokumen dan Persyaratan", href: "*" },
         ],
     },
     { label: "Berita", href: "*" },
