@@ -15,9 +15,9 @@ export default function Index() {
                 <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
                     <div className="grid items-center gap-8 grid-cols-1 lg:grid-cols-2">
                         <div className="space-y-4">
-                            <h1 className="text-3xl md:text-5xl text-center lg:text-start font-bold">Layanan Digital <span className={"text-emerald-700"}>KUA Kejayan</span></h1>
+                            <h1 className="text-3xl md:text-4xl text-center lg:text-start font-bold">SELAMAT DATANG DI ZONA INTEGRITAS <span className={"text-emerald-700"}>KUA KEJAYAN</span></h1>
                             <p className="text-gray-600 text-center text-md lg:text-lg lg:text-start">
-                                Mudah • Transparan • Akuntabel
+                                Pelayanan keagamaan untuk masyarakat Kejayan
                             </p>
 
                             <div className={"flex flex-row gap-3"}>
