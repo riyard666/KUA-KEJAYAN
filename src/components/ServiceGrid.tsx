@@ -27,7 +27,7 @@ const services = [
         ]
     },
     {
-        title: 'Data Tanah Wakaf',
+        title: 'Daftar Wakaf',
         description: 'Akses data sertifikat wakaf terverifikasi untuk publik.',
         icon: '📜',
         links: [
@@ -100,7 +100,7 @@ export default function ServiceGrid() {
                                         rel="noopener noreferrer"
                                         className="block text-emerald-700 hover:text-emerald-800 text-sm font-medium hover:underline"
                                     >
-                                        ↗ {link.text}
+                                       {link.text}
                                     </a>
                                 ))}
                             </div>

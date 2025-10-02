@@ -6,12 +6,13 @@ import Index from '@/pages/Index';
 import NotFound from '@/pages/NotFound';
 import Services from '@/pages/Services';
 import Profile from '@/pages/Profile';
-import Information from '@/pages/Information';
 import Login from '@/pages/Login';
 import Navbar from '@/components/Navbar';
 import NewsUpload from '@/pages/NewsUpload';
 import NewsList from '@/pages/NewsList';
 import Feedback from '@/pages/Feedback';
+import MasjidPage from "@/pages/MasjidPage";
+import WakafPage from "@/pages/WakafPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -25,7 +26,8 @@ const App = () => (
                     <Route path="/" element={<Index />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/services" element={<Services />} />
-                    <Route path="/information" element={<Information />} />
+                    <Route path="/data-masjid" element={<MasjidPage />} />
+                    <Route path="/data-wakaf" element={<WakafPage />} />
                     <Route path="/news-upload" element={<NewsUpload />} />
                     <Route path="/news" element={<NewsList />} />
                     <Route path="/feedback" element={<Feedback />} />

@@ -18,8 +18,7 @@ const menuItems: MenuItem[] = [
         href: "#",
         submenu: [
             { label: "Profil KUA", href: "/profile" },
-            { label: "Visi • Misi • Motto", href: "visi-misi.html" },
-            { label: "Data Pegawai", href: "pegawai.html" },
+            { label: "Data Pegawai", href: "/pegawai" },
         ],
     },
     {
@@ -51,20 +50,13 @@ const menuItems: MenuItem[] = [
         submenu: [
             { label: "Layanan dan Panduan Informasi", href: "*" },
             { label: "Statistik Nikah", href: "*" },
-            { label: "Data Masjid", href: "/information#masjid" },
-            { label: "Tanah Wakaf", href: "/information#wakaf" },
+            { label: "Data Masjid", href: "/data-masjid" },
+            { label: "Daftar Wakaf", href: "/data-wakaf" },
             { label: "Dokumen dan Persyaratan", href: "*" },
         ],
     },
-    {
-        label: "Berita",
-        href: "#",
-        submenu: [
-            { label: "Media", href: "*" },
-        ],
-    },
+    { label: "Berita", href: "*" },
     { label: "Kritik & Saran", href: "/feedback" },
-    { label: "Login", href: "/login" },
 ];
 
 const Navbar = () => {
