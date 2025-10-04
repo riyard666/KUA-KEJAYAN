@@ -1,16 +1,15 @@
-import {Card, CardContent} from "@/components/ui/card.tsx";
-import {IdCardLanyard, ListCheck, Medal} from "lucide-react";
-import type {PegawaiModel} from "@/model/pegawai.model.tsx";
-import {useCallback, useEffect, useState} from "react";
+import { Card, CardContent } from "@/components/ui/card.tsx";
+import { IdCardLanyard, ListCheck, Medal } from "lucide-react";
+import type { PegawaiModel } from "@/model/pegawai.model.tsx";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "@/components/Footer.tsx";
 
 export default function Pegawai() {
-    const [data, setData] = useState<PegawaiModel[]>([])
+    const [data, setData] = useState<PegawaiModel[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [search, setSearch] = useState<string>("");
 
-    // fetch data dari Google Apps Script
     const fetchPegawai = useCallback(async () => {
         try {
             const res = await axios.get(
@@ -27,7 +26,6 @@ export default function Pegawai() {
         fetchPegawai().catch(console.error);
     }, [fetchPegawai]);
 
-    // filter data berdasarkan pencarian
     const filteredData = data.filter((p) => {
         const keyword = search.toLowerCase();
         return (
@@ -41,55 +39,54 @@ export default function Pegawai() {
     if (error) {
         return <p className="text-red-500">{error}</p>;
     }
-    return(
+
+    return (
         <div className="min-h-screen">
+            {/* Hero */}
+            <section className="relative min-h-[70vh] flex flex-col justify-center overflow-hidden bg-gradient-to-b from-emerald-200 to-white">
+                <div className="max-w-6xl px-4 py-12 md:py-20 mx-auto">
+                    <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold uppercase text-emerald-700 leading-relaxed">
+                        DATA ASN DI KANTOR URUSAN AGAMA KECAMATAN KEJAYAN
+                    </h1>
+                    <p className="mt-3 text-gray-700">
+                        Daftar Aparatur Sipil Negara beserta jabatan, pangkat/golongan, dan
+                        keterangan tugas di lingkungan KUA Kejayan.
+                    </p>
 
-            {/*hero*/}
-            <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-linear-to-b from-emerald-200 to-white">
-                <div className="max-w-6xl px-4 py-12 md:py-24 mx-auto">
-                    <h1 className={"text-5xl font-bold w-xl uppercase text-emerald-700"}>DATA ASN DI KANTOR
-                        URUSAN AGAMA
-                        KECAMATAN KEJAYAN</h1>
-                    <p>Daftar Aparatur Sipil Negara beserta jabatan, pangkat/golongan, dan keterangan tugas di lingkungan KUA Kejayan.</p>
-
-                    <div className={"grid grid-cols-3 gap-3 my-10"}>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 my-10">
                         <Card>
                             <CardContent>
-                                <div className={"text-center flex flex-col items-center gap-3"}>
-                                    <IdCardLanyard size={35} className={"text-yellow-500"} />
-                                   <div>
-                                       <h3 className={"text-xl font-medium"}>
-                                           Data Lengkap
-                                       </h3>
-                                       <p>Informasi komprehensif ASN</p>
-                                   </div>
-                                </div>
-                            </CardContent>
-                        </Card>
-
-                        <Card>
-                            <CardContent>
-                                <div className={"text-center flex flex-col items-center gap-3"}>
-                                    <Medal size={35} className={"text-yellow-500"} />
+                                <div className="text-center flex flex-col items-center gap-3">
+                                    <IdCardLanyard size={35} className="text-yellow-500" />
                                     <div>
-                                        <h3 className={"text-lg font-medium"}>
-                                            Pangkat & Golongan
+                                        <h3 className="text-lg md:text-xl font-medium">
+                                            Data Lengkap
                                         </h3>
-                                        <p>Status Kepangkatan Terkini</p>
+                                        <p className="text-sm">Informasi komprehensif ASN</p>
                                     </div>
                                 </div>
                             </CardContent>
                         </Card>
 
-                        <Card className="">
+                        <Card>
                             <CardContent>
-                                <div className={"text-center flex flex-col items-center gap-3"}>
-                                    <ListCheck size={35} className={"text-yellow-500"} />
+                                <div className="text-center flex flex-col items-center gap-3">
+                                    <Medal size={35} className="text-yellow-500" />
                                     <div>
-                                        <h3 className={"text-lg font-medium"}>
-                                            Keterangan Tugas
-                                        </h3>
-                                        <p>Deskripsi Tanggung Jawab</p>
+                                        <h3 className="text-lg font-medium">Pangkat & Golongan</h3>
+                                        <p className="text-sm">Status Kepangkatan Terkini</p>
+                                    </div>
+                                </div>
+                            </CardContent>
+                        </Card>
+
+                        <Card>
+                            <CardContent>
+                                <div className="text-center flex flex-col items-center gap-3">
+                                    <ListCheck size={35} className="text-yellow-500" />
+                                    <div>
+                                        <h3 className="text-lg font-medium">Keterangan Tugas</h3>
+                                        <p className="text-sm">Deskripsi Tanggung Jawab</p>
                                     </div>
                                 </div>
                             </CardContent>
@@ -98,14 +95,15 @@ export default function Pegawai() {
                 </div>
             </section>
 
-            <div className="max-w-6xl px-4 py-12 md:py-24 mx-auto">
-            {/* Search bar */}
+            {/* Konten utama */}
+            <div className="max-w-6xl px-4 py-12 md:py-20 mx-auto">
+                {/* Search bar */}
                 <input
                     type="text"
                     placeholder="Cari nama, jabatan, tempat lahir, keterangan..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
 
                 {/* Total pegawai */}
@@ -114,26 +112,27 @@ export default function Pegawai() {
                 </p>
 
                 {/* Grid pegawai */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
                     {filteredData.map((p, idx) => (
                         <div
                             key={idx}
-                            className="relative bg-white shadow-lg rounded-2xl p-5 border border-gray-200"
+                            className="relative bg-white shadow-lg rounded-2xl p-5 border border-gray-200 flex flex-col"
                         >
-
                             {/* Foto */}
                             <div className="flex flex-col items-center">
                                 <img
-                                    src={p.path_source} // path dari spreadsheet
+                                    src={p.path_source}
                                     alt={p.nama}
-                                    className="h-70 object-cover rounded-lg shadow-md border-2 border-gray-200 bg-gray-100"
+                                    className="w-full h-60 object-cover rounded-lg shadow-md border border-gray-200 bg-gray-100"
                                 />
                                 <h2 className="text-lg font-bold mt-3 text-center">{p.nama}</h2>
-                                <p className="text-gray-600 text-sm text-center">{p.jabatan}</p>
+                                <p className="text-gray-600 text-sm text-center">
+                                    {p.jabatan}
+                                </p>
                             </div>
 
                             {/* Detail info */}
-                            <div className="mt-3 text-sm text-gray-700 space-y-1">
+                            <div className="mt-3 text-sm text-gray-700 space-y-1 text-left">
                                 <p>
                                     <b>Tempat/Tgl Lahir:</b> {p.tempat_tgl_lahir || "-"}
                                 </p>
@@ -154,5 +153,5 @@ export default function Pegawai() {
 
             <Footer />
         </div>
-    )
+    );
 }
