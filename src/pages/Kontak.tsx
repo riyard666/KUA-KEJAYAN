@@ -13,12 +13,12 @@ export default function Kontak() {
                         <p className="">Kami siap membantu Anda. Silakan hubungi kami melalui detail di bawah ini atau kirimkan pesan melalui formulir pengaduan.</p>
                     </div>
 
-                    <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-3 px-3">
                         <Link to={'https://maps.app.goo.gl/V27HCZmnLCxQFxQk7'} target="_blank" >
 
                             <Card className="transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                                 <CardContent>
-                                    <div className="w-lg flex flex-row items-center gap-3">
+                                    <div className="md:w-lg flex flex-row items-center gap-3">
                                         <MapPin className="w-14 h-14 text-emerald-700"/>
                                         <div>
                                             <h3 className="text-xl font-medium">Alamat</h3>
@@ -31,7 +31,7 @@ export default function Kontak() {
                         <Link to={'https://wa.me/6282228398564'} target="_blank" >
                             <Card className="transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                                 <CardContent>
-                                    <div className="w-lg flex flex-row items-center gap-3">
+                                    <div className="md:w-lg flex flex-row items-center gap-3">
                                         <Phone className="w-8 h-8 text-emerald-700"/>
                                         <div>
                                             <h3 className="text-xl font-medium">Nomor Telepon / Whatsapp</h3>
@@ -44,7 +44,7 @@ export default function Kontak() {
                         <Link to={'mailto:kejayankua@gmail.com'} target="_blank" >
                             <Card className="transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                                 <CardContent>
-                                    <div className="w-lg flex flex-row items-center gap-3">
+                                    <div className="md:w-lg flex flex-row items-center gap-3">
                                         <Mail className="w-8 h-8 text-emerald-700"/>
                                         <div>
                                             <h3 className="text-xl font-medium">Email</h3>
@@ -57,7 +57,7 @@ export default function Kontak() {
 
                         <Card className="transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                             <CardContent>
-                                <div className="w-lg flex flex-row items-center gap-3">
+                                <div className="md:w-lg flex flex-row items-center gap-3">
                                     <Clock className="w-8 h-8 text-emerald-700"/>
                                     <div>
                                         <h3 className="text-xl font-medium">
