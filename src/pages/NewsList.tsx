@@ -1,76 +1,103 @@
 import { useEffect, useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { supabase, type NewsRecord } from '@/lib/supabaseClient';
-
-type LocalDraft = Omit<NewsRecord, 'id'> & { image_object_url?: string | null };
-
-type DisplayItem = (NewsRecord & { image_object_url?: undefined }) | (LocalDraft & { id?: undefined });
-
-function getImageUrl(item: DisplayItem): string | null {
-    if ('image_object_url' in item && item.image_object_url) return item.image_object_url;
-    if ('image_url' in item && item.image_url) return item.image_url;
-    return null;
-}
+import {Card, CardContent} from '@/components/ui/card';
+import {Link} from "react-router-dom";
+import type {NewsModel} from "@/model/news.model.tsx";
+import { FormatDateId} from "@/utils/format.ts";
+import Footer from "@/components/Footer.tsx";
 
 export default function NewsList() {
-    const [items, setItems] = useState<DisplayItem[]>([]);
-    const [error, setError] = useState<string | null>(null);
+    const [news, setNews] = useState<NewsModel[]>([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const load = async () => {
-            setLoading(true);
-            setError(null);
-            try {
-                if (supabase) {
-                    const { data, error } = await supabase.from('news').select('*').order('created_at', { ascending: false });
-                    if (error) throw error;
-                    const list = (data ?? []) as NewsRecord[];
-                    setItems(list);
-                } else {
-                    const draftsRaw = localStorage.getItem('newsDrafts');
-                    const drafts: LocalDraft[] = draftsRaw ? (JSON.parse(draftsRaw) as LocalDraft[]) : [];
-                    setItems(drafts);
-                }
-            } catch (e) {
-                const msg = e instanceof Error ? e.message : 'Gagal memuat berita';
-                setError(msg);
-            } finally {
+        fetch(
+            "https://script.google.com/macros/s/AKfycbx6q-R7TwG2sQuBhgMU1K7VdSHmqi6LMPGSf7fjoVPiVUCE_SZlTDzBIh1_hups6e2d/exec" // ganti dengan link API spreadsheet kamu
+        )
+            .then((res) => res.json())
+            .then((data) => {
+                setNews(data);
                 setLoading(false);
-            }
-        };
-        void load();
+            })
+            .catch((err) => {
+                console.error("Error fetch:", err);
+                setError("Gagal memuat berita");
+                setLoading(false);
+            });
     }, []);
 
+    if (error) {
+        return ;
+    }
+
     return (
-        <div className="min-h-screen bg-white">
-        <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-emerald-700 mb-6">Berita</h1>
-    {loading && <p className="text-gray-500">Memuat...</p>}
-        {error && <p className="text-red-600">Error: {error}</p>}
-            {!loading && !error && items.length === 0 && (
-                <p className="text-gray-600">Belum ada berita.</p>
-            )}
-            <div className="grid gap-4 md:grid-cols-2">
-                {items.map((it, idx) => {
-                        const key = 'id' in it && it.id ? it.id : `draft-${idx}`;
-                        const image = getImageUrl(it);
-                        return (
-                            <Card key={key} className="p-4">
-                            {image && (
-                                <img src={image} alt={it.title} className="h-40 w-full object-cover rounded-md border mb-3" />
-                    )}
-                        <h3 className="text-lg font-semibold">{it.title}</h3>
-                        {!!it.category && <div className="text-xs text-emerald-700 mt-1">{it.category}</div>}
-                            {!!it.summary && <p className="text-gray-700 mt-2">{it.summary}</p>}
-                                <div className="text-xs text-gray-500 mt-3">
-                                {it.created_at ? new Date(it.created_at).toLocaleString() : ''}
-                                </div>
-                                </Card>
-                            );
-                            })}
-                        </div>
-                        </div>
-                        </div>
-                    );
+        <div>
+            <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-white">
+
+                <div className="mx-auto max-w-6xl px-4 py-12">
+                    <div className="mb-8">
+                        <h1 className="text-3xl md:text-5xl font-bold text-emerald-700 text-center">
+                            Informasi KUA Kejayan
+                        </h1>
+                        <p className={"text-center"}>Dapatkan berita, pengumuman, dan informasi penting terkini yang selalu kami update untuk masyarakat.</p>
+                    </div>
+
+                    {
+                        loading ? (
+                            <p className="text-center py-10">Memuat berita...</p>
+                        ) : (
+                            <>
+
+                                {
+                                    error ? (
+                                        <p className="text-center text-red-500 py-10">{error}</p>
+                                    ) : (
+                                        <>
+                                            <>
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                                    {news.map((item) => (
+                                                        <Card key={item.id} className="overflow-hidden shadow-md">
+                                                            <img
+                                                                src={item.gambar}
+                                                                alt={item.judul}
+                                                                className="w-full h-48 object-cover"
+                                                            />
+                                                            <CardContent className="p-4 flex flex-col justify-between">
+                                                                <div>
+                                                                    <h2 className="text-lg font-bold mb-2 line-clamp-2">
+                                                                        {item.judul}
+                                                                    </h2>
+                                                                    <p className="text-sm text-gray-500 mb-3">
+                                                                        {FormatDateId(item.tanggal)} • {item.penulis}
+                                                                    </p>
+
+                                                                    {/* render konten HTML */}
+                                                                    <div
+                                                                        className="text-gray-700 text-sm line-clamp-3 mb-4"
+                                                                        dangerouslySetInnerHTML={{ __html: item.konten }}
+                                                                    />
+                                                                </div>
+                                                                <Link
+                                                                    to={`/news/${item.slug}`}
+                                                                    className="text-emerald-600 font-medium hover:underline mt-auto"
+                                                                >
+                                                                    Baca Selengkapnya →
+                                                                </Link>
+                                                            </CardContent>
+                                                        </Card>
+                                                    ))}
+                                                </div>
+                                            </>
+                                        </>
+                                    )
+                                }
+                            </>
+                        )
                     }
+                </div>
+            </div>
+
+            <Footer />
+        </div>
+    );
+}

@@ -18,6 +18,7 @@ import Pegawai from "@/pages/Pegawai.tsx";
 import CalendarMarriage from "@/pages/CalendarMarriage.tsx";
 import Kontak from "@/pages/Kontak.tsx";
 import MasjidPage from "@/pages/MasjidPage.tsx";
+import NewsDetailPage from "@/pages/NewsDetailPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const App = () => (
                     <Route path="/pegawai" element={<Pegawai />} />
                     <Route path="/news-upload" element={<NewsUpload />} />
                     <Route path="/news" element={<NewsList />} />
+                    <Route path="/news/:slug" element={<NewsDetailPage />} />
                     <Route path="/feedback" element={<Feedback />} />
                     <Route path="/kontak" element={<Kontak />} />
                     <Route path="/login" element={<Login />} />
