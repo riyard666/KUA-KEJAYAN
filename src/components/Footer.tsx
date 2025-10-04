@@ -1,3 +1,5 @@
+import {Instagram, Mail, MapPin, Phone} from "lucide-react";
+
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 
@@ -9,17 +11,17 @@ export default function Footer() {
                     <div>
                         <h3 className="text-lg font-bold mb-4">KUA Kejayan</h3>
                         <div className="space-y-2 text-sm">
-                            <a href="tel:0852-6525-3483" className="flex items-center gap-2 hover:text-emerald-400">
-                                <span>📞</span> 0852-6525-3483
+                            <a href="https://wa.me/6285265253483" className="flex items-center gap-2 hover:text-emerald-400">
+                                <span><Phone size={16}/></span> 0852-6525-3483
                             </a>
                             <a href="mailto:kuakejayan@gmail.com" className="flex items-center gap-2 hover:text-emerald-400">
-                                <span>✉️</span> kuakejayan@gmail.com
+                                <span><Mail size={16}/></span> kuakejayan@gmail.com
                             </a>
-                            <a href="#" className="flex items-center gap-2 hover:text-emerald-400">
-                                <span>📷</span> Instagram
+                            <a href="https://www.instagram.com/kuakejayan?igsh=MTlmb3hycHpoaW14NQ==" className="flex items-center gap-2 hover:text-emerald-400">
+                                <span><Instagram size={16} /></span> Instagram
                             </a>
-                            <a href="#" className="flex items-center gap-2 hover:text-emerald-400">
-                                <span>📍</span> Lokasi (Maps)
+                            <a href="https://maps.app.goo.gl/k2R1DfLKLj9zNUcY8?g_st=iw" className="flex items-center gap-2 hover:text-emerald-400">
+                                <span><MapPin size={16}/> </span> Lokasi (Maps)
                             </a>
                         </div>
                     </div>
