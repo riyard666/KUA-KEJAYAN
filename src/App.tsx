@@ -11,12 +11,13 @@ import Navbar from '@/components/Navbar';
 import NewsUpload from '@/pages/NewsUpload';
 import NewsList from '@/pages/NewsList';
 import Feedback from '@/pages/Feedback';
-import MasjidPage from "@/pages/MasjidPage";
 import WakafPage from "@/pages/WakafPage.tsx";
 import LayananInformasi from "@/pages/LayananInformasi.tsx";
 import StatistikPernikahan from "@/pages/StatistikPernikahan.tsx";
 import Pegawai from "@/pages/Pegawai.tsx";
 import CalendarMarriage from "@/pages/CalendarMarriage.tsx";
+import Kontak from "@/pages/Kontak.tsx";
+import MasjidPage from "@/pages/MasjidPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const App = () => (
                     <Route path="/news-upload" element={<NewsUpload />} />
                     <Route path="/news" element={<NewsList />} />
                     <Route path="/feedback" element={<Feedback />} />
+                    <Route path="/kontak" element={<Kontak />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>

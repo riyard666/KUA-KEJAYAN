@@ -45,9 +45,9 @@ export default function Pegawai() {
         <div className="min-h-screen">
 
             {/*hero*/}
-            <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-linear-to-b from-emerald-100 to-white">
+            <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-linear-to-b from-emerald-200 to-white">
                 <div className="max-w-6xl px-4 py-12 md:py-24 mx-auto">
-                    <h1 className={"text-5xl font-bold w-xl"}>DATA ASN DI KANTOR
+                    <h1 className={"text-5xl font-bold w-xl uppercase text-emerald-700"}>DATA ASN DI KANTOR
                         URUSAN AGAMA
                         KECAMATAN KEJAYAN</h1>
                     <p>Daftar Aparatur Sipil Negara beserta jabatan, pangkat/golongan, dan keterangan tugas di lingkungan KUA Kejayan.</p>
