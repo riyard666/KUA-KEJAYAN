@@ -60,7 +60,15 @@ export default function MarriageStats() {
     }, [filteredData]);
 
     const allYears = Array.from(new Set(data.map(r => Number(r.tahun)))).sort((a,b)=>a-b);
-    const allDesa = ['Semua', ...Array.from(new Set(data.map(r => r.desa?.toString() || ''))).sort()];
+    const allDesa = useMemo(() => {
+        const uniqueDesa = new Set(
+            data
+                .map(r => (r.desa ?? '').toString().trim().toUpperCase()) // normalisasi
+                .filter(Boolean)
+        );
+        return ['Semua', ...Array.from(uniqueDesa).sort()];
+    }, [data]);
+
 
     return (
         <div className="space-y-6">
