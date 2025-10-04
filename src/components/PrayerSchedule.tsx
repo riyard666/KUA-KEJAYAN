@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
-import { fetchPrayerTimes, getCurrentLocation, FALLBACK_LOCATION, type PrayerData } from '@/lib/prayer-api.ts';
+import {
+    fetchPrayerTimes,
+    getCurrentLocation,
+    FALLBACK_LOCATION,
+    type PrayerData,
+    getCityAndCountry
+} from '@/lib/prayer-api.ts';
 
 const motivationalTexts = [
     'Sholat tepat waktu, hidup penuh berkah.',
@@ -33,8 +39,9 @@ export default function PrayerSchedule() {
                 const position = await getCurrentLocation();
                 const { latitude: lat, longitude: lon } = position.coords;
                 const data = await fetchPrayerTimes(lat, lon);
+                const cityCountry = await getCityAndCountry(lat, lon);
                 setPrayerData(data);
-                setLocationNote(`Lokasi Anda (${lat.toFixed(4)}, ${lon.toFixed(4)})`);
+                setLocationNote(`Lokasi Anda ${cityCountry}  `);
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
             } catch (geoError) {
                 // Fallback to default location

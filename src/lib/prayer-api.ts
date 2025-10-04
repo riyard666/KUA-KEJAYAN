@@ -48,8 +48,21 @@ export function getCurrentLocation(): Promise<GeolocationPosition> {
     });
 }
 
+export async function getCityAndCountry(lat: number, lon: number): Promise<string> {
+    const res = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`
+    );
+    const data = await res.json();
+
+    const city = data.address.city || data.address.town || data.address.village || data.address.state;
+    const country = data.address.country;
+
+    return `${city}, ${country}`;
+}
+
+
 export const FALLBACK_LOCATION = {
     lat: -7.70139,
     lon: 112.87694,
-    label: "Kejayan (fallback)"
+    label: "Kejayan, Indonesia"
 };
