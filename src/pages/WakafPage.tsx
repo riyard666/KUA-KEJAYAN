@@ -61,8 +61,8 @@ export default function WakafPage() {
 
     return (
         <div className=" ">
-            <div className="min-h-screen  p-4 space-y-4 mx-10 lg:mx-50 mt-3">
-                <h1 className="text-4xl font-bold ">Daftar Wakaf</h1>
+            <div className="min-h-screen p-4 space-y-4 mx-0 lg:mx-50 mt-3">
+                <h1 className="text-4xl font-bold ">Daftar Tanah Wakaf</h1>
 
                 {/* Search & Filter */}
                 <div className="flex gap-4 items-center">
