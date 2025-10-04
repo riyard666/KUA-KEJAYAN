@@ -42,8 +42,8 @@ const menuItems: MenuItem[] = [
                 ],
             },
             { label: "Kalender Jadwal Nikah", href: "/kalender-jadwal-nikah" },
-            { label: "Semua Layanan", href: "/layanan" },
-            { label: "Dokumen dan Persyaratan", href: "*" },
+            { label: "Layanan Digital", href: "/layanan" },
+            { label: "Dokumen Persyaratan", href: "*" },
         ],
     },
     {
