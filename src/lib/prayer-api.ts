@@ -54,10 +54,11 @@ export async function getCityAndCountry(lat: number, lon: number): Promise<strin
     );
     const data = await res.json();
 
-    const city = data.address.city || data.address.town || data.address.village || data.address.state;
+    const city = data.address.city;
+    const state = data.address.state || data.address.state;
     const country = data.address.country;
 
-    return `${city}, ${country}`;
+    return `${city}, ${state}, ${country}`;
 }
 
 
