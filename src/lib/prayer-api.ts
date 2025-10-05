@@ -54,7 +54,7 @@ export async function getCityAndCountry(lat: number, lon: number): Promise<strin
     );
     const data = await res.json();
 
-    const city = data.address.display_name;
+    const city = data.addresstype.display_name;
 
     return `${city}`;
 }
