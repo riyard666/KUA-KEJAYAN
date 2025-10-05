@@ -19,6 +19,7 @@ import CalendarMarriage from "@/pages/CalendarMarriage.tsx";
 import Kontak from "@/pages/Kontak.tsx";
 import MasjidPage from "@/pages/MasjidPage.tsx";
 import NewsDetailPage from "@/pages/NewsDetailPage.tsx";
+import GoPage from "@/pages/Go.tsx";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ const App = () => (
                     <Route path="/feedback" element={<Feedback />} />
                     <Route path="/kontak" element={<Kontak />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/go" element={<GoPage />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>

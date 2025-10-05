@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 
 // Konfigurasi login
 const USERNAME = "3514061";
@@ -17,20 +17,20 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
   const [error, setError] = useState("");
-  const router = useRouter();
+  const navigate = useNavigate();
 
   // kalau sudah login langsung arahkan
   useEffect(() => {
     if (sessionStorage.getItem(AUTH_KEY) === "true") {
-      router.replace(DRIVE_GATE);
+      navigate(DRIVE_GATE);
     }
-  }, [router]);
+  }, [navigate]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email === USERNAME && pw === PASSWORD) {
       sessionStorage.setItem(AUTH_KEY, "true");
-      router.replace(DRIVE_GATE);
+      navigate(DRIVE_GATE);
     } else {
       setError("Email atau password salah.");
     }
@@ -52,7 +52,6 @@ export default function Login() {
             <Input
               id="email"
               type="text"
-              placeholder="3514061"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -63,7 +62,6 @@ export default function Login() {
             <Input
               id="password"
               type="password"
-              placeholder="••••••••"
               value={pw}
               onChange={(e) => setPw(e.target.value)}
               required
