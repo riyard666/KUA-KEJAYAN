@@ -123,7 +123,7 @@ export default function Pegawai() {
                                 <img
                                     src={p.path_source}
                                     alt={p.nama}
-                                    className="w-60 h-auto object-cover rounded-lg shadow-md border border-gray-200 bg-gray-100"
+                                    className="w-auto h-60 object-cover rounded-lg shadow-md border border-gray-200 bg-gray-100"
                                 />
                                 <h2 className="text-lg font-bold mt-3 text-center">{p.nama}</h2>
                                 <p className="text-gray-600 text-sm text-center">
