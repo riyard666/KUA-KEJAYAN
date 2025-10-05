@@ -71,17 +71,22 @@ export default function MarriageStats() {
 
 
     return (
-        <div className="space-y-6">
-            <div className="flex items-end justify-between space-x-4">
+        <div className="space-y-6 container mx-auto px-4">
+            {/* Header & Filter */}
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
                 <div>
                     <h2 className="text-2xl font-semibold text-emerald-700">Statistik Pernikahan</h2>
-                    <p className="text-gray-600">Filter data berdasarkan tahun dan desa.</p>
+                    <p className="text-gray-600 text-sm md:text-base">
+                        Filter data berdasarkan tahun dan desa.
+                    </p>
                 </div>
-                <div className="flex space-x-2">
+
+                {/* Dropdown filter */}
+                <div className="flex flex-col sm:flex-row gap-2">
                     <select
                         value={selectedYear ?? ''}
                         onChange={e => setSelectedYear(Number(e.target.value))}
-                        className="border rounded p-1"
+                        className="border rounded p-2 text-sm"
                     >
                         {allYears.map(y => (
                             <option key={y} value={y}>{y}</option>
@@ -90,7 +95,7 @@ export default function MarriageStats() {
                     <select
                         value={selectedDesa}
                         onChange={e => setSelectedDesa(e.target.value)}
-                        className="border rounded p-1"
+                        className="border rounded p-2 text-sm"
                     >
                         {allDesa.map(d => (
                             <option key={d} value={d}>{d}</option>
@@ -99,17 +104,21 @@ export default function MarriageStats() {
                 </div>
             </div>
 
-            {loading && <p className="text-gray-500">Memuat data...</p>}
-            {error && <p className="text-red-600">Error: {error}</p>}
+            {/* Loader / Error */}
+            {loading && <p className="text-gray-500 text-center">Memuat data...</p>}
+            {error && <p className="text-red-600 text-center">Error: {error}</p>}
 
+            {/* Ringkasan Bulanan */}
             {!loading && !error && (
                 <Card className="p-4">
                     <h3 className="font-semibold mb-3">Ringkasan Bulanan</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
                         {MONTHS_ID.map(m => (
-                            <div key={m} className="rounded-lg border p-3 bg-white">
-                                <div className="text-xs text-gray-500">{m}</div>
-                                <div className="text-xl font-bold text-emerald-700">{monthlyTotals[m] ?? 0}</div>
+                            <div key={m} className="rounded-lg border p-3 bg-white text-center">
+                                <div className="text-xs text-gray-500 uppercase">{m}</div>
+                                <div className="text-xl font-bold text-emerald-700">
+                                    {monthlyTotals[m] ?? 0}
+                                </div>
                             </div>
                         ))}
                     </div>
