@@ -41,7 +41,7 @@ export default function PrayerSchedule() {
                 const data = await fetchPrayerTimes(lat, lon);
                 const cityCountry = await getCityAndCountry(lat, lon);
                 setPrayerData(data);
-                setLocationNote(`Lokasi Anda ${cityCountry}  `);
+                setLocationNote(` ${cityCountry}  `);
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
             } catch (geoError) {
                 // Fallback to default location
