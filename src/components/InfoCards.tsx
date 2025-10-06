@@ -45,21 +45,22 @@ const procedures: Procedure[] = [
             {
                 sectionTitle: "Dokumen Wajib",
                 items: [
-                    "Surat pengantar nikah dari kelurahan/desa.",
-                    "Fotokopi akta kelahiran.",
-                    "Fotokopi KTP calon pengantin.",
-                    "Fotokopi Buku Nikah Orang tua bagi Perempuan Anak Pertama.",
+                    "Surat pengantar nikah dari kelurahan/desa (N1).",
+                    "Permohonan Kehendak Nikah (N2).",
+                    "Fotokopi KTP calon pengantin, Wali dan 2 Orang Saksi.",
+                    "Fotokopi Akta Kelahiran.",
                     "Fotokopi KK calon pengantin.",
-                    "Pas foto 2x3 sebanyak 5 lembar dengan latar belakang biru.",
+                    "Pas foto 2x3 dan 4x6 sebanyak 5 lembar dengan latar belakang biru.",
                     "Surat rekomendasi nikah dari KUA asal (jika akad nikah dilakukan di luar wilayah domisili).",
-                    "Surat keterangan sehat dari puskesmas/rumah sakit.",
-                    "Surat persetujuan kedua calon pengantin.",
-                    "Izin tertulis orang tua/wali (untuk calon pengantin di bawah usia 21 tahun).",
-                    "Surat dispensasi kawin dari pengadilan agama (jika usia di bawah ketentuan).",
+                    "Surat keterangan sehat dari puskesmas/rumah sakit dan Elektronik Siap Hamil (ELSIMIL).",
+                    "Surat persetujuan kedua calon pengantin (N4).",
+                    "Surat Izin orang tua/wali Jika calon pengantin di bawah usia 21 tahun (N5).",
+                    "Surat dispensasi kawin dari pengadilan agama jika usia di bawah ketentuan 19 Tahun.",
                     "Surat izin dari atasan (bagi anggota TNI/POLRI).",
                     "Penetapan izin poligami dari pengadilan agama (jika poligami).",
-                    "Akta cerai (jika duda/janda cerai).",
+                    "Akta cerai Asli (jika duda/janda cerai).",
                     "Akta kematian pasangan (jika duda/janda ditinggal mati)."
+                    "Dispensasi Kecamatan Jika Pendaftaran Nikah kurang dari 10 Hari Kerja."
                 ]
             },
             {
