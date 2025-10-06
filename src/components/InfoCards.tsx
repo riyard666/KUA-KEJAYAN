@@ -60,7 +60,7 @@ const procedures: Procedure[] = [
                     "Penetapan izin poligami dari pengadilan agama (jika poligami).",
                     "Akta cerai Asli (jika duda/janda cerai).",
                     "Akta kematian pasangan (jika duda/janda ditinggal mati)."
-                    "Dispensasi Kecamatan Jika Pendaftaran Nikah kurang dari 10 Hari Kerja."
+                    "Dispensasi Kecamatan Jika Pendaftaran Nikah kurang dari 10 Hari Kerja.",
                 ]
             },
             {
