@@ -257,7 +257,7 @@ const procedures: Procedure[] = [
         count: 'Proses di KUA/E-AIW',
         details: [
             {
-                sectionTitle: " A. Wakif (Pewakaf)",
+                // sectionTitle: " A. Wakif (Pewakaf)",
                 sectionTitle: "Perseorangan",
                 items: [
                     "KTP Asli & Digital.",
@@ -292,7 +292,7 @@ const procedures: Procedure[] = [
                 ]
             },
             {
-                sectionTitle: "B. Nadzhir (Pengelola)",
+                // sectionTitle: "B. Nadzhir (Pengelola)",
                 sectionTitle: "Perorangan",
                 items: [
                     "KTP 3 Orang yang ditunjuk (asli & digital).",
