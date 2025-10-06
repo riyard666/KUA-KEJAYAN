@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>Pencarian Situs – KUA Kejayan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow">
+</head>
+<body>
+  <h1>Pencarian Situs</h1>
+  <form action="/pencarian.html" method="get" role="search">
+    <input type="search" name="q" placeholder="Cari...">
+    <button type="submit">Cari</button>
+  </form>
+  <div id="hasil"></div>
+  <script>
+  // Demo sederhana: filter link yang ada di halaman (ganti dengan indeks/JS yang kamu pakai)
+  const params = new URLSearchParams(location.search);
+  const q = (params.get('q') || '').toLowerCase();
+  const pages = [
+    {title:'Profil', url:'/profil.html'},
+    {title:'Pengajuan Rekomendasi Nikah', url:'/layanan/surat-rekomendasi-nikah.html'},
+    {title:'Kalender Jadwal Nikah', url:'/kalender-jadwal-nikah.html'},
+    {title:'Data Pegawai', url:'/pegawai.html'},
+    {title:'Berita Terbaru', url:'/informasi/berita.html'},
+    {title:'Layanan', url:'/layanan.html'},
+    {title:'Informasi', url:'/informasi.html'}
+  ];
+  const container = document.getElementById('hasil');
+  if(q){
+    const matched = pages.filter(p => (p.title.toLowerCase().includes(q)));
+    if(matched.length){
+      container.innerHTML = '<h2>Hasil:</h2>' + matched.map(p=>`<p><a href="${p.url}">${p.title}</a></p>`).join('');
+    } else {
+      container.textContent = 'Tidak ada hasil.';
+    }
+  }
+  </script>
+</body>
+</html>
