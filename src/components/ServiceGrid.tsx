@@ -96,7 +96,7 @@ export default function ServiceGrid() {
         <section className="py-12">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold mb-2">Layanan Digital KUA</h2>
+                    <h2 className="text-3xl font-bold mb-2">Layanan Digital KUA Kejayan</h2>
                     <p className="text-gray-600">Panduan lengkap untuk layanan Kantor Urusan Agama</p>
                 </div>
 
