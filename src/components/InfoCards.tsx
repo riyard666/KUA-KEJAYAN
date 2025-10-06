@@ -293,7 +293,7 @@ const procedures: Procedure[] = [
             },
             {
                 sectionTitle: "B. Nadzhir (Pengelola)",
-                sectionTitle: "Perseorangan",
+                sectionTitle: "Perorangan",
                 items: [
                     "KTP 3 Orang yang ditunjuk (asli & digital).",
                     "Surat kesediaan menjadi Nazhir (ditandatangani yang didaftarkan di AIW).",
