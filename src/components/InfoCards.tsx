@@ -55,7 +55,7 @@ const procedures: Procedure[] = [
                     "Surat keterangan sehat dari puskesmas/rumah sakit dan Elektronik Siap Hamil (ELSIMIL).",
                     "Surat persetujuan kedua calon pengantin (N4).",
                     "Surat Izin orang tua/wali Jika calon pengantin di bawah usia 21 tahun (N5).",
-                    "Surat dispensasi kawin dari pengadilan agama jika usia di bawah ketentuan 19 Tahun.",
+                    "Surat dispensasi kawin dari pengadilan agama (jika usia di bawah ketentuan 19 Tahun).",
                     "Surat izin dari atasan (bagi anggota TNI/POLRI).",
                     "Penetapan izin poligami dari pengadilan agama (jika poligami).",
                     "Akta cerai Asli (jika duda/janda cerai).",
