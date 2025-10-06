@@ -330,7 +330,7 @@ const procedures: Procedure[] = [
                     "Data identitas (nama, alamat, NIK, tanggal lahir harus sama dengan KTP & KK).",
                     "Alas hak: SHM atau Letter C, jika belum SHM sertakan sporadik (gabungkan saat unggah berkas).",
                     "Sediakan fotokopi untuk arsip KUA.",
-                    "Semua "Surat Pernyataan" wajib bermaterai (termasuk kesediaan Nadzhir & kesediaan diaudit).",
+                    "Semua (Surat Pernyataan) wajib bermaterai (termasuk kesediaan Nadzhir & kesediaan diaudit).",
                     "Contoh format surat & surat permohonan AIW tersedia di menu Dokumen Persyaratan."
                 ]
             },
