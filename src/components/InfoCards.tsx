@@ -254,18 +254,84 @@ const procedures: Procedure[] = [
         icon: '🕌',
         title: 'Wakaf',
         subtitle: 'Pemberitahuan kehendak wakaf',
-        count: 'Proses di KUA/PPAIW',
+        count: 'Proses di KUA/E-AIW',
         details: [
             {
+                sectionTitle: " A. Wakif (Pewakaf)",
+                sectionTitle: "Perseorangan",
                 items: [
-                    "Pemberitahuan kehendak wakaf.",
-                    "Sertifikat hak atas tanah atau surat pemilikan tanah lainnya.",
-                    "Surat keterangan status tanah tidak dalam sengketa dari Kepala Desa/Lurah diketahui oleh Camat.",
-                    "Susunan pengurus wakaf (nadzir).",
-                    "Fotokopi KTP wakif, 4 (empat) orang nadzir dan 2 (dua) orang saksi dan dilegalisir oleh Camat @ 1 (satu) lembar.",
-                    "Materai 10.000, bila wakif telah meninggal dunia.",
-                    "Fotokopi KTP ahli waris, bila wakif telah meninggal dunia.",
-                    "Wakif, nadzir dan saksi menghadap kepala KUA/PPAIW (Pejabat Pembuat Akta Ikrar Wakaf)."
+                    "KTP Asli & Digital.",
+                    "Surat Pernyataan bermaterai; tanah tidak sengketa/tidak dijaminkan, ditandatangani 2 orang saksi diketahui lurah dan camat."
+                ]
+            },
+            {
+                sectionTitle: "Wakaf Bersama",
+                items: [
+                    "Surat Wakaf Bersama (dengan format yang sudah ada di SIWAK)",
+                    "KTP pihak yang mewakili.",
+                    "Surat pernyataan tanah tidak sengketa/tidak dijaminkan (seperti diatas).",
+                    "Bukti keterangan para pemilik (fotokopi/digital)."
+                ]
+            },
+            {
+                sectionTitle: "Organisasi",
+                items: [
+                    "Bukti terdaftar ormas (masih berlaku).",
+                    "SK pengurus/Surat Kuasa bermaterai perwakilan.",
+                    "KTP perwakilan untuk ikrar.",
+                    "Surat pernyataan tanah tidak sengketa/tidak dijaminkan ditandatangani pimpinan sesuai anggaran dasar organisasi."
+                ]
+            },
+            {
+                sectionTitle: "Badan Hukum",
+                items: [
+                    "Pengesahan pendirian badan hukum.",
+                    "SK pengurus/Surat kuasa bermaterai perwakilan.",
+                    "KTP perwakilan untuk ikrar.",
+                    "Surat pernyataan tanah tidak sengketa/tidak dijaminkan ditandatangani pimpinan sesuai anggaran dasar organisasi."
+                ]
+            },
+            {
+                sectionTitle: "B. Nadzhir (Pengelola)",
+                sectionTitle: "Perseorangan",
+                items: [
+                    "KTP 3 Orang yang ditunjuk (asli & digital).",
+                    "Surat kesediaan menjadi Nazhir (ditandatangani yang didaftarkan di AIW).",
+                    "Surat pernyataan bersedia diaudit."
+                ]
+            },
+            {
+                sectionTitle: "Organisasi/Badan Hukum",
+                items: [
+                    "Ktp Perwakilan.",
+                    "Legalitas: bukti terdaftar/pengesahan,SK pengurus/Surat Kuasa,Akta Notaris + AD/ART,daftar pengurus pusat.",
+                    "Program kerja pengembangan wakaf.",
+                    "Daftar kekayaan wakaf yang terpisah dari kekayaan lain.",
+                    "Surat pernyataan bersedia diaudit."
+                ]
+            },
+            {
+                sectionTitle: "C. Saksi",
+                items: [
+                    "KTP 2 Orang saksi Ikrar (asli & digital)."
+                ]
+            },
+            {
+                sectionTitle: "D. Tanah yang diwakafkan",
+                items: [
+                    "Bukti kepemilikan/kuasa atas nama wakif (Setifikat/dokumen lainnya yang sah menurut hukum).",
+                    "Jika bukan atas nama wakif: dokumen perpindahan hak (AJB, Surat Keterangan Waris, dll)."
+                ]
+            },
+            {
+                sectionTitle: "E. Tambahan Penting",
+                items: [
+                    "Scan berwarna KTP & KK Wakif dan Nazhir.",
+                    "Data identitas (nama, alamat, NIK, tanggal lahir harus sama dengan KTP & KK).",
+                    "Alas hak: SHM atau Letter C, jika belum SHM sertakan sporadik (gabungkan saat unggah berkas).",
+                    "Sediakan fotokopi untuk arsip KUA.",
+                    "Semua "Surat Pernyataan" wajib bermaterai (termasuk kesediaan Nadzhir & kesediaan diaudit).",
+                    "Contoh format surat & surat permohonan AIW tersedia di menu Dokumen Persyaratan."
                 ]
             },
         ]
