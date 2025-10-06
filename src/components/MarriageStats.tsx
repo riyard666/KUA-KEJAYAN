@@ -108,7 +108,7 @@ export default function MarriageStats() {
             {loading && <p className="text-gray-500 text-center">Memuat data...</p>}
             {error && <p className="text-red-600 text-center">Error: {error}</p>}
 
-            {/* Ringkasan Bulanan */}
+            {/* Angka Pernikahan Bulanan */}
             {!loading && !error && (
                 <Card className="p-4">
                     <h3 className="font-semibold mb-3">Ringkasan Bulanan</h3>
