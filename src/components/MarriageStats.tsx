@@ -108,10 +108,10 @@ export default function MarriageStats() {
             {loading && <p className="text-gray-500 text-center">Memuat data...</p>}
             {error && <p className="text-red-600 text-center">Error: {error}</p>}
 
-            {/* Angka Pernikahan Bulanan */}
+            {/* Angka Pernikahan Setiap Bulan */}
             {!loading && !error && (
                 <Card className="p-4">
-                    <h3 className="font-semibold mb-3">Ringkasan Bulanan</h3>
+                    <h3 className="font-semibold mb-3">Angka Pernikahan Setiap Bulan</h3>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
                         {MONTHS_ID.map(m => (
                             <div key={m} className="rounded-lg border p-3 bg-white text-center">
