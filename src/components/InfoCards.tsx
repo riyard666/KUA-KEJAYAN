@@ -257,59 +257,69 @@ const procedures: Procedure[] = [
         count: 'Proses di KUA/E-AIW',
         details: [
             {
-                // sectionTitle: " A. Wakif (Pewakaf)",
-                sectionTitle: "Perseorangan",
+                sectionTitle: " A. Wakif (Pewakaf)",
                 items: [
-                    "KTP Asli & Digital.",
-                    "Surat Pernyataan bermaterai; tanah tidak sengketa/tidak dijaminkan, ditandatangani 2 orang saksi diketahui lurah dan camat."
+                    {
+                        sectionTitle: "Perseorangan",
+                        subItems:[
+
+                                "KTP Asli & Digital.",
+                                "Surat Pernyataan bermaterai; tanah tidak sengketa/tidak dijaminkan, ditandatangani 2 orang saksi diketahui lurah dan camat.",
+                        ]
+                    },
+                    {
+                        sectionTitle: "Wakaf Bersama",
+                        subItems: [
+                            "Surat Wakaf Bersama (dengan format yang sudah ada di SIWAK)",
+                            "KTP pihak yang mewakili.",
+                            "Surat pernyataan tanah tidak sengketa/tidak dijaminkan (seperti diatas).",
+                            "Bukti keterangan para pemilik (fotokopi/digital)."
+                        ]
+                    },
+                    {
+                        sectionTitle: "Organisasi",
+                        subItems: [
+                            "Bukti terdaftar ormas (masih berlaku).",
+                            "SK pengurus/Surat Kuasa bermaterai perwakilan.",
+                            "KTP perwakilan untuk ikrar.",
+                            "Surat pernyataan tanah tidak sengketa/tidak dijaminkan ditandatangani pimpinan sesuai anggaran dasar organisasi."
+                        ]
+                    },
+                    {
+                        sectionTitle: "Badan Hukum",
+                        subItems: [
+                            "Pengesahan pendirian badan hukum.",
+                            "SK pengurus/Surat kuasa bermaterai perwakilan.",
+                            "KTP perwakilan untuk ikrar.",
+                            "Surat pernyataan tanah tidak sengketa/tidak dijaminkan ditandatangani pimpinan sesuai anggaran dasar organisasi."
+                        ]
+                    },
                 ]
             },
             {
-                sectionTitle: "Wakaf Bersama",
+                sectionTitle: "B. Nadzhir (Pengelola)",
                 items: [
-                    "Surat Wakaf Bersama (dengan format yang sudah ada di SIWAK)",
-                    "KTP pihak yang mewakili.",
-                    "Surat pernyataan tanah tidak sengketa/tidak dijaminkan (seperti diatas).",
-                    "Bukti keterangan para pemilik (fotokopi/digital)."
+                    {
+                        sectionTitle: "Perorangan",
+                        subItems: [
+                            "KTP 3 Orang yang ditunjuk (asli & digital).",
+                            "Surat kesediaan menjadi Nazhir (ditandatangani yang didaftarkan di AIW).",
+                            "Surat pernyataan bersedia diaudit."
+                        ]
+                    },
+                    {
+                        sectionTitle: "Organisasi/Badan Hukum",
+                        subItems: [
+                            "Ktp Perwakilan.",
+                            "Legalitas: bukti terdaftar/pengesahan,SK pengurus/Surat Kuasa,Akta Notaris + AD/ART,daftar pengurus pusat.",
+                            "Program kerja pengembangan wakaf.",
+                            "Daftar kekayaan wakaf yang terpisah dari kekayaan lain.",
+                            "Surat pernyataan bersedia diaudit."
+                        ]
+                    },
                 ]
             },
-            {
-                sectionTitle: "Organisasi",
-                items: [
-                    "Bukti terdaftar ormas (masih berlaku).",
-                    "SK pengurus/Surat Kuasa bermaterai perwakilan.",
-                    "KTP perwakilan untuk ikrar.",
-                    "Surat pernyataan tanah tidak sengketa/tidak dijaminkan ditandatangani pimpinan sesuai anggaran dasar organisasi."
-                ]
-            },
-            {
-                sectionTitle: "Badan Hukum",
-                items: [
-                    "Pengesahan pendirian badan hukum.",
-                    "SK pengurus/Surat kuasa bermaterai perwakilan.",
-                    "KTP perwakilan untuk ikrar.",
-                    "Surat pernyataan tanah tidak sengketa/tidak dijaminkan ditandatangani pimpinan sesuai anggaran dasar organisasi."
-                ]
-            },
-            {
-                // sectionTitle: "B. Nadzhir (Pengelola)",
-                sectionTitle: "Perorangan",
-                items: [
-                    "KTP 3 Orang yang ditunjuk (asli & digital).",
-                    "Surat kesediaan menjadi Nazhir (ditandatangani yang didaftarkan di AIW).",
-                    "Surat pernyataan bersedia diaudit."
-                ]
-            },
-            {
-                sectionTitle: "Organisasi/Badan Hukum",
-                items: [
-                    "Ktp Perwakilan.",
-                    "Legalitas: bukti terdaftar/pengesahan,SK pengurus/Surat Kuasa,Akta Notaris + AD/ART,daftar pengurus pusat.",
-                    "Program kerja pengembangan wakaf.",
-                    "Daftar kekayaan wakaf yang terpisah dari kekayaan lain.",
-                    "Surat pernyataan bersedia diaudit."
-                ]
-            },
+
             {
                 sectionTitle: "C. Saksi",
                 items: [
@@ -385,16 +395,15 @@ const procedures: Procedure[] = [
 ];
 
 interface ProcedureItem {
-    text: string;
+    text?: string;
     subItems?: string[];
+    sectionTitle?: string;
 }
-
 interface ProcedureSection {
     sectionTitle?: string;
     description?: string;
     items: (string | ProcedureItem)[];
 }
-
 interface Procedure {
     icon: string;
     title: string;
@@ -409,6 +418,7 @@ interface Procedure {
 export default function InfoCards() {
 
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
 
     const handleToggle = (index: number) => {
         setActiveIndex(activeIndex === index ? null : index);
@@ -478,7 +488,7 @@ export default function InfoCards() {
                                                             item
                                                         ) : (
                                                             <>
-                                                                {item.text}
+                                                                {item.text || item.sectionTitle}
                                                                 {item.subItems && (
                                                                     <ul className="list-disc list-inside ml-6 space-y-1">
                                                                         {item.subItems.map((sub, si) => (
