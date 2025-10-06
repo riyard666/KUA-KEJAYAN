@@ -77,7 +77,7 @@ export default function MarriageStats() {
                 <div>
                     <h2 className="text-2xl font-semibold text-emerald-700">Statistik Pernikahan</h2>
                     <p className="text-gray-600 text-sm md:text-base">
-                        Filter data berdasarkan tahun dan desa.
+                        Data berdasarkan tahun dan desa.
                     </p>
                 </div>
 
