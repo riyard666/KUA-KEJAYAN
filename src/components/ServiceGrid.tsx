@@ -26,7 +26,7 @@ const services = [
         description: 'Temukan masjid sekitar beserta detail lokasi & info.',
         icon: '🕌',
         links: [
-            { text: 'Data Masjid (PUSAKA)', url: 'https://pusaka.kemenag.go.id/masjid/' }
+            { text: 'Data Masjid (PUSAKA)', url: 'https://pusaka-v3.kemenag.go.id/islam/masjid' }
         ]
     },
     {
@@ -50,7 +50,7 @@ const services = [
         description: 'Cek status dan legalitas pernikahan Anda secara resmi.',
         icon: '✅',
         links: [
-            { text: 'Cek Status Nikah', url: '#' }
+            { text: 'Cek Status Nikah', url: 'https://pusaka-v3.kemenag.go.id/layanan-pengecekan-nikah' }
         ]
     },
     {
@@ -58,7 +58,7 @@ const services = [
         description: 'Kumpulan doa sehari-hari untuk berbagai kebutuhan Anda.',
         icon: '🤲',
         links: [
-            { text: 'Kumpulan Doa', url: '#' }
+            { text: 'Kumpulan Doa', url: 'https://pusaka-v3.kemenag.go.id/islam/pilihan-doa' }
         ]
     },
     {
