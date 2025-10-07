@@ -31,10 +31,19 @@ export default function MasjidComponent() {
     }, [fetchDataMasjid])
 
     // daftar desa unik
-    const desaList = useMemo(
-        () => Array.from(new Set(data.map((d) => d.desa_kelurahan))).sort(),
-        [data]
-    )
+    const desaList = useMemo(() => {
+        const cleanList = data
+            .map((d) => (d.desa_kelurahan || "").trim().toLowerCase()) // normalisasi
+            .filter((v) => v) // hapus kosong/null
+        const uniqueList = Array.from(new Set(cleanList)) // hapus duplikat
+        return uniqueList
+            .map(
+                (desa) =>
+                    desa.charAt(0).toUpperCase() +
+                    desa.slice(1) // kapital huruf pertama
+            )
+            .sort()
+    }, [data])
 
     // filter + search
     const filteredData = useMemo(() => {
