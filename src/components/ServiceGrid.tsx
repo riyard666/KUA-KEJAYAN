@@ -31,7 +31,7 @@ const services = [
     },
     {
         title: 'Daftar Wakaf',
-        description: 'Akses data sertifikat wakaf terverifikasi untuk publik.',
+        description: 'Pendaftaran online semakin mudah dan cepat.',
         icon: '📜',
         links: [
             { text: 'Data Wakaf (SIWAK)', url: 'https://siwak.kemenag.go.id/' }
