@@ -13,6 +13,7 @@ export default function GoPage() {
             navigate("/login", { replace: true });
         } else {
             window.location.replace(DRIVE_URL);
+            sessionStorage.clear()
         }
     }, [navigate]);
 
