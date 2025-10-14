@@ -41,10 +41,11 @@ const services = [
         ]
     },
     {
-        title: "Kalkulator Zakat",
-        description: "Hitung kewajiban zakat untuk berbagai jenis harta.",
-        icon: "💰",
-        links: [{ text: "Kalkulator Zakat (BAZNAS)", url: "https://baznas.go.id/kalkulatorzakat" }],
+        title: "BIMWIN",
+        description: "Pre-Test dan Post-Test Bimbingan Pra-Nikah.",
+        icon: "🤵‍♂️👰‍♀️",
+        links: [
+            { text: "Post-tes & Pre-tes", url: "https://s.id/Pre-Test-Post-Test-KUA-Kejayan" }],
     },
     {
         title: 'Daftar Wakaf',
@@ -55,11 +56,11 @@ const services = [
         ]
     },
     {
-        title: 'Pilihan Doa',
-        description: 'Kumpulan doa sehari-hari untuk berbagai kebutuhan Anda.',
-        icon: '🤲',
+        title: 'Kalkulator Zakat',
+        description: 'Hitung kewajiban zakat untuk berbagai jenis harta.',
+        icon: '💰',
         links: [
-            { text: 'Kumpulan Doa', url: 'https://pusaka-v3.kemenag.go.id/islam/pilihan-doa' }
+            { text: 'Kalkulator Zakat (BAZNAS)', url: 'https://baznas.go.id/kalkulatorzakat' }
         ]
     },
     {
