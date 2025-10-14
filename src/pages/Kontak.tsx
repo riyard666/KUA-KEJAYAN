@@ -10,7 +10,7 @@ export default function Kontak() {
                 <div className="mx-auto lg:w-6xl my-10 flex flex-col justify-center items-center gap-6">
                     <div className="md:w-lg text-center">
                         <h1 className="text-4xl font-bold text-emerald-700">Hubungi Kami</h1>
-                        <p className="">Kami siap membantu Anda. Silakan hubungi kami melalui detail di bawah ini atau kirimkan pesan melalui formulir pengaduan.</p>
+                        <p className="">Kami siap membantu Anda. Silakan hubungi kami melalui detail di bawah ini atau kirimkan pesan melalui formulir kritik/saran.</p>
                     </div>
 
                     <div className="flex flex-col gap-3 px-3">
