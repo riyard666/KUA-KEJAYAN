@@ -22,12 +22,13 @@ const services = [
         links: [{ text: "Kalkulator Zakat (BAZNAS)", url: "https://baznas.go.id/kalkulatorzakat" }],
     },
     {
-        title: 'Masjid Terdekat',
-        description: 'Temukan masjid sekitar beserta detail lokasi & info.',
-        icon: '🕌',
+        title: 'E-Book',
+        description: 'Layanan Buku Digital.',
+        icon: '🫸🫷',
         links: [
-            { text: 'Data Masjid (PUSAKA)', url: 'https://pusaka-v3.kemenag.go.id/islam/masjid' }
-        ]
+            { text: "E-Book Bimwin", url: "https://pusaka-v3.kemenag.go.id/islam/masjid" }
+            { text: "E-Book BRUS", url: "https://drive.google.com/drive/folders/1TYsamLs-ymeuVwRcbw3hPG-fkRIJoEw3" }
+        ],
     },
     {
         title: 'Daftar Wakaf',
