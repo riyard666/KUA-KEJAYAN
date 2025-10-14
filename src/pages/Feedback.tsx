@@ -53,7 +53,7 @@ export default function Feedback() {
                     </div>
                     <h1 className="mt-3 text-xl font-semibold text-emerald-700">Kritik &amp; Saran</h1>
                     <p className="text-sm text-gray-600">
-                        Silakan kirim masukan Anda. Form ini akan terkirim ke email admin via Formspree.
+                        Kerahasiaan Pengirim: Identitas pengirim tidak dikumpulkan dan tidak diminta pada formulir ini. Isi pesan hanya digunakan untuk perbaikan layanan. Arsip disimpan secara private dan tidak dipublikasikan.
                     </p>
                 </div>
 
@@ -85,7 +85,7 @@ export default function Feedback() {
                             id="message"
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}
-                            placeholder="Tuliskan masukan Anda"
+                            placeholder="Tuliskan Kritik/Saran Anda"
                             className="min-h-[140px]"
                             required
                         />
