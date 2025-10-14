@@ -33,7 +33,7 @@ const services = [
     },
     {
         title: 'E-Book',
-        description: 'Layanan Buku Digital.',
+        description: 'Layanan buku digital.',
         icon: '🫸🫷',
         links: [
             { text: "E-Book Bimwin", url: "https://pusaka-v3.kemenag.go.id/islam/masjid" },
@@ -42,7 +42,7 @@ const services = [
     },
     {
         title: "BIMWIN",
-        description: "Pre-Test dan Post-Test Bimbingan Pra-Nikah.",
+        description: "Pre-test dan post-test Bimbingan Pra-Nikah.",
         icon: "🤵‍♂️👰‍♀️",
         links: [
             { text: "Post-tes & Pre-tes", url: "https://s.id/Pre-Test-Post-Test-KUA-Kejayan" }],
