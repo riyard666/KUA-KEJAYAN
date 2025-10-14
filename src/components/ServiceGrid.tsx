@@ -16,29 +16,6 @@ const services = [
         ],
     },
     {
-        title: "Kalkulator Zakat",
-        description: "Hitung kewajiban zakat untuk berbagai jenis harta.",
-        icon: "💰",
-        links: [{ text: "Kalkulator Zakat (BAZNAS)", url: "https://baznas.go.id/kalkulatorzakat" }],
-    },
-    {
-        title: 'E-Book',
-        description: 'Layanan Buku Digital.',
-        icon: '🫸🫷',
-        links: [
-            { text: "E-Book Bimwin", url: "https://pusaka-v3.kemenag.go.id/islam/masjid" }
-            { text: "E-Book BRUS", url: "https://drive.google.com/drive/folders/1TYsamLs-ymeuVwRcbw3hPG-fkRIJoEw3" },
-        ]
-    },
-    {
-        title: 'Daftar Wakaf',
-        description: 'Pendaftaran online semakin mudah dan cepat.',
-        icon: '📜',
-        links: [
-            { text: 'Data Wakaf (SIWAK)', url: 'https://siwak.kemenag.go.id/' }
-        ]
-    },
-    {
         title: 'Kalender Jadwal Nikah',
         description: 'Pantau slot jadwal tersedia & rencanakan tanggal terbaik.',
         icon: '📅',
@@ -52,6 +29,29 @@ const services = [
         icon: '✅',
         links: [
             { text: 'Cek Status Nikah', url: 'https://pusaka-v3.kemenag.go.id/layanan-pengecekan-nikah' }
+        ]
+    },
+    {
+        title: 'E-Book',
+        description: 'Layanan Buku Digital.',
+        icon: '🫸🫷',
+        links: [
+            { text: "E-Book Bimwin", url: "https://pusaka-v3.kemenag.go.id/islam/masjid" },
+            { text: "E-Book BRUS", url: "https://drive.google.com/drive/folders/1TYsamLs-ymeuVwRcbw3hPG-fkRIJoEw3" },
+        ]
+    },
+    {
+        title: "Kalkulator Zakat",
+        description: "Hitung kewajiban zakat untuk berbagai jenis harta.",
+        icon: "💰",
+        links: [{ text: "Kalkulator Zakat (BAZNAS)", url: "https://baznas.go.id/kalkulatorzakat" }],
+    },
+    {
+        title: 'Daftar Wakaf',
+        description: 'Pendaftaran online semakin mudah dan cepat.',
+        icon: '📜',
+        links: [
+            { text: 'Data Wakaf (SIWAK)', url: 'https://siwak.kemenag.go.id/' }
         ]
     },
     {
