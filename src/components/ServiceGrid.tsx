@@ -33,18 +33,19 @@ const services = [
     },
     {
         title: 'E-Book',
-        description: 'Layanan Buku Digital.',
-        icon: '🫸🫷',
+        description: 'Layanan buku digital.',
+        icon: '📔',
         links: [
             { text: "E-Book Bimwin", url: "https://pusaka-v3.kemenag.go.id/islam/masjid" },
             { text: "E-Book BRUS", url: "https://drive.google.com/drive/folders/1TYsamLs-ymeuVwRcbw3hPG-fkRIJoEw3" },
         ]
     },
     {
-        title: "Kalkulator Zakat",
-        description: "Hitung kewajiban zakat untuk berbagai jenis harta.",
-        icon: "💰",
-        links: [{ text: "Kalkulator Zakat (BAZNAS)", url: "https://baznas.go.id/kalkulatorzakat" }],
+        title: "BIMWIN",
+        description: "Pre-test dan post-test Bimbingan Pra-Nikah.",
+        icon: "🤵‍♂️👰‍♀️",
+        links: [
+            { text: "Post-tes & Pre-tes", url: "https://s.id/Pre-Test-Post-Test-KUA-Kejayan" }],
     },
     {
         title: 'Daftar Wakaf',
@@ -55,11 +56,11 @@ const services = [
         ]
     },
     {
-        title: 'Pilihan Doa',
-        description: 'Kumpulan doa sehari-hari untuk berbagai kebutuhan Anda.',
-        icon: '🤲',
+        title: 'Kalkulator Zakat',
+        description: 'Hitung kewajiban zakat untuk berbagai jenis harta.',
+        icon: '💰',
         links: [
-            { text: 'Kumpulan Doa', url: 'https://pusaka-v3.kemenag.go.id/islam/pilihan-doa' }
+            { text: 'Kalkulator Zakat (BAZNAS)', url: 'https://baznas.go.id/kalkulatorzakat' }
         ]
     },
     {
