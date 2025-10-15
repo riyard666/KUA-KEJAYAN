@@ -207,6 +207,7 @@ const Navbar = () => {
                                                                 to={deep.href}
                                                                 target={deep.external ? "_blank" : "_self"}
                                                                 className="px-2 py-1 hover:bg-gray-100"
+                                                                onClick={() => setMobileOpen(false)}
                                                             >
                                                                 {deep.label}
                                                             </Link>
@@ -219,6 +220,7 @@ const Navbar = () => {
                                                     to={sub.href}
                                                     target={sub.external ? "_blank" : "_self"}
                                                     className="px-2 py-1 hover:bg-gray-100"
+                                                    onClick={() => setMobileOpen(false)}
                                                 >
                                                     {sub.label}
                                                 </Link>
