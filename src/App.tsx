@@ -20,6 +20,7 @@ import Kontak from "@/pages/Kontak.tsx";
 import MasjidPage from "@/pages/MasjidPage.tsx";
 import NewsDetailPage from "@/pages/NewsDetailPage.tsx";
 import GoPage from "@/pages/Go.tsx";
+import {HelmetProvider} from "react-helmet-async";
 
 const queryClient = new QueryClient();
 
@@ -27,28 +28,31 @@ const App = () => (
     <QueryClientProvider client={queryClient}>
         <TooltipProvider>
             <Toaster />
-            <BrowserRouter>
-                <Navbar />
-                <Routes>
-                    <Route path="/" element={<Index />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/layanan" element={<Services />} />
-                    <Route path="/layanan-informasi" element={<LayananInformasi />} />
-                    <Route path="/statistik-pernikahan" element={<StatistikPernikahan />} />
-                    <Route path="/data-masjid" element={<MasjidPage />} />
-                    <Route path="/data-wakaf" element={<WakafPage />} />
-                    <Route path="/kalender-jadwal-nikah" element={<CalendarMarriage />} />
-                    <Route path="/pegawai" element={<Pegawai />} />
-                    <Route path="/news-upload" element={<NewsUpload />} />
-                    <Route path="/news" element={<NewsList />} />
-                    <Route path="/news/:slug" element={<NewsDetailPage />} />
-                    <Route path="/feedback" element={<Feedback />} />
-                    <Route path="/kontak" element={<Kontak />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/go" element={<GoPage />} />
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
-            </BrowserRouter>
+            <HelmetProvider>
+
+                <BrowserRouter>
+                    <Navbar />
+                    <Routes>
+                        <Route path="/" element={<Index />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/layanan" element={<Services />} />
+                        <Route path="/layanan-informasi" element={<LayananInformasi />} />
+                        <Route path="/statistik-pernikahan" element={<StatistikPernikahan />} />
+                        <Route path="/data-masjid" element={<MasjidPage />} />
+                        <Route path="/data-wakaf" element={<WakafPage />} />
+                        <Route path="/kalender-jadwal-nikah" element={<CalendarMarriage />} />
+                        <Route path="/pegawai" element={<Pegawai />} />
+                        <Route path="/news-upload" element={<NewsUpload />} />
+                        <Route path="/news" element={<NewsList />} />
+                        <Route path="/news/:slug" element={<NewsDetailPage />} />
+                        <Route path="/feedback" element={<Feedback />} />
+                        <Route path="/kontak" element={<Kontak />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/go" element={<GoPage />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </BrowserRouter>
+            </HelmetProvider>
         </TooltipProvider>
     </QueryClientProvider>
 );
