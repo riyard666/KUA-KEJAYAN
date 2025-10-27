@@ -8,9 +8,16 @@
       "source": "/robots.txt",
       "destination": "/robots.txt"
     },
+    { "source": "/news/:slug", "destination": "/api/news/:slug" },
+    { "source": "/(.*)", "destination": "/" }
+  ],
+  "redirects": [
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "source": "/api/news",
+      "destination": "/news",
+      "permanent": false
     }
-  ]
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
 }

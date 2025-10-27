@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import {FormatDate} from "@/utils/format.ts";
 import Footer from "@/components/Footer.tsx";
-import {Helmet} from "react-helmet-async";
 
 type NewsModel = {
     id: string;
@@ -54,35 +53,8 @@ export default function NewsDetailPage() {
         return <p className="text-center text-gray-500 py-10">Data tidak tersedia</p>;
     }
 
-    // Persiapan data untuk meta tag
-    // Hapus tag HTML dari konten dan ambil 150 karakter pertama
-    const description = newsItem.konten
-        ? newsItem.konten.replace(/<[^>]+>/g, '').substring(0, 150) + '...'
-        : 'Baca berita selengkapnya di sini.';
-
-    // Tentukan URL Lengkap (Ganti domain sesuai domain Anda)
-    const fullUrl = `https://kuakejayan.vercel.app/news/${newsItem.slug}`;
-
     return (
         <>
-            <Helmet>
-                <title>{newsItem.judul} | KUA Kejayanan</title>
-                <meta name="description" content={description} />
-
-                {/* Open Graph Tags (Wajib untuk pratinjau berbagi) */}
-                <meta property="og:title" content={newsItem.judul} />
-                <meta property="og:description" content={description} />
-                <meta property="og:image" content={newsItem.gambar} />
-                <meta property="og:url" content={fullUrl} />
-                <meta property="og:type" content="article" />
-                <meta property="og:site_name" content="KUA Kejayanan" />
-
-                {/* Twitter Card Tags (Opsional, untuk Twitter/X) */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={newsItem.judul} />
-                <meta name="twitter:description" content={description} />
-                <meta name="twitter:image" content={newsItem.gambar} />
-            </Helmet>
             <div className="min-h-screen bg-gradient-to-b from-white to-emerald-50">
                 <div className="mx-auto max-w-3xl px-4 py-12">
                     {/* Back link */}
