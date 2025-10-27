@@ -49,8 +49,7 @@ export default async function handler(req: Request): Promise<Response> {
         const og = found
             ? {
                 title: found.judul || DEFAULT_OG.title,
-                description:
-                    truncate(stripHtml(rawKonten), 150) || DEFAULT_OG.description,
+                description: truncate(stripHtml(rawKonten), 150) || DEFAULT_OG.description,
                 image: found.gambar || DEFAULT_OG.image,
                 url: `https://kuakejayan.vercel.app/news/${encodeURIComponent(slug)}`,
             }
