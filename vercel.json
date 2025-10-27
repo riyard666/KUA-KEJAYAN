@@ -1,6 +1,17 @@
 {
   "rewrites": [
     {
+      "source": "/news/:slug",
+      "has": [
+        {
+          "type": "header",
+          "key": "User-Agent",
+          "value": "(.*)facebookexternalhit|twitterbot|linkedinbot|whatsapp|googlebot|bingbot(.*)"
+        }
+      ],
+      "destination": "https://service.prerender.io/WebUfBawk0flvIlAoGFM/https://kuakejayan.vercel.app/news/:slug"
+    },
+    {
       "source": "/sitemap.xml",
       "destination": "/sitemap.xml"
     },
