@@ -32,24 +32,25 @@ export default async function handler(req: Request): Promise<Response> {
     try {
         const url = new URL(req.url);
         const segments = url.pathname.split("/").filter(Boolean);
-        const slug = segments[segments.length - 1] || "";
+        const slug = decodeURIComponent(segments[segments.length - 1] || "");
 
         const r = await fetch(API_ENDPOINT, { cache: "no-store" });
         if (!r.ok) throw new Error("Failed to fetch news");
 
-        const data: unknown = await r.json();
-        const items: NewsItem[] = Array.isArray(data) ? data : [];
+        const data = (await r.json()) as NewsItem[];
 
-        const found = items.find(
-            (item) => String(item.slug) === decodeURIComponent(slug)
-        );
+        const found =
+            Array.isArray(data) &&
+            data.find((item) => String(item.slug) === slug);
 
         const rawKonten = typeof found?.konten === "string" ? found.konten : "";
 
         const og = found
             ? {
                 title: found.judul || DEFAULT_OG.title,
-                description: truncate(stripHtml(rawKonten), 150) || DEFAULT_OG.description,
+                description:
+                    truncate(stripHtml(rawKonten), 150) ||
+                    DEFAULT_OG.description,
                 image: found.gambar || DEFAULT_OG.image,
                 url: `https://kuakejayan.vercel.app/news/${encodeURIComponent(slug)}`,
             }
@@ -73,9 +74,11 @@ export default async function handler(req: Request): Promise<Response> {
   <meta name="twitter:card" content="summary_large_image" />
 
   <meta http-equiv="refresh" content="0;url=${escapeHtml(og.url)}" />
-  <script>window.location.replace("${escapeJs(og.url)}");</script>
+  <script>
+    window.location.replace("${escapeJs(og.url)}");
+  </script>
 </head>
-<body>Redirecting to news...</body>
+<body>Redirecting...</body>
 </html>`;
 
         return new Response(html, {
@@ -85,7 +88,6 @@ export default async function handler(req: Request): Promise<Response> {
             },
         });
     } catch (err) {
-        console.error("Edge function error:", err);
         const fallbackHtml = `<!doctype html><html><head><meta http-equiv="refresh" content="0;url=https://kuakejayan.vercel.app/news" /></head><body>Redirecting...</body></html>`;
         return new Response(fallbackHtml, {
             headers: { "Content-Type": "text/html; charset=utf-8" },
@@ -94,7 +96,7 @@ export default async function handler(req: Request): Promise<Response> {
     }
 }
 
-function escapeHtml(str: string) {
+function escapeHtml(str: string): string {
     return String(str || "")
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
@@ -102,7 +104,8 @@ function escapeHtml(str: string) {
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#39;");
 }
-function escapeJs(str: string) {
+
+function escapeJs(str: string): string {
     return String(str || "")
         .replace(/\\/g, "\\\\")
         .replace(/"/g, '\\"')
