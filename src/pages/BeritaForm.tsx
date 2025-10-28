@@ -96,7 +96,7 @@ export default function BeritaForm() {
         const output = await editorRef.current?.save();
         const konten = JSON.stringify(output);
 
-        const res = await fetch("https://script.google.com/macros/s/AKfycbyCHF86UchGgqwvltfYMkpDZnbq63wKMH_UC0i8Oixw4urhC7079KTTGNpFYwjE3D6b/exec", {
+        const res = await fetch("https://script.google.com/macros/s/AKfycbyyw9TmnhvkgM27p8awuL9DnHvetG_XX78x-D7ZhTaMfPCf0xiY5X-PtXQLDhYaYxhu/exec", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ ...form, konten }),
