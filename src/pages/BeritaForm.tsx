@@ -47,42 +47,39 @@ export default function BeritaForm() {
                     image: {
                         class: ImageTool,
                         config: {
-                            // uploader: {
-                            //     /**
-                            //      * Upload file gambar ke backend Laravel
-                            //      */
-                            //     async uploadByFile(file: File) {
-                            //         try {
-                            //             const formData = new FormData();
-                            //             formData.append("file", file);
-                            //
-                            //             const response = await api.post(
-                            //                 "/portfolio/upload-image",
-                            //                 formData,
-                            //                 {
-                            //                     headers: {
-                            //                         "Content-Type": "multipart/form-data",
-                            //                     },
-                            //                 }
-                            //             );
-                            //
-                            //             if (response.data.success === 1) {
-                            //                 return response.data; // { success: 1, file: { url: '...' } }
-                            //             } else {
-                            //                 throw new Error(response.data.message || "Upload gagal");
-                            //             }
-                            //         } catch (error) {
-                            //             const errorMessage = error as AxiosError<{message?: string}>;
-                            //             console.error("Upload error:", errorMessage);
-                            //             return {
-                            //                 success: 0,
-                            //                 message: errorMessage.response?.data?.message || "Upload gagal",
-                            //             };
-                            //         }
-                            //     }
-                            // }
+                            uploader: {
+                                async uploadByFile(file: File) {
+                                    // Mengirim ke Vercel Serverless Function di /api/upload-blob
+                                    const VERCEL_UPLOAD_URL = "/api/upload-blob";
+
+                                    const formData = new FormData();
+                                    formData.append("file", file); // Key 'file'
+
+                                    try {
+                                        const response = await axios.post(
+                                            VERCEL_UPLOAD_URL,
+                                            formData,
+                                            {
+                                                // Tidak perlu Content-Type, karena FormData sudah menanganinya
+                                            }
+                                        );
+
+                                        if (response.data.success === 1) {
+                                            return response.data; // { success: 1, file: { url: 'URL Vercel Blob' } }
+                                        } else {
+                                            throw new Error(response.data.message || "Upload gagal.");
+                                        }
+                                    } catch (error) {
+                                        console.error("Upload error:", error);
+                                        return {
+                                            success: 0,
+                                            message: "Upload gambar gagal."
+                                        };
+                                    }
+                                }
+                            }
                         }
-                    }
+                    },
                 },
             });
         }
