@@ -16,9 +16,10 @@ export default function BeritaForm() {
     const [form, setForm] = useState({
         judul: "",
         slug: "",
-        tanggal: new Date().toISOString().slice(0, 16),
+        tanggal: new Date().toLocaleString('sv-SE', { timeZone: 'Asia/Jakarta', hour12: false }).replace(' ', 'T').slice(0, 16),
         penulis: "",
         gambar: "",
+        deskripsi: "",
     });
 //
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -133,6 +134,7 @@ export default function BeritaForm() {
             <Input name="slug" placeholder="Slug" value={form.slug} onChange={handleChange} />
             <Input name="penulis" placeholder="Penulis" value={form.penulis} onChange={handleChange} />
             <Input name="gambar" placeholder="URL Gambar" value={form.gambar} onChange={handleChange} />
+            <Input name="deskripsi" placeholder="Deskripsi Singkat" value={form.deskripsi} onChange={handleChange} />
 
             <div id="editorjs" className="border p-3 rounded-lg"></div>
 

@@ -74,8 +74,9 @@ export default function NewsList() {
                                                                     {/* render konten HTML */}
                                                                     <div
                                                                         className="text-gray-700 text-sm line-clamp-3 mb-4"
-                                                                        dangerouslySetInnerHTML={{ __html: item.konten }}
-                                                                    />
+                                                                        >
+                                                                        {item.deskripsi}
+                                                                    </div>
                                                                 </div>
                                                                 <Link
                                                                     to={`/news/${item.slug}`}

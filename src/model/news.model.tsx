@@ -6,4 +6,5 @@ export interface NewsModel {
     penulis: string;
     gambar: string;
     konten: string;
+    deskripsi: string;
 }
