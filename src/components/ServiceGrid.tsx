@@ -37,7 +37,7 @@ const services = [
         icon: '📔',
         links: [
             { text: "E-Book Bimwin", url: "https://pusaka-v3.kemenag.go.id/islam/masjid" },
-            { text: "E-Book BRUS", url: "https://online.fliphtml5.com/penghulu/azfs/#p=1" },
+            { text: "E-Book BRUS", url: "https://s.id/BRUS_KEJAYAN" },
         ]
     },
     {
