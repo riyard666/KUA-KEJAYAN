@@ -6,6 +6,7 @@ import Paragraph from "@editorjs/paragraph";
 import ImageTool from "@editorjs/image";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
+import axios from "axios";
 //
 export default function BeritaForm() {
     const editorRef = useRef<EditorJS | null>(null);
@@ -93,17 +94,33 @@ export default function BeritaForm() {
     }, []);
 //
     const handleSubmit = async () => {
-        const output = await editorRef.current?.save();
-        const konten = JSON.stringify(output);
+        try {
+            const output = await editorRef.current?.save();
+            const konten = JSON.stringify(output);
 
-        const res = await fetch("https://script.google.com/macros/s/AKfycbyyw9TmnhvkgM27p8awuL9DnHvetG_XX78x-D7ZhTaMfPCf0xiY5X-PtXQLDhYaYxhu/exec", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ ...form, konten }),
-        });
+            const postData = { ...form, konten };
 
-        const result = await res.json();
-        alert(result.message);
+            // PENGGUNAAN AXIOS UNTUK MENGGANTIKAN fetch
+            const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbxZtl1L_2OF0mO0ZW3It3gCj6Mg-0aej9aK5WWu_Bf3er7eJq_aZ64mQen5H7N8bemt/exec";
+
+            const response = await axios.post(URL_APPS_SCRIPT, postData, {
+                // Axios secara otomatis mengatur 'Content-Type': 'application/json'
+                // saat mengirim objek, tapi tetap bisa didefinisikan secara eksplisit jika perlu
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            // Axios mengembalikan data JSON di properti 'data'
+            const result = response.data;
+            alert(result.message);
+
+        } catch (error) {
+            // Penanganan error yang lebih baik dengan Axios
+            console.error("Gagal menyimpan data:", error);
+            // Anda mungkin ingin menampilkan pesan error spesifik dari respons jika ada
+            alert("Gagal menyimpan data. Cek konsol untuk detail error.");
+        }
     };
 //
     return (
