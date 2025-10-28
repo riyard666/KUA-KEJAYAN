@@ -9,8 +9,10 @@ import {Input} from "@/components/ui/input";
 import axios, {type AxiosError} from "axios";
 import {Loader2} from "lucide-react";
 import {toast} from "sonner";
+import {useNavigate} from "react-router-dom";
 //
 export default function BeritaForm() {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const editorRef = useRef<EditorJS | null>(null);
     const [form, setForm] = useState({
@@ -115,14 +117,15 @@ export default function BeritaForm() {
 
             // Axios mengembalikan data JSON di properti 'data'
             const result = response.data;
-            alert(result.message);
+            toast.success(result.message);
+            navigate('/news')
 
         } catch (error) {
             // Penanganan error yang lebih baik dengan Axios
             const errorMessage = error as AxiosError<{message?: string}>
             toast.error(errorMessage.response?.data.message);
             // Anda mungkin ingin menampilkan pesan error spesifik dari respons jika ada
-            alert("Gagal menyimpan data. Cek konsol untuk detail error.");
+            toast.error("Gagal menyimpan data. Cek konsol untuk detail error.");
         }finally {
             setLoading(false);
         }
