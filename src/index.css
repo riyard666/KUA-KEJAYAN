@@ -111,6 +111,14 @@
 }
 
 @layer base {
+    .ce-block__content h1,
+    .ce-block__content h2,
+    .ce-block__content h3 {
+        @apply font-bold text-gray-900 mb-2;
+    }
+    .ce-block__content h1 { @apply text-3xl; }
+    .ce-block__content h2 { @apply text-2xl; }
+    .ce-block__content h3 { @apply text-xl; }
   * {
     @apply border-border outline-ring/50;
   }
