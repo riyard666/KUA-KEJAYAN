@@ -21,6 +21,7 @@ import MasjidPage from "@/pages/MasjidPage.tsx";
 import NewsDetailPage from "@/pages/NewsDetailPage.tsx";
 import GoPage from "@/pages/Go.tsx";
 import {HelmetProvider} from "react-helmet-async";
+import BeritaForm from "@/pages/BeritaForm.tsx";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ const App = () => (
                         <Route path="/pegawai" element={<Pegawai />} />
                         <Route path="/news-upload" element={<NewsUpload />} />
                         <Route path="/news" element={<NewsList />} />
+                        <Route path="/news-form" element={<BeritaForm />} />
                         <Route path="/news/:slug" element={<NewsDetailPage />} />
                         <Route path="/feedback" element={<Feedback />} />
                         <Route path="/kontak" element={<Kontak />} />
