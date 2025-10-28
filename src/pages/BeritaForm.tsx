@@ -101,7 +101,7 @@ export default function BeritaForm() {
             const postData = { ...form, konten };
 
             // PENGGUNAAN AXIOS UNTUK MENGGANTIKAN fetch
-            const URL_APPS_SCRIPT = "api-portfolio.kodara.web.id/api/submit-berita";
+            const URL_APPS_SCRIPT = "https://api-portfolio.kodara.web.id/api/submit-berita";
 
             const response = await axios.post(URL_APPS_SCRIPT, postData, {
                 // Axios secara otomatis mengatur 'Content-Type': 'application/json'
