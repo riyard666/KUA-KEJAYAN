@@ -101,7 +101,7 @@ export default function BeritaForm() {
             const postData = { ...form, konten };
 
             // PENGGUNAAN AXIOS UNTUK MENGGANTIKAN fetch
-            const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbxZtl1L_2OF0mO0ZW3It3gCj6Mg-0aej9aK5WWu_Bf3er7eJq_aZ64mQen5H7N8bemt/exec";
+            const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbzvVcygmNEShLz3iFBto7XhWtwcJCJ-C_3gspBOk2VPT-m-L_en_SEjg7vGIpT96bYy/exec";
 
             const response = await axios.post(URL_APPS_SCRIPT, postData, {
                 // Axios secara otomatis mengatur 'Content-Type': 'application/json'
