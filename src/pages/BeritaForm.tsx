@@ -7,8 +7,10 @@ import ImageTool from "@editorjs/image";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import axios from "axios";
+import {Loader2} from "lucide-react";
 //
 export default function BeritaForm() {
+    const [loading, setLoading] = useState(false);
     const editorRef = useRef<EditorJS | null>(null);
     const [form, setForm] = useState({
         judul: "",
@@ -91,6 +93,7 @@ export default function BeritaForm() {
     }, []);
 //
     const handleSubmit = async () => {
+        setLoading(true);
         try {
             const output = await editorRef.current?.save();
             const konten = JSON.stringify(output);
@@ -117,6 +120,8 @@ export default function BeritaForm() {
             console.error("Gagal menyimpan data:", error);
             // Anda mungkin ingin menampilkan pesan error spesifik dari respons jika ada
             alert("Gagal menyimpan data. Cek konsol untuk detail error.");
+        }finally {
+            setLoading(false);
         }
     };
 //
@@ -129,7 +134,16 @@ export default function BeritaForm() {
 
             <div id="editorjs" className="border p-3 rounded-lg"></div>
 
-            <Button onClick={handleSubmit}>Simpan ke Spreadsheet</Button>
+            <Button disabled={loading} onClick={handleSubmit}>
+                {loading ? (
+                    <>
+                        <div className="flex items-center justify-center w-full">
+                            <Loader2 className={"animate-spin"}/> Loading...
+
+                        </div>
+                    </>
+                ) : "Simpan ke Spreadsheet"}
+            </Button>
         </div>
     );
 }
