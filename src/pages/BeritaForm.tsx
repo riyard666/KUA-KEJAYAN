@@ -6,8 +6,9 @@ import Paragraph from "@editorjs/paragraph";
 import ImageTool from "@editorjs/image";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
-import axios from "axios";
+import axios, {type AxiosError} from "axios";
 import {Loader2} from "lucide-react";
+import {toast} from "sonner";
 //
 export default function BeritaForm() {
     const [loading, setLoading] = useState(false);
@@ -117,7 +118,8 @@ export default function BeritaForm() {
 
         } catch (error) {
             // Penanganan error yang lebih baik dengan Axios
-            console.error("Gagal menyimpan data:", error);
+            const errorMessage = error as AxiosError<{message?: string}>
+            toast.error(errorMessage.response?.data.message);
             // Anda mungkin ingin menampilkan pesan error spesifik dari respons jika ada
             alert("Gagal menyimpan data. Cek konsol untuk detail error.");
         }finally {
