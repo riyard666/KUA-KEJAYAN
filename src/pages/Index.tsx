@@ -5,6 +5,7 @@ import InfoCards from '@/components/InfoCards';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button.tsx";
 import { Link } from "react-router-dom";
+import NewsComponent from "@/components/NewsComponent.tsx";
 
 export default function Index() {
     return (
@@ -72,6 +73,15 @@ export default function Index() {
                     <InfoCards />
                 </div>
             </section>
+
+            {/* Procedures / Info Cards */}
+            <section className="border-t">
+                <div className="mx-auto max-w-6xl px-6 py-10">
+                    <h2 className="text-2xl font-bold text-center mb-8">Berita Terkini</h2>
+                    <NewsComponent horizontal />
+                </div>
+            </section>
+
 
             <Footer />
         </div>
