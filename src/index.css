@@ -119,6 +119,14 @@
     .ce-block__content h1 { @apply text-3xl; }
     .ce-block__content h2 { @apply text-2xl; }
     .ce-block__content h3 { @apply text-xl; }
+    .ce-paragraph {
+        /*
+          * mt-0: Menghilangkan margin atas (margin-top: 0)
+          * mb-4: Menambahkan margin bawah yang cukup besar (margin-bottom: 1rem atau 16px secara default)
+          * Anda bisa coba mb-6 atau mb-8 jika ingin lebih lebar lagi.
+        */
+        @apply mt-0 mb-4;
+    }
   * {
     @apply border-border outline-ring/50;
   }
