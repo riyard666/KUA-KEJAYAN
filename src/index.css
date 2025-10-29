@@ -110,6 +110,22 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Misalnya di file src/index.css atau src/globals.css */
+
+/* Pastikan kode ini berada SETELAH @tailwind directives Anda */
+
+.prose p {
+    /* Gunakan nilai yang lebih besar dari default prose (biasanya 1em) */
+    /* Kami sarankan 1.5em atau 24px untuk jarak yang jelas */
+    margin-top: 0 !important;
+    margin-bottom: 1.5em !important;
+}
+
+/* Jika Anda menggunakan skala prose-lg */
+.prose-lg p {
+    margin-bottom: 2em !important; /* Jarak yang lebih lebar */
+}
+
 @layer base {
     .ce-block__content h1,
     .ce-block__content h2,
