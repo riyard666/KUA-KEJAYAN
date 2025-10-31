@@ -15,7 +15,7 @@ export default function NewsComponent({ horizontal = false }: NewsProps) {
 
     useEffect(() => {
         fetch(
-            "https://script.google.com/macros/s/AKfycbx6q-R7TwG2sQuBhgMU1K7VdSHmqi6LMPGSf7fjoVPiVUCE_SZlTDzBIh1_hups6e2d/exec"
+            "https://script.google.com/macros/s/AKfycbzvVcygmNEShLz3iFBto7XhWtwcJCJ-C_3gspBOk2VPT-m-L_en_SEjg7vGIpT96bYy/exec"
         )
             .then((res) => res.json())
             .then((data) => {

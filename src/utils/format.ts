@@ -38,3 +38,34 @@ export function formatNumberNoDecimal(value: number | 0): string {
         maximumFractionDigits: 0,
     }).format(value);
 }
+
+/**
+ * Mengkonversi format tanggal standar (misal: "Sat Nov 01 2025 00:00:00 GMT...")
+ * menjadi format YYYY-MM-DDTHH:mm yang dibutuhkan oleh input datetime-local.
+ * @param dateString String tanggal dari Google Spreadsheet.
+ * @returns String dalam format "YYYY-MM-DDTHH:mm" atau string kosong.
+ */
+export function formatForDateTimeLocal (dateString: string | Date): string {
+    if (!dateString) return '';
+    try {
+        // Jika data dari Spreadsheet adalah string, Date object akan memparse-nya.
+        const date = new Date(dateString);
+
+        // Cek validitas date object
+        if (isNaN(date.getTime())) return '';
+
+        // Fungsi toISOString mengembalikan format: YYYY-MM-DDTHH:mm:ss.sssZ
+        // Kita hanya perlu YYYY-MM-DDTHH:mm (lokal)
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+
+        return `${year}-${month}-${day}T${hours}:${minutes}`;
+
+    } catch (e) {
+        console.error("Gagal mengkonversi tanggal:", e);
+        return '';
+    }
+};

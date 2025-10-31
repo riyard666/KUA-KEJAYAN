@@ -43,9 +43,10 @@ const App = () => (
                         <Route path="/data-wakaf" element={<WakafPage />} />
                         <Route path="/kalender-jadwal-nikah" element={<CalendarMarriage />} />
                         <Route path="/pegawai" element={<Pegawai />} />
-                        <Route path="/news-upload" element={<NewsUpload />} />
+                        <Route path="/admin/news" element={<NewsUpload />} />
+                        <Route path="/admin/news-form" element={<BeritaForm />} />
+                        <Route path="/admin/news-form/:id" element={<BeritaForm />} />
                         <Route path="/news" element={<NewsList />} />
-                        <Route path="/news-form" element={<BeritaForm />} />
                         <Route path="/news/:slug" element={<NewsDetailPage />} />
                         <Route path="/feedback" element={<Feedback />} />
                         <Route path="/kontak" element={<Kontak />} />
