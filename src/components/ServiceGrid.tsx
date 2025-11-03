@@ -36,7 +36,7 @@ const services = [
         description: 'Layanan buku digital.',
         icon: '📔',
         links: [
-            { text: "E-Book Bimwin", url: "https://pusaka-v3.kemenag.go.id/islam/masjid" },
+            { text: "E-Book Bimwin", url: "https://s.id/E-bookBinwin" },
             { text: "E-Book BRUS", url: "https://s.id/BRUS_KEJAYAN" },
         ]
     },
