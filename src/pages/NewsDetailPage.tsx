@@ -65,7 +65,7 @@ export default function NewsDetailPage() {
 
     useEffect(() => {
         fetch(
-            "https://script.google.com/macros/s/AKfycbx6q-R7TwG2sQuBhgMU1K7VdSHmqi6LMPGSf7fjoVPiVUCE_SZlTDzBIh1_hups6e2d/exec"
+            "https://script.google.com/macros/s/AKfycbyyQ3RauL0OzD5pUBESPBe1cUXOzOLrYRF2RYL6-hkze7SAIuNYev45dLKH-lKKjBPg/exec"
         )
             .then((res) => {
                 if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
