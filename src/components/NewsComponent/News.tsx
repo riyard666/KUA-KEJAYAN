@@ -33,7 +33,7 @@ export default function  News() {
         )
             .then((res) => res.json())
             .then((data) => {
-                setData(data);
+                setData(data.data);
                 setTotalItems(data.length);
                 setLoading(false);
             })
