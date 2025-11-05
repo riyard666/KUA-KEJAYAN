@@ -71,16 +71,30 @@ export default function NewsDetailPage() {
                 if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
                 return res.json();
             })
-            .then((data: NewsModel[]) => {
-                const found = data.find((item) => item.slug === slug);
+            // Ganti nama variabel dari 'data' menjadi 'response' atau nama lain
+            .then((response) => {
+
+                // Ambil data array dari properti 'data' di objek respons
+                const allNewsData: NewsModel[] = response.data;
+
+                // Lakukan validasi tambahan
+                if (!response.success || !Array.isArray(allNewsData)) {
+                    throw new Error("Gagal mengambil data atau format respons tidak valid.");
+                }
+
+                // Gunakan array yang sudah diekstrak untuk mencari
+                const found = allNewsData.find((item) => item.slug === slug); // <--- Sekarang akan BERHASIL
+
                 if (!found) {
                     setError("Berita tidak ditemukan");
                     setLoading(false);
                     return;
                 }
 
+                // ... (sisa logika pemrosesan konten dan setNewsItem)
                 setNewsItem(found);
 
+                // ... (Logika pemrosesan konten Editor.js)
                 try {
                     let contentObj;
                     let finalHtml = "";
