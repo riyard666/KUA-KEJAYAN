@@ -29,7 +29,7 @@ export default function  News() {
 
     useEffect(() => {
         fetch(
-            "https://script.google.com/macros/s/AKfycbzvVcygmNEShLz3iFBto7XhWtwcJCJ-C_3gspBOk2VPT-m-L_en_SEjg7vGIpT96bYy/exec"
+            "https://script.google.com/macros/s/AKfycbyoyPG2spddXsJo8j2IhnCbqeQk2AW8jE_n9SfoiqK43Dk6EAzZVsTDJlshoJd2aD32/exec"
         )
             .then((res) => res.json())
             .then((data) => {
