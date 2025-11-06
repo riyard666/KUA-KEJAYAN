@@ -46,7 +46,7 @@ export default function Login() {
               K
             </div>
             <h1 className="mt-3 text-xl font-semibold text-emerald-700">Masuk</h1>
-            <p className="text-sm text-gray-600">Gunakan akun Anda untuk masuk</p>
+            <p className="text-sm text-gray-600">Gunakan akun Anda untuk masuk ke arsip nikah</p>
           </div>
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div className="space-y-2">
