@@ -37,7 +37,8 @@ const services = [
         icon: '📔',
         links: [
             { text: "E-Book Bimwin", url: "https://s.id/E-bookBinwin" },
-            { text: "E-Book BRUS", url: "https://s.id/BRUS_KEJAYAN" },
+            { text: "E-Book BRUS", url: "https://s.id/BRUS_KEJAYAN" }
+            { text: "E-Book BRUS", url: "https://s.id/panduanEAIW" },
         ]
     },
     {
