@@ -61,7 +61,7 @@ const services = [
         description: 'Segera daftarkan produk anda.',
         icon: '🍲',
         links: [
-            { text: 'Produk Halal', url: 'bit.ly/SertifikasiHalalKejayan' }
+            { text: 'Produk Halal', url: 'https://s.id/SertifikasiHalalKejayan' }
         ]
     },
     {
