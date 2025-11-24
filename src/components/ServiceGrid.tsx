@@ -57,6 +57,14 @@ const services = [
         ]
     },
     {
+        title: 'Daftar Halal',
+        description: 'Segera daftarkan produk anda.',
+        icon: '🍲',
+        links: [
+            { text: 'Produk Halal', url: 'bit.ly/SertifikasiHalalKejayan' }
+        ]
+    },
+    {
         title: 'Kalkulator Zakat',
         description: 'Hitung kewajiban zakat untuk berbagai jenis harta.',
         icon: '💰',
@@ -78,6 +86,14 @@ const services = [
         icon: '📖',
         links: [
             { text: 'Quran Kemenag', url: 'https://quran.kemenag.go.id/' }
+        ]
+    },
+    {
+        title: 'Pilihan Doa',
+        description: 'Kumpulan doa sehari-hari untuk berbagai kebutuhan Anda.',
+        icon: '🤲',
+        links: [
+            { text: 'Kumpulan Doa', url: 'https://pusaka-v3.kemenag.go.id/islam/pilihan-doa' }
         ]
     }
 ];
