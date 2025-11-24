@@ -353,7 +353,7 @@ const procedures: Procedure[] = [
         count: 'Lengkapi Persyaratan',
         details: [
             {
-                item: [
+                items: [
                     "KTP.",
                     "KK (sebagai berkas pendukung).",
                     "Nomor WhatsApp aktif.",
