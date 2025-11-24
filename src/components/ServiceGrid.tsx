@@ -57,8 +57,8 @@ const services = [
         ]
     },
     {
-        title: 'Daftar Halal',
-        description: 'Segera daftarkan produk anda.',
+        title: 'Sertifikasi Produk Halal',
+        description: 'Segera halalkan produk Anda.',
         icon: '🍲',
         links: [
             { text: 'Produk Halal', url: 'https://s.id/SertifikasiHalalKejayan' }
