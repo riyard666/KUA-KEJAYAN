@@ -347,6 +347,26 @@ const procedures: Procedure[] = [
         ]
     },
     {
+        icon: '🍛',
+        title: 'Halal',
+        subtitle: 'Sertifikasi Produk Halal',
+        count: 'Lengkapi Persyaratan',
+        details: [
+            {
+                item: [
+                    "KTP.",
+                    "KK (sebagai berkas pendukung).",
+                    "Nomor WhatsApp aktif.",
+                    "E-mail aktif.",
+                    "Produk yang akan didaftarkan adalah produk UMK makanan dan minuman.",
+                    "Foto produk yang akan didaftarkan.",
+                    "Mengisi e-formulir (ada di web ini).",
+                    "Bersedia didampingi ke lokasi usaha / lokasi produksi oleh pendamping dari KUA.",
+                ]
+            },
+        ]
+    },
+    {
         icon: '🕋',
         title: 'Pengukuran Arah Kiblat',
         subtitle: 'Verifikasi untuk masjid/mushalla',
@@ -354,12 +374,12 @@ const procedures: Procedure[] = [
         details: [
             {
                 items: [
-                    "Takmir masjid / mushalla / pengurus wakaf lainnya mengajukan permohonan kepada Badan Hisab Rukyat (BHR) Kabupaten Rokan Hulu atau KUA Kecamatan Rokan IV Koto.",
+                    "Takmir masjid / mushalla / pengurus wakaf lainnya mengajukan permohonan kepada Badan Hisab Rukyat (BHR) Kabupaten Pasuruan atau KUA Kecamatan Kejayan.",
                     "Melampirkan denah lokasi yang mau diukur arah kiblatnya.",
                 ]
             },
         ]
-    },
+    },     
     {
         icon: '🌙',
         title: 'Masuk Islam',
