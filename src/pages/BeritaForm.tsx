@@ -28,7 +28,7 @@ type BeritaData = {
 // KONSTANTA
 // ==============================================================================
 const URL_BASE_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbyoyPG2spddXsJo8j2IhnCbqeQk2AW8jE_n9SfoiqK43Dk6EAzZVsTDJlshoJd2aD32/exec";
-const URL_APPS_SCRIPT_POST_PROXY = "https://api-portfolio.kodara.web.id/api/submit-berita";
+const URL_APPS_SCRIPT_POST_PROXY = "https://apiqsecure.kodara.web.id/api/submit-berita";
 
 
 export default function BeritaForm() {
