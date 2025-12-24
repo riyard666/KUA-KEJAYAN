@@ -15,7 +15,7 @@ export default function Footer() {
                                 <span><Phone size={16}/></span> 0852-6525-3483
                             </a>
                             <a href="mailto:kuakejayan@gmail.com" className="flex items-center gap-2 hover:text-emerald-400">
-                                <span><Mail size={16}/></span> kuakejayan@gmail.com
+                                <span><Mail size={16}/></span> kejayankua@gmail.com
                             </a>
                             <a href="https://www.instagram.com/kuakejayan?igsh=MTlmb3hycHpoaW14NQ==" className="flex items-center gap-2 hover:text-emerald-400">
                                 <span><Instagram size={16} /></span> Instagram
