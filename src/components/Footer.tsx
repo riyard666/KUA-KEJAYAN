@@ -18,10 +18,10 @@ export default function Footer() {
                                 <span><Mail size={16}/></span> kejayankua@gmail.com
                             </a>
                             <a href="https://www.instagram.com/kuakejayan?igsh=MTlmb3hycHpoaW14NQ==" className="flex items-center gap-2 hover:text-emerald-400">
-                                <span><Instagram size={16} /></span> Instagram
+                                <span><Instagram size={16} /></span> @kuakejayan
                             </a>
                             <a href="https://maps.app.goo.gl/k2R1DfLKLj9zNUcY8?g_st=iw" className="flex items-center gap-2 hover:text-emerald-400">
-                                <span><MapPin size={16}/> </span> Lokasi (Maps)
+                                <span><MapPin size={16}/> </span> Lokasi (Maps) KUA Kejayan
                             </a>
                         </div>
                     </div>
