@@ -1,11 +1,17 @@
 import ServiceGrid from "@/components/ServiceGrid.tsx";
 import Footer from "@/components/Footer.tsx";
+import {Helmet} from "react-helmet-async";
 
 export default function Services() {
 
     return (
 
         <>
+            <Helmet>
+                <title>Layanan Digital KUA Kejayan - KUA Kejayan</title>
+                <meta name="description" content="Panduan lengkap untuk layanan Kantor Urusan Agama." />
+            </Helmet>
+
             <div className="min-h-screen bg-white">
                 <div className="container mx-auto px-4">
 
