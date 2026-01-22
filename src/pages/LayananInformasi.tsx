@@ -2,10 +2,15 @@ import Footer from "@/components/Footer.tsx";
 import InfoCards from "@/components/InfoCards";
 import {Card, CardContent} from "@/components/ui/card.tsx";
 import {Folder, HeartHandshake, Landmark} from "lucide-react";
+import {Helmet} from "react-helmet-async";
 
 export default function LayananInformasi() {
     return(
         <>
+            <Helmet>
+                <title>Prosedur Layanan & Panduan Informasi KUA Kejayan - KUA Kejayan</title>
+                <meta name="description" content="Temukan Prosedur Layanan dan Panduan Informasi KUA Kejayan." />
+            </Helmet>
             {/*hero*/}
             <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-linear-to-b from-emerald-200 to-white">
                 <div className="px-4 md:py-24 md:w-12xl">
@@ -13,7 +18,6 @@ export default function LayananInformasi() {
                         Prosedur Layanan & Panduan Informasi
                     </h1>
                     <p className="text-lg mt-2">KUA Kecamatan Kejayan</p>
-
 
                     <div className="grid md:grid-cols-3 gap-6 md:my-10 xl:w-6xl">
                         <Card>
