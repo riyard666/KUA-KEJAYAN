@@ -1,73 +1,85 @@
-# React + TypeScript + Vite
+# KUA Kejayan Digital Platform 🇮🇩
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Project Status](https://img.shields.io/badge/status-active-success)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-Currently, two official plugins are available:
+**Official digital platform for Kantor Urusan Agama (KUA) Kejayan.**
+Designed to simplify public access to marriage services, religious information, and institutional transparency.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🌐 **Live Demo:** [kuakejayan.com](https://kuakejayan.com)  
+👨‍💻 **Developed by:** [FynWorks](https://fynworks.my.id)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📖 About The Project
 
-## Expanding the ESLint configuration
+**KUA Kejayan Digital** is a modern web application built to bridge the gap between government religious services and the community in Kejayan, Pasuruan. Unlike traditional static government sites, this platform is built as a Single Page Application (SPA) for speed, responsiveness, and a seamless user experience.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Key Objectives:
+* **Digital Transformation:** Moving manual information requests to a digital format.
+* **Accessibility:** Easy access to marriage requirements (SIMKAH) and reconciliation (Rujuk) procedures.
+* **Transparency:** Public access to mosque data, waqf information, and schedule updates.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+This project works with the latest modern web technologies:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+| Category | Technology | Description |
+| :--- | :--- | :--- |
+| **Core** | ![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB) | UI Library (v18+) |
+| **Build Tool** | ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=flat&logo=vite&logoColor=FFD62E) | Next Generation Frontend Tooling |
+| **Language** | ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white) | Static Type Checking |
+| **Styling** | ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white) | Utility-first CSS Framework |
+| **Routing** | React Router DOM | Client-side routing |
+| **SEO** | React Helmet Async | Dynamic head management for SEO |
+| **Icons** | Lucide / React Icons | Modern SVG Icons |
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## ✨ Key Features
+
+* **⚡ Blazing Fast Performance:** Powered by Vite for instant loading.
+* **📱 Fully Responsive:** Optimized for mobile, tablet, and desktop views.
+* **🔍 SEO Optimized:** Implements `react-helmet-async` for dynamic meta tags and structured data (Schema.org).
+* **📋 Interactive Service Grid:** User-friendly navigation for various KUA services.
+* **📰 News & Updates:** Integrated section for latest announcements.
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to run the project locally.
+
+### Prerequisites
+* Node.js (v18 or higher)
+* npm or yarn
+
+### Installation
+
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/riyard666/kua-kejayan.git](https://github.com/riyard666/kua-kejayan.git)
+    cd kua-kejayan
+    ```
+
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Run Development Server**
+    ```bash
+    npm run dev
+    ```
+
+4.  **Build for Production**
+    ```bash
+    npm run build
+    ```
+
+├── utils/          # Helper functions
+├── App.tsx         # Main entry component
+└── main.tsx        # DOM renderer
