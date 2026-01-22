@@ -50,10 +50,10 @@ export default function Footer() {
                     <div>
                         <h4 className="font-semibold mb-4">INFORMASI</h4>
                         <div className="space-y-2 text-sm">
-                            <a href="#" className="block hover:text-emerald-400">Panduan Informasi Nikah</a>
-                            <a href="https://pusaka.kemenag.go.id/masjid/" className="block hover:text-emerald-400">Data Masjid</a>
-                            <a href="https://siwak.kemenag.go.id/" className="block hover:text-emerald-400">Data Tanah Wakaf</a>
-                            <a href="#" className="block hover:text-emerald-400">Statistik Nikah</a>
+                            <a href="https://kuakejayan.com/layanan-informasi" className="block hover:text-emerald-400">Panduan Informasi Nikah</a>
+                            <a href="https://kuakejayan.com/data-masjid" className="block hover:text-emerald-400">Data Masjid</a>
+                            <a href="https://kuakejayan.com/data-wakaf" className="block hover:text-emerald-400">Data Tanah Wakaf</a>
+                            <a href="https://kuakejayan.com/statistik-pernikahan" className="block hover:text-emerald-400">Statistik Nikah</a>
                         </div>
                     </div>
                 </div>
