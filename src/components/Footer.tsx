@@ -12,7 +12,7 @@ export default function Footer() {
                         <h3 className="text-lg font-bold mb-4">KUA Kejayan</h3>
                         <div className="space-y-2 text-sm">
                             <a href="https://wa.me/6282228398564" className="flex items-center gap-2 hover:text-emerald-400">
-                                <span><Phone size={16}/></span> 0852-6525-3483
+                                <span><Phone size={16}/></span> 0822-2839-8564
                             </a>
                             <a href="mailto:kuakejayan@gmail.com" className="flex items-center gap-2 hover:text-emerald-400">
                                 <span><Mail size={16}/></span> kejayankua@gmail.com
