@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation"; // Ditambahkan untuk handle link internal
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -16,25 +17,25 @@ const services = [
         ],
     },
     {
-        title: 'Kalender Jadwal Nikah',
-        description: 'Pantau slot jadwal tersedia & rencanakan tanggal terbaik.',
-        icon: '📅',
+        title: "Kalender Jadwal Nikah",
+        description: "Pantau slot jadwal tersedia & rencanakan tanggal terbaik.",
+        icon: "📅",
         links: [
-            { text: 'Lihat Jadwal', url: '/kalender-jadwal-nikah' }
+            { text: "Lihat Jadwal", url: "/kalender-jadwal-nikah" }
         ]
     },
     {
-        title: 'Pengecekan Nikah',
-        description: 'Cek status dan legalitas pernikahan Anda secara resmi.',
-        icon: '✅',
+        title: "Pengecekan Nikah",
+        description: "Cek status dan legalitas pernikahan Anda secara resmi.",
+        icon: "✅",
         links: [
-            { text: 'Cek Status Nikah', url: 'https://pusaka-v3.kemenag.go.id/layanan-pengecekan-nikah' }
+            { text: "Cek Status Nikah", url: "https://pusaka-v3.kemenag.go.id/layanan-pengecekan-nikah" }
         ]
     },
     {
-        title: 'E-Book',
-        description: 'Layanan buku digital.',
-        icon: '📔',
+        title: "E-Book",
+        description: "Layanan buku digital.",
+        icon: "📔",
         links: [
             { text: "E-Book Bimwin", url: "https://s.id/E-bookBinwin" },
             { text: "E-Book BRUS", url: "https://s.id/BRUS_KEJAYAN" },
@@ -58,62 +59,73 @@ const services = [
         ]
     },
     {
-        title: 'Daftar Wakaf',
-        description: 'Pendaftaran online semakin mudah dan cepat.',
-        icon: '📜',
+        title: "Daftar Wakaf",
+        description: "Pendaftaran online semakin mudah dan cepat.",
+        icon: "📜",
         links: [
-            { text: 'Data Wakaf (SIWAK)', url: 'https://siwak.kemenag.go.id/' }
+            { text: "Data Wakaf (SIWAK)", url: "https://siwak.kemenag.go.id/" }
         ]
     },
     {
-        title: 'Sertifikasi Produk Halal',
-        description: 'Segera halalkan produk Anda.',
-        icon: '🍲',
+        title: "Sertifikasi Produk Halal",
+        description: "Segera halalkan produk Anda.",
+        icon: "🍲",
         links: [
-            { text: 'Produk Halal', url: 'https://s.id/SertifikasiHalalKejayan' }
+            { text: "Produk Halal", url: "https://s.id/SertifikasiHalalKejayan" }
         ]
     },
     {
-        title: 'Kalkulator Zakat',
-        description: 'Hitung kewajiban zakat untuk berbagai jenis harta.',
-        icon: '💰',
+        title: "Kalkulator Zakat",
+        description: "Hitung kewajiban zakat untuk berbagai jenis harta.",
+        icon: "💰",
         links: [
-            { text: 'Kalkulator Zakat (BAZNAS)', url: 'https://baznas.go.id/kalkulatorzakat' }
+            { text: "Kalkulator Zakat (BAZNAS)", url: "https://baznas.go.id/kalkulatorzakat" }
         ]
     },
     {
-        title: 'Arah Kiblat',
-        description: 'Temukan arah kiblat akurat berbasis lokasi perangkat Anda.',
-        icon: '🧭',
+        title: "Arah Kiblat",
+        description: "Temukan arah kiblat akurat berbasis lokasi perangkat Anda.",
+        icon: "🧭",
         links: [
-            { text: 'Qibla Finder', url: 'https://qiblafinder.withgoogle.com/intl/id/desktop/find/' }
+            { text: "Qibla Finder", url: "https://qiblafinder.withgoogle.com/intl/id/desktop/find/" }
         ]
     },
     {
-        title: 'Al-Quran',
-        description: 'Baca Al-Quran digital dengan terjemahan dan tafsir.',
-        icon: '📖',
+        title: "Al-Quran",
+        description: "Baca Al-Quran digital dengan terjemahan dan tafsir.",
+        icon: "📖",
         links: [
-            { text: 'Quran Kemenag', url: 'https://quran.kemenag.go.id/' }
+            { text: "Quran Kemenag", url: "https://quran.kemenag.go.id/" }
         ]
     },
     {
-        title: 'Pilihan Doa',
-        description: 'Kumpulan doa sehari-hari untuk berbagai kebutuhan Anda.',
-        icon: '🤲',
+        title: "Pilihan Doa",
+        description: "Kumpulan doa sehari-hari untuk berbagai kebutuhan Anda.",
+        icon: "🤲",
         links: [
-            { text: 'Kumpulan Doa', url: 'https://pusaka-v3.kemenag.go.id/islam/pilihan-doa' }
+            { text: "Kumpulan Doa", url: "https://pusaka-v3.kemenag.go.id/islam/pilihan-doa" }
         ]
     }
 ];
 
 export default function ServiceGrid() {
+    const router = useRouter();
     const [openDialog, setOpenDialog] = useState(false);
     const [currentLinks, setCurrentLinks] = useState<{ text: string; url: string }[]>([]);
 
+    // Fungsi navigasi yang aman untuk internal maupun eksternal url
+    const handleNavigate = (url: string) => {
+        if (url.startsWith("/")) {
+            router.push(url); // Navigasi internal Next.js
+        } else {
+            window.open(url, "_blank", "noopener,noreferrer"); // Navigasi eksternal aman
+        }
+        setOpenDialog(false);
+    };
+
     const handleCardClick = (links: { text: string; url: string }[]) => {
         if (links.length === 1) {
-            window.open(links[0].url, "_blank");
+            handleNavigate(links[0].url);
         } else {
             setCurrentLinks(links);
             setOpenDialog(true);
@@ -154,7 +166,7 @@ export default function ServiceGrid() {
                             <Button
                                 key={idx}
                                 variant="outline"
-                                onClick={() => window.open(link.url, "_blank")}
+                                onClick={() => handleNavigate(link.url)}
                             >
                                 {link.text}
                             </Button>
