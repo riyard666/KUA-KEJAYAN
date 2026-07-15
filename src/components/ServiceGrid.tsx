@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation"; // Ditambahkan untuk handle link internal
+import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -109,14 +109,14 @@ const services = [
 ];
 
 export default function ServiceGrid() {
-    const router = useRouter();
+    const navigate = useNavigate();
     const [openDialog, setOpenDialog] = useState(false);
     const [currentLinks, setCurrentLinks] = useState<{ text: string; url: string }[]>([]);
 
     // Fungsi navigasi yang aman untuk internal maupun eksternal url
     const handleNavigate = (url: string) => {
         if (url.startsWith("/")) {
-            router.push(url); // Navigasi internal Next.js
+            navigate(url); // Navigasi internal Next.js
         } else {
             window.open(url, "_blank", "noopener,noreferrer"); // Navigasi eksternal aman
         }
