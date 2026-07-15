@@ -46,7 +46,8 @@ const services = [
         description: "Sertifikat BRUS Bisa di Download DISINI!!!.",
         icon: "🪪",
         links: [
-            { text: "Sertifikat BRUS", url: "https://s.id/Sertificate_BRUS" }],
+            { text: "Sertifikat BRUS", url: "https://s.id/Sertificate_BRUS" }
+        ]
     },
     {
         title: "BIMWIN",
