@@ -54,7 +54,8 @@ const services = [
         description: "Pre-test dan post-test Bimbingan Pra-Nikah.",
         icon: "🤵‍♂️👰‍♀️",
         links: [
-            { text: "Post-tes & Pre-tes", url: "https://s.id/Pre-Test-Post-Test-KUA-Kejayan" }],
+            { text: "Post-tes & Pre-tes", url: "https://s.id/Pre-Test-Post-Test-KUA-Kejayan" }
+        ]
     },
     {
         title: 'Daftar Wakaf',
