@@ -44,7 +44,7 @@ const services = [
     },
     {
         title: "SERFITIKAT",
-        description: "Sertifikat BRUS Bisa di Download DISINI!!!.",
+        description: "Sertifikat BRUS Bisa di Download DISINI.",
         icon: "🪪",
         links: [
             { text: "Sertifikat BRUS", url: "https://s.id/Sertificate_BRUS" }
