@@ -29,7 +29,35 @@ export default function NewsComponent({ horizontal = false }: NewsProps) {
             });
     }, []);
 
-    if (loading) return <p className="text-center py-10">Memuat berita...</p>;
+if (loading) return (
+        <div className="min-h-screen bg-gray-50 py-12">
+            <div className="mx-auto max-w-6xl px-4">
+                {/* Judul Halaman Buatan */}
+                <div className="flex flex-col items-center justify-center mb-12 animate-pulse">
+                    <div className="h-10 bg-gray-300 rounded w-64 mb-4"></div>
+                    <div className="h-4 bg-gray-300 rounded w-96"></div>
+                </div>
+
+                {/* Grid 6 Kartu Berita Buatan */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {[1, 2, 3, 4, 5, 6].map((item) => (
+                        <div key={item} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden animate-pulse">
+                            {/* Gambar Kartu */}
+                            <div className="h-52 bg-gray-300 w-full"></div>
+                            {/* Isi Kartu */}
+                            <div className="p-6">
+                                <div className="h-3 bg-gray-300 rounded w-1/3 mb-4"></div>
+                                <div className="h-6 bg-gray-300 rounded w-full mb-2"></div>
+                                <div className="h-6 bg-gray-300 rounded w-4/5 mb-4"></div>
+                                <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
+                                <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
     if (error) return <p className="text-center text-red-500 py-10">{error}</p>;
 
     return (
