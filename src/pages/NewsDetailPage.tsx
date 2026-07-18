@@ -125,8 +125,12 @@ export default function NewsDetailPage() {
                 }
 
                 setLoading(false);
+                setTimeout(() => {
+                    (window as any).prerenderReady = true;
+                }, 500);
             })
             .catch((err) => {
+                (window as any).prerenderReady = true;
                 console.error("Error fetch:", err);
                 setError("Gagal memuat berita: " + err.message);
                 setLoading(false);
