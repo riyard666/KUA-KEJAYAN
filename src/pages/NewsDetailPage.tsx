@@ -125,9 +125,31 @@ export default function NewsDetailPage() {
                 }
 
                 setLoading(false);
-                setTimeout(() => {
-                    (window as any).prerenderReady = true;
-                }, 500);
+               // --- KODE PAMUNGKAS: Paksa ganti Meta Tag sebelum Prerender memotret ---
+            document.title = found.judul + " | KUA Kecamatan Kejayan";
+            
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.setAttribute("content", "Berita: " + found.judul);
+
+            const setMetaOg = (prop: string, content: string) => {
+                let meta = document.querySelector(`meta[property="${prop}"]`);
+                if (!meta) {
+                    meta = document.createElement('meta');
+                    meta.setAttribute('property', prop);
+                    document.head.appendChild(meta);
+                }
+                meta.setAttribute('content', content);
+            };
+
+            setMetaOg('og:title', found.judul);
+            setMetaOg('og:description', "Baca selengkapnya mengenai: " + found.judul);
+            setMetaOg('og:image', found.gambar);
+            setMetaOg('og:type', 'article');
+            // ------------------------------------------------------------------------
+
+            setTimeout(() => {
+                (window as any).prerenderReady = true;
+            }, 500);
             })
             .catch((err) => {
                 (window as any).prerenderReady = true;
