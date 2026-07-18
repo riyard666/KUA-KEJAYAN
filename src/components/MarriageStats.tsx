@@ -191,6 +191,7 @@ export default function MarriageStats() {
             </div>
         </Card>
     )}
+   </div>
     );
 }
 
