@@ -105,7 +105,28 @@ export default function MarriageStats() {
             </div>
 
             {/* Loader / Error */}
-            {loading && <p className="text-gray-500 text-center">Memuat data...</p>}
+            {loading && (
+        <div className="w-full animate-pulse py-8">
+            {/* 4 Kotak Ringkasan Angka (Atas) */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div className="h-24 bg-gray-200/80 rounded-xl w-full"></div>
+                <div className="h-24 bg-gray-200/80 rounded-xl w-full"></div>
+                <div className="h-24 bg-gray-200/80 rounded-xl w-full"></div>
+                <div className="h-24 bg-gray-200/80 rounded-xl w-full"></div>
+            </div>
+            
+            {/* Kotak Besar untuk Area Grafik (Bawah) */}
+            <div className="h-64 bg-gray-200/80 rounded-xl w-full flex items-end px-8 pb-4 gap-4 justify-between">
+                {/* Efek Batang Grafik buatan di dalamnya agar terlihat lebih nyata */}
+                <div className="h-1/3 w-12 bg-gray-300 rounded-t-sm hidden sm:block"></div>
+                <div className="h-2/4 w-12 bg-gray-300 rounded-t-sm hidden sm:block"></div>
+                <div className="h-3/4 w-12 bg-gray-300 rounded-t-sm hidden sm:block"></div>
+                <div className="h-full w-12 bg-gray-300 rounded-t-sm hidden sm:block"></div>
+                <div className="h-2/3 w-12 bg-gray-300 rounded-t-sm hidden sm:block"></div>
+                <div className="h-1/4 w-12 bg-gray-300 rounded-t-sm hidden sm:block"></div>
+            </div>
+        </div>
+    )}
             {error && <p className="text-red-600 text-center">Error: {error}</p>}
 
             {/* Angka Pernikahan Setiap Bulan */}
