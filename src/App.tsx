@@ -22,6 +22,7 @@ import NewsDetailPage from "@/pages/NewsDetailPage.tsx";
 import GoPage from "@/pages/Go.tsx";
 import {HelmetProvider} from "react-helmet-async";
 import BeritaForm from "@/pages/BeritaForm.tsx";
+import FloatingWA from './components/FloatingWA';
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => (
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </BrowserRouter>
+                <FloatingWA />
             </HelmetProvider>
         </TooltipProvider>
     </QueryClientProvider>
