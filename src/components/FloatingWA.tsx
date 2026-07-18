@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 export default function FloatingWA() {
   // Ganti nomor WA di bawah ini (gunakan format 628... tanpa angka 0 di depan)
