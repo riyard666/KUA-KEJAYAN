@@ -159,7 +159,36 @@ export default function NewsDetailPage() {
             });
     }, [slug]);
 
-    if (loading) return <p className="text-center py-10">Memuat berita...</p>;
+    if (loading) return (
+        <div className="min-h-screen bg-gradient-to-b from-white to-emerald-50">
+            <div className="mx-auto max-w-3xl px-4 py-12 animate-pulse">
+                {/* Skeleton Tombol Kembali */}
+                <div className="h-4 bg-gray-300 rounded w-32 mb-8"></div>
+
+                {/* Skeleton Judul Berita (2 Baris) */}
+                <div className="h-10 bg-gray-300 rounded w-full mb-3"></div>
+                <div className="h-10 bg-gray-300 rounded w-2/3 mb-6"></div>
+
+                {/* Skeleton Tanggal & Penulis */}
+                <div className="h-3 bg-gray-300 rounded w-1/3 mb-8"></div>
+
+                {/* Skeleton Gambar Utama */}
+                <div className="w-full h-[450px] bg-gray-300 rounded-lg mb-8"></div>
+
+                {/* Skeleton Teks Paragraf */}
+                <div className="space-y-4">
+                    <div className="h-4 bg-gray-300 rounded w-full"></div>
+                    <div className="h-4 bg-gray-300 rounded w-11/12"></div>
+                    <div className="h-4 bg-gray-300 rounded w-full"></div>
+                    <div className="h-4 bg-gray-300 rounded w-4/5"></div>
+                    <br />
+                    <div className="h-4 bg-gray-300 rounded w-full"></div>
+                    <div className="h-4 bg-gray-300 rounded w-5/6"></div>
+                    <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+                </div>
+            </div>
+        </div>
+    );
     if (error) return <p className="text-center text-red-500 py-10">{error}</p>;
     if (!newsItem) return <p className="text-center text-gray-500 py-10">Data tidak tersedia</p>;
 
