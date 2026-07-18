@@ -69,39 +69,44 @@ if (loading) return (
             }
         >
             {news.map((item) => (
-                <Card
-                    key={item.id}
-                    className={`overflow-hidden shadow-md ${
-                        horizontal
-                            ? "min-w-[320px] max-w-[320px] flex-shrink-0 snap-start"
-                            : ""
-                    }`}
-                >
-                    <img
-                        src={item.gambar}
-                        alt={item.judul}
-                        className="w-full h-48 object-cover"
-                    />
-                    <CardContent className="p-4 flex flex-col justify-between">
-                        <div>
-                            <h2 className="text-lg font-bold mb-2 line-clamp-2">
-                                {item.judul}
-                            </h2>
-                            <p className="text-sm text-gray-500 mb-3">
-                                {FormatDateId(item.tanggal)} • {item.penulis}
-                            </p>
-                            <div className="text-gray-700 text-sm line-clamp-3 mb-4">
-                                {item.deskripsi}
-                            </div>
-                        </div>
-                        <Link
-                            to={`/news/${item.slug}`}
-                            className="text-emerald-600 font-medium hover:underline mt-auto"
-                        >
-                            Baca Selengkapnya →
-                        </Link>
-                    </CardContent>
-                </Card>
+                <Link
+                key={item.id}
+                to={`/news/${item.slug}`}
+                className={`group flex flex-col bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 border border-gray-100 cursor-pointer ${
+                  horizontal
+                    ? "min-w-[320px] max-w-[320px] flex-shrink-0 snap-start"
+                    : ""
+                }`}
+        >
+          {/* Gambar Berita dengan efek Zoom saat disorot */}
+          <div className="overflow-hidden">
+           <img
+             src={item.gambar}
+             alt={item.judul}
+             className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+           />
+         </div>
+
+         {/* Konten Berita */}
+         <div className="p-4 flex flex-col flex-grow justify-between">
+          <div>
+            <h2 className="text-lg font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-emerald-700 transition-colors">
+              {item.judul}
+            </h2>
+            <p className="text-sm text-gray-500 mb-3">
+              {FormatDateId(item.tanggal)} • {item.penulis}
+            </p>
+            <div className="text-gray-600 text-sm line-clamp-3 mb-4">
+              {item.deskripsi}
+            </div>
+          </div>
+          
+          {/* Teks Baca Selengkapnya sebagai Pemanis Visual */}
+          <span className="text-emerald-600 font-semibold text-sm mt-auto inline-flex items-center group-hover:text-emerald-800">
+            Baca Selengkapnya <span className="ml-1 group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </span>
+        </div>
+      </Link>
             ))}
         </div>
     );
