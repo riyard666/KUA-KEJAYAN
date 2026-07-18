@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import type { NewsModel } from "@/model/news.model.tsx";
-import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { FormatDateId } from "@/utils/format.ts";
 
