@@ -45,9 +45,7 @@ export default function Feedback() {
 
     return (
         <div className="min-h-screen bg-white flex items-start justify-center px-4 py-8">
-            <Card className="w-full max-w-2xl p-6">
-                <div className="w-full max-w-2xl px-4 py-8">
-      <div className="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-gray-100 transition-all duration-500 hover:shadow-2xl">
+            <div className="max-w-2xl mx-auto px-4 py-12">
         
         {/* Header Elegan */}
         <div className="text-center mb-10">
