@@ -21,7 +21,7 @@ export default function Index() {
                                 <span className="text-emerald-700">KUA KEJAYAN</span>
                             </h1>
                             <p className="text-gray-600 text-md md:text-lg max-w-xl mx-auto lg:mx-0">
-                                Pelayanan keagamaan untuk masyarakat Kejayan
+                                Situs resmi pendaftaran nikah, rujuk, dan layanan bimbingan keagamaan untuk masyarakat Kecamatan Kejayan, Jawa Timur.
                             </p>
 
                             {/* Buttons */}
