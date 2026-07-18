@@ -13,29 +13,28 @@ export default async function middleware(req) {
     const pathParts = url.pathname.split('/');
     const slug = pathParts[pathParts.length - 1];
 
+    // Tautan Asli Google Script Anda
     const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyoyPG2spddXsJo8j2IhnCbqQk2AWBjE_n9SfoiqK43Dk6EAzZVsTDJlshoJd2aD32/exec';
     
-    // --- JURUS MENYAMAR: Memalsukan identitas Vercel menjadi browser Chrome ---
-    const response = await fetch(googleScriptUrl, { 
-      method: 'GET',
-      redirect: 'follow',
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'application/json'
-      }
+    // --- JURUS PAMUNGKAS: Menggunakan Agen Perantara (AllOrigins) ---
+    // Kita bungkus URL Google di dalam URL Agen Perantara agar Google terkecoh
+    const bypassUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(googleScriptUrl)}`;
+
+    const response = await fetch(bypassUrl, {
+        method: 'GET',
+        headers: { 'User-Agent': 'Mozilla/5.0' }
     });
 
-    // Kita baca dulu sebagai teks biasa untuk mengecek isinya
     const textResponse = await response.text();
 
-    // Jika Google masih mengirimkan HTML (berawalan <), kita buat error agar tidak jebol
+    // Cek apakah pertahanan Google masih tembus atau tidak
     if (textResponse.trim().startsWith('<')) {
-      throw new Error("Google masih memblokir server kita");
+      throw new Error("Sial, Google masih menahan agen kita!");
     }
 
-    // Jika aman, ubah teks menjadi JSON
+    // Jika sukses menembus, kita ubah teks menjadi JSON
     const jsonResponse = JSON.parse(textResponse);
-    // --------------------------------------------------------------------------
+    // ----------------------------------------------------------------
 
     const allNewsData = jsonResponse.data;
     const found = allNewsData.find((item) => item.slug === slug);
