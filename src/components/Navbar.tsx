@@ -98,7 +98,7 @@ const Navbar = () => {
 
                                 {/* 🔑 Ganti parent group jadi group/item */}
                                 <ul
-                                    className={`absolute hidden bg-white border rounded-xl shadow-lg z-50
+                                    className={`absolute hidden bg-emerald-800 border-emerald-700 rounded-xl shadow-lg z-50
                                             ${level > 0 ? "left-full top-0 w-56" : "left-full top-0 w-48"}
                                             group-hover/item:block`}
                                 >
@@ -106,7 +106,7 @@ const Navbar = () => {
                                         <li key={j} className="relative group/item">
                                             {sub.submenu ? (
                                                 <>
-                                                    <button className="flex w-full justify-between items-center px-4 py-2 hover:bg-gray-100">
+                                                    <button <button className="flex w-full justify-between items-center px-4 py-2 text-white hover:bg-emerald-700 transition-colors">
                                                         {sub.label}
                                                         <ChevronRight className="w-4 h-4" />
                                                     </button>
@@ -116,7 +116,7 @@ const Navbar = () => {
                                                 <Link
                                                     to={sub.href}
                                                     target={sub.external ? "_blank" : "_self"}
-                                                    className="block px-4 py-2 text-white hover:bg-emerald-700 transition-colors duration-200"
+                                                    className="block px-4 py-2 text-white hover:bg-emerald-700 transition-colors"
                                                 >
                                                     {sub.label}
                                                 </Link>
@@ -194,7 +194,7 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {mobileOpen && (
-                <div className="lg:hidden border-t">
+                <div className="fixed inset-0 top-[60px] z-[60] bg-emerald-800 overflow-y-auto lg:hidden border-t">
                     <div className="flex flex-col py-2">
                         {menuItems.map((item, i) =>
                             item.submenu ? (
