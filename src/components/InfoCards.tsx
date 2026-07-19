@@ -441,7 +441,18 @@ export default function InfoCards() {
 
 
     const handleToggle = (index: number) => {
-        setActiveIndex(activeIndex === index ? null : index);
+        if (activeIndex === index) {
+            setActiveIndex(null); // Tutup jika diklik lagi
+        } else {
+            setActiveIndex(index); // Buka detail
+            // Beri jeda sedikit agar React selesai menampilkan kotak detail, lalu meluncur ke bawah
+            setTimeout(() => {
+                const element = document.getElementById(`detail-section-${index}`);
+                if (element) {
+                    element.scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+            }, 150);
+        }
     };
     return (
         <section className="py-12 bg-white">
@@ -454,23 +465,30 @@ export default function InfoCards() {
                     {procedures.map((procedure, index) => (
                         <>
                             {/* Card */}
+                            {/* Card Animasi */}
                             <Card
                                 key={`card-${index}`}
                                 onClick={() => handleToggle(index)}
-                                className={`p-4 hover:shadow-md transition-shadow duration-300 cursor-pointer ${
-                                    activeIndex === index ? "border-emerald-500 shadow-lg" : ""
+                                className={`group relative p-6 bg-white border border-gray-100 rounded-2xl transition-all duration-500 cursor-pointer overflow-hidden hover:border-emerald-300 hover:shadow-2xl hover:-translate-y-2 ${
+                                    activeIndex === index ? "border-emerald-500 ring-2 ring-emerald-500/50 shadow-2xl -translate-y-2" : ""
                                 }`}
                             >
-                                <div className="text-center">
-                                    <div className="text-3xl mb-3">{procedure.icon}</div>
-                                    <h3 className="font-semibold text-sm mb-1">
+                                {/* Efek cahaya hijau transparan saat disentuh */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                                
+                                <div className="text-center relative z-10">
+                                    {/* Ikon membesar dan miring sedikit */}
+                                    <div className="text-4xl mb-4 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 drop-shadow-sm">
+                                        {procedure.icon}
+                                    </div>
+                                    <h3 className="font-bold text-gray-800 text-sm mb-2 group-hover:text-emerald-700 transition-colors duration-300">
                                         {procedure.title}
                                     </h3>
-                                    <p className="text-xs text-gray-600 mb-2">
+                                    <p className="text-xs text-gray-500 mb-3">
                                         {procedure.subtitle}
                                     </p>
-                                    <hr className="border-gray-200 mb-2" />
-                                    <p className="text-xs font-medium text-emerald-700">
+                                    <hr className="border-gray-100 mb-3" />
+                                    <p className="text-xs font-bold text-emerald-600 bg-emerald-50 py-1.5 rounded-full w-3/4 mx-auto group-hover:bg-emerald-100 transition-colors">
                                         {procedure.count}
                                     </p>
                                 </div>
@@ -479,8 +497,9 @@ export default function InfoCards() {
                             {/* Detail muncul full width setelah card yg dipilih */}
                             {activeIndex === index && (
                                 <div
+                                    id={`detail-section-${index}`}
                                     key={`detail-${index}`}
-                                    className="col-span-full mt-2 p-6 border rounded-lg bg-gray-50 text-sm text-gray-700"
+                                    className="col-span-full mt-4 p-6 md:p-8 border border-emerald-100 rounded-2xl bg-gradient-to-b from-emerald-50/50 to-white text-sm text-gray-700 shadow-lg"
                                 >
                                     <div className={"mb-3"}>
                                         <h2 className="text-xl font-bold text-green-700">{procedure.title}</h2>
