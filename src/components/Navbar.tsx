@@ -116,7 +116,7 @@ const Navbar = () => {
                                                 <Link
                                                     to={sub.href}
                                                     target={sub.external ? "_blank" : "_self"}
-                                                    className="block px-4 py-2 text-white hover:bg-emerald-700 transition-colors"
+                                                    className="block px-4 py-2 text-white hover:bg-emerald-700 hover:text-white transition-colors"
                                                 >
                                                     {sub.label}
                                                 </Link>
@@ -129,8 +129,8 @@ const Navbar = () => {
                             <Link
                                 to={item.href}
                                 target={item.external ? "_blank" : "_self"}
-                                className={`block px-4 py-2 hover:bg-gray-100 ${
-                                    item.href === currentPath ? "font-semibold text-emerald-700" : ""
+                                className={`block px-4 py-2 text-white hover:bg-emerald-700 transition-colors ${
+                                    item.href === currentPath ? "bg-emerald-700 font-semibold" : ""
                                 }`}
                             >
                                 {item.label}
