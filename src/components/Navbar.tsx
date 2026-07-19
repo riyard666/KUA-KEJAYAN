@@ -221,20 +221,19 @@ const Navbar = () => {
                                         </div>
                                     </details>
                                 ) : (
-                                    <Link
+                                      <Link
                                         to={item.href}
                                         className="block px-4 py-3 text-white font-medium hover:bg-emerald-700 transition-colors"
                                         onClick={() => setMobileOpen(false)}
-                                    >
-                                        {item.label}
-                                    </Link>
-                                )}
-                            </div>
-                        ))}
+                                      >
+                                            {item.label}
+                                      </Link>
+                                    )}
+                                  </div>
+                            ))}
                     </div>
-      )}
-    </header>
-  );
-};
+        </header>
+      );
+    };
 
 export default Navbar;
