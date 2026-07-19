@@ -106,7 +106,7 @@ const Navbar = () => {
                                         <li key={j} className="relative group/item">
                                             {sub.submenu ? (
                                                 <>
-                                                    <button <button className="flex w-full justify-between items-center px-4 py-2 text-white hover:bg-emerald-700 transition-colors">
+                                                    <button className="flex w-full justify-between items-center px-4 py-2 text-white hover:bg-emerald-700 transition-colors">
                                                         {sub.label}
                                                         <ChevronRight className="w-4 h-4" />
                                                     </button>
