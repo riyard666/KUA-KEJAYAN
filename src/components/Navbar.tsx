@@ -227,8 +227,7 @@ const Navbar = () => {
                                         onClick={() => setMobileOpen(false)}
                                       >
                                             {item.label}
-                                      </Link>
-                                    }
+                                     </Link>
               </div>
             ))}
           </div>
