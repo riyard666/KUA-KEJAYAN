@@ -228,12 +228,14 @@ const Navbar = () => {
                                       >
                                             {item.label}
                                       </Link>
-                                    )}
-                                  </div>
-                            ))}
-                    </div>
-        </header>
-      );
-    };
+                                    }
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </header>
+  );
+};
 
 export default Navbar;
