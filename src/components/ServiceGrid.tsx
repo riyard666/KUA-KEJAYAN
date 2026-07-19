@@ -143,14 +143,28 @@ export default function ServiceGrid() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {services.map((service, index) => (
                         <Card
-                            key={index}
-                            className="p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer"
-                            onClick={() => handleCardClick(service.links)}
-                        >
-                            <div className="text-4xl mb-4">{service.icon}</div>
-                            <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
-                            <p className="text-gray-600 text-sm">{service.description}</p>
-                        </Card>
+              key={index}
+              className="group relative p-6 bg-white border border-gray-100 rounded-2xl hover:border-emerald-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden"
+              onClick={() => handleCardClick(service.links)}
+            >
+              {/* Efek cahaya/gradient tipis di latar belakang saat disentuh */}
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              {/* Ikon dengan animasi membesar dan sedikit berputar */}
+              <div className="relative text-4xl mb-5 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 drop-shadow-sm">
+                {service.icon}
+              </div>
+              
+              {/* Teks Judul */}
+              <h3 className="relative text-lg font-bold mb-2 text-gray-800 group-hover:text-emerald-700 transition-colors duration-300">
+                {service.title}
+              </h3>
+              
+              {/* Teks Deskripsi */}
+              <p className="relative text-gray-500 text-sm leading-relaxed">
+                {service.description}
+              </p>
+            </Card>
                     ))}
                 </div>
             </div>
