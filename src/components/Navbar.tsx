@@ -233,10 +233,9 @@ const Navbar = () => {
                             </div>
                         ))}
                     </div>
-                </div>
-            )}
-        </header>
-    );
+      )}
+    </header>
+  );
 };
 
 export default Navbar;
