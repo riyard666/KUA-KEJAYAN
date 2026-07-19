@@ -221,7 +221,6 @@ const Navbar = () => {
                                         </div>
                                     </details>
                                 ) : (
-                                    {/* Jika menu biasa */}
                                     <Link
                                         to={item.href}
                                         className="block px-4 py-3 text-white font-medium hover:bg-emerald-700 transition-colors"
