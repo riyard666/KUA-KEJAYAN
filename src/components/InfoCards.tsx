@@ -457,7 +457,7 @@ export default function InfoCards() {
     return (
         <section className="py-12 bg-white">
             <div className="container px-4">
-                <h2 className="text-2xl font-bold text-center mb-8">
+                <h2 className="text-2xl font-bold text-center mb-8" data-aos="fade-up">
                     Prosedur Layanan dan Panduan Informasi KUA Kejayan
                 </h2>
 
@@ -468,6 +468,8 @@ export default function InfoCards() {
                             {/* Card Animasi */}
                             <Card
                                 key={`card-${index}`}
+                                data-aos="fade-up"
+                                data-aos-delay={index * 100}
                                 onClick={() => handleToggle(index)}
                                 className={`group relative p-6 bg-white border border-gray-100 rounded-2xl transition-all duration-500 cursor-pointer overflow-hidden hover:border-emerald-300 hover:shadow-2xl hover:-translate-y-2 ${
                                     activeIndex === index ? "border-emerald-500 ring-2 ring-emerald-500/50 shadow-2xl -translate-y-2" : ""
