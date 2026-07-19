@@ -143,10 +143,12 @@ export default function ServiceGrid() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {services.map((service, index) => (
                         <Card
-              key={index}
-              className="group relative p-6 bg-white border border-gray-100 rounded-2xl hover:border-emerald-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden"
-              onClick={() => handleCardClick(service.links)}
-            >
+                          key={index}
+                          data-aos="fade-up"
+                          data-aos-delay={index * 100}  
+                          className="group relative p-6 bg-white border border-gray-100 rounded-2xl hover:border-emerald-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden"
+                          onClick={() => handleCardClick(service.links)}
+                        >
               {/* Efek cahaya/gradient tipis di latar belakang saat disentuh */}
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               
