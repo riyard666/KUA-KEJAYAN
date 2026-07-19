@@ -194,69 +194,44 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {mobileOpen && (
-                <div className="fixed inset-0 top-[60px] z-[60] bg-emerald-800 overflow-y-auto lg:hidden border-t">
-                    <div className="flex flex-col py-2">
-                        {menuItems.map((item, i) =>
-                            item.submenu ? (
-                                <details key={i} className="px-4 py-2 group">
-                                    <summary className="cursor-pointer font-medium list-none flex justify-between items-center text-white [&::-webkit-details-marker]:hidden">
-                                        {item.label}
-                                        {/* Ikon Panah Baru yang Elegan & Berputar Halus */}
-                                        <svg className="w-4 h-4 text-emerald-200 transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                    </summary>
-                                    <div className="flex flex-col pl-4 mt-2 border-l border-emerald-600/50">
-                                        {item.submenu.map((sub, j) =>
-                                            sub.submenu ? (
-                                                <details key={j} className="pl-2 py-2 group/sub">
-                                                    <summary className="cursor-pointer list-none flex justify-between items-center text-emerald-100 text-sm [&::-webkit-details-marker]:hidden">
-                                                        {sub.label}
-                                                        {/* Ikon Panah untuk Anak Menu */}
-                                                        <svg className="w-3.5 h-3.5 text-emerald-200 transition-transform duration-300 group-open/sub:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                                    </svg>
-                                                    </summary>
-                                                    <div className="flex flex-col pl-4 mt-2 space-y-2 border-l border-emerald-600/30">
-                                                        {sub.submenu.map((deep, k) => (
-                                                            <Link
-                                                                key={k}
-                                                                to={deep.href}
-                                                                target={deep.external ? "_blank" : "_self"}
-                                                                className="px-2 py-1 hover:bg-gray-100"
-                                                                onClick={() => setMobileOpen(false)}
-                                                            >
-                                                                {deep.label}
-                                                            </Link>
-                                                        ))}
-                                                    </div>
-                                                </details>
-                                            ) : (
+                <div className="absolute top-full left-0 w-full h-screen bg-emerald-800 z-[100] border-t border-emerald-700 lg:hidden overflow-y-auto pb-40">
+                    <div className="flex flex-col py-4">
+                        {menuItems.map((item, i) => (
+                            <div key={i}>
+                                {/* Jika punya anak menu (Dropdown) */}
+                                {item.submenu ? (
+                                    <details className="px-4 py-2 group">
+                                        <summary className="cursor-pointer font-medium list-none flex justify-between items-center text-white [&::-webkit-details-marker]:hidden">
+                                            {item.label}
+                                            <svg className="w-4 h-4 text-emerald-200 transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </summary>
+                                        <div className="flex flex-col pl-4 mt-2 border-l border-emerald-600/50">
+                                            {item.submenu.map((sub, j) => (
                                                 <Link
                                                     key={j}
                                                     to={sub.href}
-                                                    target={sub.external ? "_blank" : "_self"}
-                                                    className="px-2 py-1 hover:bg-gray-100"
+                                                    className="px-4 py-2 text-sm text-emerald-100 hover:text-white hover:bg-emerald-700 transition-colors rounded-lg"
                                                     onClick={() => setMobileOpen(false)}
                                                 >
                                                     {sub.label}
                                                 </Link>
-                                            )
-                                        )}
-                                    </div>
-                                </details>
-                            ) : (
-                                <Link
-                                    key={i}
-                                    to={item.href}
-                                    className="px-4 py-2 hover:bg-gray-100"
-                                    onClick={() => setMobileOpen(false)}
-                                >
-                                    {item.label}
-
-                                </Link>
-                            )
-                        )}
+                                            ))}
+                                        </div>
+                                    </details>
+                                ) : (
+                                    {/* Jika menu biasa */}
+                                    <Link
+                                        to={item.href}
+                                        className="block px-4 py-3 text-white font-medium hover:bg-emerald-700 transition-colors"
+                                        onClick={() => setMobileOpen(false)}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                )}
+                            </div>
+                        ))}
                     </div>
                 </div>
             )}
