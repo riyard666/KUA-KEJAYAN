@@ -67,10 +67,12 @@ if (loading) return (
                     : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
             }
         >
-            {news.map((item) => (
+            {news.map((item, index) => (
                 <Link
                 key={item.id}
                 to={`/news/${item.slug}`}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
                 className={`group flex flex-col bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 border border-gray-100 cursor-pointer ${
                   horizontal
                     ? "min-w-[320px] max-w-[320px] flex-shrink-0 snap-start"
