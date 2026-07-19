@@ -143,93 +143,87 @@ const Navbar = () => {
     };
 
     return (
-        <header className="sticky top-0 z-50 w-full bg-gradient-to-r from-emerald-800 to-emerald-600 shadow-md backdrop-blur">
-            <div className="container mx-auto flex items-center justify-between px-4 py-3">
-                {/* Logo */}
-                <Link to="/" className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-xl flex items-center justify-center ">
-                        <img src="/logo-kemenag.png" alt=""/>
-                    </div>
-                    <div>
-                        <div className="text-lg font-bold text-white">KUA Kejayan</div>
-                        <div className="text-xs text-emerald-100">Kantor Urusan Agama Kejayan</div>
-                    </div>
-                </Link>
+    <header className="sticky top-0 z-50 w-full bg-gradient-to-r from-emerald-800 to-emerald-600 shadow-md backdrop-blur">
+      <div className="container mx-auto flex items-center justify-between px-4 py-3">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-3">
+          <div className="h-10 w-10 rounded-xl flex items-center justify-center">
+            <img src="/logo-kemenag.png" alt="" />
+          </div>
+          <div>
+            <div className="text-lg font-bold text-white">KUA Kejayanan</div>
+            <div className="text-xs text-emerald-100">Kantor Urusan Agama Kejayanan</div>
+          </div>
+        </Link>
 
-                {/* Desktop Menu */}
-                <nav className="hidden lg:flex gap-6 text-sm">
-                    {menuItems.map((item, i) =>
-                        item.submenu ? (
-                            <div key={i} className="relative group">
-                                <button className="flex items-center gap-1 px-3 py-2 text-white hover:bg-white/20 transition-all duration-300 rounded-xl">
-                                    {item.label}
-                                    <ChevronDown className="w-4 h-4" />
-                                </button>
-                                {/* Dropdown submenu */}
-                                {renderMenu(item.submenu)}
-                            </div>
-                        ) : (
-                            <Link
-                                key={i}
-                                to={item.href}
-                                className={`px-3 py-2 rounded-xl text-white hover:bg-white/20 transition-all duration-300 ${
-                                    item.href === currentPath ? "bg-white/20 font-semibold" : ""
-                                }`}
-                            >
-                                {item.label}
-                            </Link>
-                        )
-                    )}
-                </nav>
-
-
-                {/* Mobile Menu Toggle */}
-                <button
-                    className="lg:hidden"
-                    onClick={() => setMobileOpen(!mobileOpen)}
-                >
-                    {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        {/* Desktop Menu */}
+        <nav className="hidden lg:flex gap-6 text-sm">
+          {menuItems.map((item, i) => (
+            <div key={i} className="relative group">
+              {item.submenu ? (
+                <button className="flex items-center gap-1 px-3 py-2 text-white hover:bg-white/20 transition-all duration-300 rounded-lg">
+                  {item.label}
+                  <ChevronDown className="w-4 h-4" />
                 </button>
-            </div>
-
-            {/* Mobile Menu */}
-            {mobileOpen && (
-                <div className="absolute top-full left-0 w-full h-screen bg-emerald-800 z-[100] border-t border-emerald-700 lg:hidden overflow-y-auto pb-40">
-                    <div className="flex flex-col py-4">
-                        {menuItems.map((item, i) => (
-                            <div key={i}>
-                                {/* Jika punya anak menu (Dropdown) */}
-                                {item.submenu ? (
-                                    <details className="px-4 py-2 group">
-                                        <summary className="cursor-pointer font-medium list-none flex justify-between items-center text-white [&::-webkit-details-marker]:hidden">
-                                            {item.label}
-                                            <svg className="w-4 h-4 text-emerald-200 transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                            </svg>
-                                        </summary>
-                                        <div className="flex flex-col pl-4 mt-2 border-l border-emerald-600/50">
-                                            {item.submenu.map((sub, j) => (
-                                                <Link
-                                                    key={j}
-                                                    to={sub.href}
-                                                    className="px-4 py-2 text-sm text-emerald-100 hover:text-white hover:bg-emerald-700 transition-colors rounded-lg"
-                                                    onClick={() => setMobileOpen(false)}
-                                                >
-                                                    {sub.label}
-                                                </Link>
-                                            ))}
-                                        </div>
-                                    </details>
-                                </Link>
+              ) : (
+                <Link
+                  to={item.href}
+                  className="px-3 py-2 rounded-lg text-white hover:bg-white/20 transition-all duration-300"
+                >
+                  {item.label}
+                </Link>
               )}
             </div>
           ))}
-        </div>
+        </nav>
+
+        {/* Mobile Menu Toggle */}
+        <button className="lg:hidden" onClick={() => setMobileOpen(!mobileOpen)}>
+          {mobileOpen ? <X className="w-6 h-6 text-white" /> : <Menu className="w-6 h-6 text-white" />}
+        </button>
       </div>
-    )}
-  </header>
-);
-};
+
+      {/* Mobile Menu */}
+      {mobileOpen && (
+        <div className="absolute top-full left-0 w-full h-screen bg-emerald-800 z-[100] border-t border-emerald-700 lg:hidden overflow-y-auto pb-40">
+          <div className="flex flex-col py-4">
+            {menuItems.map((item, i) => (
+              <div key={i}>
+                {item.submenu ? (
+                  <details className="px-4 py-2 group">
+                    <summary className="cursor-pointer font-medium list-none flex justify-between items-center text-white">
+                      {item.label}
+                      <ChevronDown className="w-4 h-4" />
+                    </summary>
+                    <div className="flex flex-col pl-4 mt-2 border-l border-emerald-600/50">
+                      {item.submenu.map((sub, j) => (
+                        <Link
+                          key={j}
+                          to={sub.href}
+                          className="px-4 py-2 text-sm text-emerald-100 hover:text-white"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </details>
+                ) : (
+                  <Link
+                    to={item.href}
+                    className="block px-4 py-3 text-white font-medium hover:bg-emerald-700"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </header>
+  );
 };
 
 export default Navbar;
