@@ -1,148 +1,148 @@
-// src/components/Navbar.tsx
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 type MenuItem = {
-    label: string;
-    href: string;
-    external?: boolean;
-    submenu?: MenuItem[];
-    subSubmenu?: MenuItem[];
+  label: string;
+  href: string;
+  external?: boolean;
+  submenu?: MenuItem[];
+  subSubmenu?: MenuItem[];
 };
 
 const menuItems: MenuItem[] = [
-    { label: "Beranda", href: "/" },
-    {
-        label: "Profil",
+  { label: "Beranda", href: "/" },
+  {
+    label: "Profil",
+    href: "#",
+    submenu: [
+      { label: "Profil KUA", href: "/profile" },
+      { label: "Data Pegawai", href: "/pegawai" },
+    ],
+  },
+  {
+    label: "Layanan",
+    href: "#",
+    submenu: [
+      {
+        label: "Nikah",
         href: "#",
         submenu: [
-            { label: "Profil KUA", href: "/profile" },
-            { label: "Data Pegawai", href: "/pegawai" },
+          {
+            label: "Pendaftaran Nikah",
+            href: "https://simkah4.kemenag.go.id/",
+            external: true,
+          },
+          {
+            label: "Rekomendasi Nikah",
+            href: "https://s.id/daftar_surat_rekomendasi_nikah",
+            external: true,
+          },
         ],
-    },
-    {
-        label: "Layanan",
-        href: "#",
-        submenu: [
-            {
-                label: "Nikah",
-                href: "#",
-                submenu: [
-                    {
-                        label: "Pendaftaran Nikah",
-                        href: "https://simkah4.kemenag.go.id/",
-                        external: true,
-                    },
-                    {
-                        label: "Rekomendasi Nikah",
-                        href: "https://s.id/daftar_surat_rekomendasi_nikah",
-                        external: true,
-                    },
-                ],
-            },
-            { label: "Kalender Jadwal Nikah", href: "/kalender-jadwal-nikah" },
-            { label: "Layanan Digital", href: "/layanan" },
-            { label: "Dokumen Persyaratan",
-                href: "https://drive.google.com/drive/folders/1rQ6sfIe2ZHRLf4mLUDqX5G4dES1lUgWX?usp=drive_link",
-                external: true,
-            },
-        ],
-    },
-    {
-        label: "Informasi",
-        href: "#",
-        submenu: [
-            { label: "Layanan dan Panduan Informasi", href: "/layanan-informasi" },
-            { label: "Statistik Nikah", href: "statistik-pernikahan" },
-            { label: "Data Masjid", href: "/data-masjid" },
-            { label: "Data Tanah Wakaf", href: "/data-wakaf" },
-        ],
-    },
-    { label: "Berita", href: "/news" },
-    { label: "Kritik & Saran", href: "/feedback" },
-    { label: "Kontak", href: "/kontak" },
+      },
+      { label: "Kalender Jadwal Nikah", href: "/kalender-jadwal-nikah" },
+      { label: "Layanan Digital", href: "/layanan" },
+      {
+        label: "Dokumen Persyaratan",
+        href: "https://drive.google.com/drive/folders/1rQ6sfIe2ZHRLf4mLUDqX5G4dES1lUgWX?usp=drive_link",
+        external: true,
+      },
+    ],
+  },
+  {
+    label: "Informasi",
+    href: "#",
+    submenu: [
+      { label: "Layanan dan Panduan Informasi", href: "/layanan-informasi" },
+      { label: "Statistik Nikah", href: "statistik-pernikahan" },
+      { label: "Data Masjid", href: "/data-masjid" },
+      { label: "Data Tanah Wakaf", href: "/data-wakaf" },
+    ],
+  },
+  { label: "Berita", href: "/news" },
+  { label: "Kritik & Saran", href: "/feedback" },
+  { label: "Kontak", href: "/kontak" },
 ];
 
 const Navbar = () => {
-    const [mobileOpen, setMobileOpen] = useState(false);
-    const currentPath = window.location.pathname.split("/").pop();
-    useEffect(() => {
-  const handleScroll = () => {
-    if (window.scrollY > 20) {
-      setMobileOpen(false);
-    }
-  };
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const currentPath = window.location.pathname.split("/").pop();
 
-    const renderMenu = (items: MenuItem[], level = 0) => {
-        return(
-            <ul
-                className={`absolute bg-emerald-800 rounded-xl shadow-xl z-50 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setMobileOpen(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const renderMenu = (items: MenuItem[], level = 0) => {
+    return (
+      <ul
+        className={`absolute bg-emerald-800 rounded-xl shadow-xl z-50 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300
                 ${level > 0 ? "left-full top-0 w-56" : "top-full left-0 w-48"}`}
-            >
-                {items.map((item, i) => (
-                    <li key={i} className="relative group/item">
-                        {item.submenu ? (
-                            <>
-                                <button className="flex w-full justify-between items-center px-4 py-2 text-white hover:bg-emerald-700 transition-colors duration-200">
-                                    {item.label}
-                                    {level !== 0 ? (
-                                        <ChevronDown className="w-4 h-4" />
-                                    ) : (
-                                        <ChevronRight className="w-4 h-4" />
-                                    )}
-                                </button>
+      >
+        {items.map((item, i) => (
+          <li key={i} className="relative group/item">
+            {item.submenu ? (
+              <>
+                <button className="flex w-full justify-between items-center px-4 py-2 text-white hover:bg-emerald-700 transition-colors duration-200">
+                  {item.label}
+                  {level !== 0 ? (
+                    <ChevronDown className="w-4 h-4" />
+                  ) : (
+                    <ChevronRight className="w-4 h-4" />
+                  )}
+                </button>
 
-                                {/* 🔑 Ganti parent group jadi group/item */}
-                                <ul
-                                    className={`absolute hidden bg-emerald-800 border-emerald-700 rounded-xl shadow-lg z-50
+                <ul
+                  className={`absolute hidden bg-emerald-800 border-emerald-700 rounded-xl shadow-lg z-50
                                             ${level > 0 ? "left-full top-0 w-56" : "left-full top-0 w-48"}
                                             group-hover/item:block`}
-                                >
-                                    {item.submenu.map((sub, j) => (
-                                        <li key={j} className="relative group/item">
-                                            {sub.submenu ? (
-                                                <>
-                                                    <button className="flex w-full justify-between items-center px-4 py-2 text-white hover:bg-emerald-700 transition-colors">
-                                                        {sub.label}
-                                                        <ChevronRight className="w-4 h-4" />
-                                                    </button>
-                                                    {renderMenu(sub.submenu, level + 1)}
-                                                </>
-                                            ) : (
-                                                <Link
-                                                    to={sub.href}
-                                                    target={sub.external ? "_blank" : "_self"}
-                                                    className="block px-4 py-2 text-white hover:bg-emerald-700 hover:text-white transition-colors"
-                                                >
-                                                    {sub.label}
-                                                </Link>
-                                            )}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </>
-                        ) : (
-                            <Link
-                                to={item.href}
-                                target={item.external ? "_blank" : "_self"}
-                                className={`block px-4 py-2 text-white hover:bg-emerald-700 transition-colors ${
-                                    item.href === currentPath ? "bg-emerald-700 font-semibold" : ""
-                                }`}
-                            >
-                                {item.label}
-                            </Link>
-                        )}
+                >
+                  {item.submenu.map((sub, j) => (
+                    <li key={j} className="relative group/item">
+                      {sub.submenu ? (
+                        <>
+                          <button className="flex w-full justify-between items-center px-4 py-2 text-white hover:bg-emerald-700 transition-colors">
+                            {sub.label}
+                            <ChevronRight className="w-4 h-4" />
+                          </button>
+                          {renderMenu(sub.submenu, level + 1)}
+                        </>
+                      ) : (
+                        <Link
+                          to={sub.href}
+                          target={sub.external ? "_blank" : "_self"}
+                          className="block px-4 py-2 text-white hover:bg-emerald-700 hover:text-white transition-colors"
+                        >
+                          {sub.label}
+                        </Link>
+                      )}
                     </li>
-                ))}
-            </ul>
-        )
-    };
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <Link
+                to={item.href}
+                target={item.external ? "_blank" : "_self"}
+                className={`block px-4 py-2 text-white hover:bg-emerald-700 transition-colors ${
+                  item.href === currentPath ? "bg-emerald-700 font-semibold" : ""
+                }`}
+              >
+                {item.label}
+              </Link>
+            )}
+          </li>
+        ))}
+      </ul>
+    );
+  };
 
-    return (
+  return (
     <header className="sticky top-0 z-50 w-full bg-gradient-to-r from-emerald-800 to-emerald-600 shadow-md backdrop-blur">
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
         {/* Logo */}
@@ -156,25 +156,28 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* Desktop Menu */}
-        <nav className="hidden lg:flex gap-6 text-sm">
-          {menuItems.map((item, i) => (
-            <div key={i} className="relative group">
-              {item.submenu ? (
-                <button className="flex items-center gap-1 px-3 py-2 text-white hover:bg-white/20 transition-all duration-300 rounded-lg">
+        {/* Desktop Menu - SUDAH DIPERBAIKI */}
+        <nav className="hidden lg:flex items-center gap-6 text-sm">
+          {menuItems.map((item, i) =>
+            item.submenu ? (
+              <div key={i} className="relative group">
+                <button className="flex items-center gap-1 px-3 py-2 text-white hover:bg-white/20 transition-all duration-300 rounded-xl">
                   {item.label}
                   <ChevronDown className="w-4 h-4" />
                 </button>
-              ) : (
-                <Link
-                  to={item.href}
-                  className="px-3 py-2 rounded-lg text-white hover:bg-white/20 transition-all duration-300"
-                >
-                  {item.label}
-                </Link>
-              )}
-            </div>
-          ))}
+                {/* Kode di bawah ini yang memunculkan dropdown menu */}
+                {renderMenu(item.submenu)}
+              </div>
+            ) : (
+              <Link
+                key={i}
+                to={item.href}
+                className="px-3 py-2 rounded-xl text-white hover:bg-white/20 transition-all duration-300"
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </nav>
 
         {/* Mobile Menu Toggle */}
