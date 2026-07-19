@@ -71,14 +71,14 @@ const Navbar = () => {
     const renderMenu = (items: MenuItem[], level = 0) => {
         return(
             <ul
-                className={`absolute hidden bg-white border rounded-xl shadow-lg z-50
-             ${level > 0 ? "left-full top-0 w-56" : "top-full left-0 w-48"} group-hover:block`}
+                className={`absolute bg-emerald-800 rounded-xl shadow-xl z-50 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 overflow-hidden 
+                ${level > 0 ? "left-full top-0 w-56" : "top-full left-0 w-48"}`}
             >
                 {items.map((item, i) => (
                     <li key={i} className="relative group/item">
                         {item.submenu ? (
                             <>
-                                <button className="flex w-full justify-between items-center px-4 py-2 rounded-t-lg hover:bg-gray-100">
+                                <button className="flex w-full justify-between items-center px-4 py-2 text-white hover:bg-emerald-700 transition-colors duration-200">
                                     {item.label}
                                     {level !== 0 ? (
                                         <ChevronDown className="w-4 h-4" />
@@ -107,7 +107,7 @@ const Navbar = () => {
                                                 <Link
                                                     to={sub.href}
                                                     target={sub.external ? "_blank" : "_self"}
-                                                    className="block px-4 py-2 hover:bg-gray-100"
+                                                    className="block px-4 py-2 text-white hover:bg-emerald-700 transition-colors duration-200"
                                                 >
                                                     {sub.label}
                                                 </Link>
@@ -134,7 +134,7 @@ const Navbar = () => {
     };
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b bg-white">
+        <header className="sticky top-0 z-50 w-full bg-gradient-to-r from-emerald-800 to-emerald-600 shadow-md backdrop-blur">
             <div className="container mx-auto flex items-center justify-between px-4 py-3">
                 {/* Logo */}
                 <Link to="/" className="flex items-center gap-3">
@@ -142,8 +142,8 @@ const Navbar = () => {
                         <img src="/logo-kemenag.png" alt=""/>
                     </div>
                     <div>
-                        <div className="text-lg font-bold">KUA Kejayan</div>
-                        <div className="text-xs text-gray-500">Kantor Urusan Agama Kejayan</div>
+                        <div className="text-lg font-bold text-white">KUA Kejayan</div>
+                        <div className="text-xs text-emerald-100">Kantor Urusan Agama Kejayan</div>
                     </div>
                 </Link>
 
@@ -152,7 +152,7 @@ const Navbar = () => {
                     {menuItems.map((item, i) =>
                         item.submenu ? (
                             <div key={i} className="relative group">
-                                <button className="flex items-center gap-1 px-3 py-2 hover:bg-gray-100 rounded-xl">
+                                <button className="flex items-center gap-1 px-3 py-2 text-white hover:bg-white/20 transition-all duration-300 rounded-xl">
                                     {item.label}
                                     <ChevronDown className="w-4 h-4" />
                                 </button>
@@ -163,8 +163,8 @@ const Navbar = () => {
                             <Link
                                 key={i}
                                 to={item.href}
-                                className={`px-3 py-2 rounded-xl hover:bg-gray-100 ${
-                                    item.href === currentPath ? "font-semibold text-emerald-700" : ""
+                                className={`px-3 py-2 rounded-xl text-white hover:bg-white/20 transition-all duration-300 ${
+                                    item.href === currentPath ? "bg-white/20 font-semibold" : ""
                                 }`}
                             >
                                 {item.label}
