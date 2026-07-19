@@ -185,7 +185,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="absolute top-full left-0 w-full h-screen bg-emerald-800 z-[100] border-t border-emerald-700 lg:hidden overflow-y-auto pb-40">
+        <div className="absolute top-full left-0 w-full bg-emerald-800/90 backdrop-blur-md z-[100] border-t border-emerald-700 lg:hidden pb-10 shadow-xl">
           <div className="flex flex-col py-4">
             {menuItems.map((item, i) => (
               <div key={i}>
