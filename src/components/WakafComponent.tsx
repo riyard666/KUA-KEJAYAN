@@ -5,7 +5,6 @@ import { FormatDateNoTime } from "@/utils/format.ts";
 import { Button } from "@/components/ui/button.tsx";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { WakafModel } from "@/model/wakaf.model.tsx";
-import axios from "axios";
 import { Search } from "lucide-react";
 
 export default function WakafComponent() {
