@@ -22,10 +22,13 @@ export default function WakafComponent() {
       const res = await axios.get(
         "https://script.google.com/macros/s/AKfycbymnSRRGOqOSTud3mJWUC1VvPZmxrxSrV3B8TFoNRU1KTlHnyYTAN4LKDSkay7m35a-NQ/exec"
       )
-      setData(res.data)
-      setLoading(false)
-    } catch (err) {
-      console.error("Error fetch:", err)
+      // Ambil array datanya saja
+      if (res.data.status === "success") {
+        setData(res.data.data) 
+      } else {
+        console.error("Gagal mengambil data dari API")
+      }
+      
       setLoading(false)
     }
   }, [])
