@@ -25,11 +25,12 @@ export default function WakafComponent() {
       const result = await response.json();
       
       // Cek apakah status success dan datanya berbentuk array
-      if (result && result.status === "success" && Array.isArray(result.data)) {
-        setData(result.data); 
+      
+      if (Array.isArray(result)) {
+          setData(result);
       } else {
-        console.error("Format balasan API tidak sesuai:", result);
-        setData([]); 
+          console.error(result);
+          setData([]);
       }
     } catch (err) {
       console.error("Error fetch:", err);
