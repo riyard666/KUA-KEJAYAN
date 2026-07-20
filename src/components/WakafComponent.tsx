@@ -20,18 +20,23 @@ export default function WakafComponent() {
   const fetchDataWakaf = useCallback(async () => {
     try {
       const res = await axios.get(
-        "https://script.google.com/macros/s/AKfycbymnSRRGOqOSTud3mJWUC1VvPZmxrxSrV3B8TFoNRU1KTlHnyYTAN4LKDSkay7m35a-NQ/exec"
-      )
-      // Ambil array datanya saja
-      if (res.data.status === "success") {
-        setData(res.data.data) 
-      } else {
-        console.error("Gagal mengambil data dari API")
-      }
+        "https://script.google.com/macros/s/AKfycbymnSRRGoQSTud3mJWUC1vVPZmxrxSrV3B8TFoNRU1KT1HnyYTAN4LKDSkay7m35a-NQ/exec"
+      );
       
-      setLoading(false)
+      // PENTING: Cek apakah res.data.data benar-benar ada dan berupa Array
+      if (res.data && Array.isArray(res.data.data)) {
+        setData(res.data.data); // Ambil array-nya saja
+      } else {
+        console.error("Format balasan API tidak sesuai:", res.data);
+        setData([]); // Set array kosong agar map() tidak error
+      }
+    } catch (err) {
+      console.error("Error fetch:", err);
+      setData([]); // Set array kosong jika koneksi terputus/error
+    } finally {
+      setLoading(false);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     fetchDataWakaf().catch(console.error)
