@@ -19,7 +19,7 @@ export default function WakafComponent() {
 
   const fetchDataWakaf = useCallback(async () => {
     try {
-      const url = "https://script.google.com/macros/s/AKfycbymnSRRGoQSTud3mJWUC1vVPZmxrxSrV3B8TFoNRU1KT1HnyYTAN4LKDSkay7m35a-NQ/exec";
+      const url = "https://script.google.com/macros/s/AKfycbxRKSJJoSpC4G0bygdM0-WoX8S0mUeUfbFI7BnnHbzMHK-jKUFvM5aI8adaWIpv_XvS/exec";
       
       // Menggunakan fetch bawaan Javascript, bukan Axios
       const response = await fetch(url);
