@@ -20,7 +20,7 @@ export default function WakafComponent() {
   const fetchDataWakaf = useCallback(async () => {
     try {
       const res = await axios.get(
-        "https://script.google.com/macros/s/AKfycbxRKSJJoSpC4G0bygdM0-WoX8S0mUeUfbFI7BnnHbzMHK-jKUfVM5aI8adaWIpv_XvS/exec"
+        "https://script.google.com/macros/s/AKfycbymnSRRGOqOSTud3mJWUC1VvPZmxrxSrV3B8TFoNRU1KTlHnyYTAN4LKDSkay7m35a-NQ/exec"
       )
       setData(res.data)
       setLoading(false)
